@@ -6,8 +6,7 @@ This repository is essentially a **collection of programming exercises written i
 - Algorithms
 - The [Scala][scala] programming language
 
-![Scala Logo](https://upload.wikimedia.org/wikipedia/en/8/85/Scala_logo.png)
-By Source, <a href="//en.wikipedia.org/wiki/File:Scala_logo.png" title="Fair use of copyrighted material in the context of Scala (programming language)">Fair use</a>, <a href="https://en.wikipedia.org/w/index.php?curid=21286998">Link</a>
+![Scala Logo](https://eventil.s3.amazonaws.com/uploads/group/avatar/682/medium_scala-logo.png)
 
 ***The authors are not affiliated with DigitalOcean or Hacktoberfest***
 
