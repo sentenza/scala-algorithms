@@ -6,7 +6,10 @@ This repository is essentially a **collection of programming exercises written i
 - Algorithms
 - The [Scala][scala] programming language
 
-***Not Affiliated with Digital Ocean or Hacktoberfest***
+![Scala Logo](https://upload.wikimedia.org/wikipedia/en/8/85/Scala_logo.png)
+By Source, <a href="//en.wikipedia.org/wiki/File:Scala_logo.png" title="Fair use of copyrighted material in the context of Scala (programming language)">Fair use</a>, <a href="https://en.wikipedia.org/w/index.php?curid=21286998">Link</a>
+
+***The authors are not affiliated with DigitalOcean or Hacktoberfest***
 
 ![Hacktoberfest](https://user-images.githubusercontent.com/2479647/46922007-677fc300-cffa-11e8-8268-ae59b576cfb7.jpg)
 
@@ -36,20 +39,37 @@ This is a Public Repository **open to all members of the GitHub Community**. Any
 - Each algorithm should be applicable (if possible) to all the structures inside the library
 - Every piece of code produced here will be released under the [GNU General Public License v3.0](LICENSE)
 
-### CONTRIBUTING
-
-Coming ASAP
+### How to contribute
 
 
-#### How To:
+* Fork this repository (Click the Fork button in the top right of this page, click your Profile Image)
+* Clone your fork down to your local machine `git clone https://github.com/{your-username}/hacktoberfest-scala-algorithms`
+* Create a branch for a new feature `git checkout -b feat/branch-name`
+** Or if it's a bugfix to a file
+```markdown
+git checkout -b fix/branch-name
+```
+* Code your files in the proper directory based on the instructions you'll find in CONTRIBUTING
+* Add your name to the [CONTRIBUTORS.md][CONTRIBUTORS.md] file using following model
 
-1. Fork this repository using this webpage
-2. `git clone https://github.com/{your-username}/hacktoberfest-scala-algorithms`
-3. Code your files in the proper directory based on the instructions you'll find in CONTRIBUTING
-4. Add all your files `git add your/directory/path/to/file/` (see new directory structure above)
-5. Commit your file changes `git commit -m "Whatever you did here, e.g. created linkedlist class in Scala"`
-6. Push your changes using `git push`
-7. Create a Pull Request targeting the master branch using this webpage
+```markdown
+Name: [YOUR NICKNAME](Github Link)
+Place: city you belong to (optional)
+About: Short Intro (optional)
+Programming Language: Which programming language do you know?
+Twitter: (optional)
+Website: (optional)
+```
+* Commit and Push
+```markdown
+git add .
+git commit -m "feat: whatever you did here, e.g. created linkedlist class in Scala"
+git push origin {your-branch-name}
+```
+* Create a New Pull Request from your forked repository (Click the New Pull Request button located at the top of your repo) targeting the master branch
+* Wait for your PR review and merge approval!
+* __Star this repository__ if you had fun!
+
 
 [scala]: https://www.scala-lang.org/
 [github]: https://github.com
