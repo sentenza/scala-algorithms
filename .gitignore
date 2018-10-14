@@ -1,2 +1,40 @@
 *.class
 *.log
+
+# Ensime specific
+.ensime_cache
+.ensime
+
+# sbt specific
+.cache
+.history
+.lib/
+dist/*
+target/
+lib_managed/
+src_managed/
+project/boot/
+project/plugins/project/
+
+# Scala-IDE specific
+.scala_dependencies
+.worksheet
+.idea
+
+# Temporary
+.netrwhist
+*~
+
+# Vim specific ---
+# Swap
+[._]*.s[a-v][a-z]
+[._]*.sw[a-p]
+[._]s[a-v][a-z]
+[._]sw[a-p]
+._*
+*.swp
+*.swo
+
+# System Files
+.DS_Store
+Thumbs.db
