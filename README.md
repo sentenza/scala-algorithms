@@ -36,5 +36,20 @@ This is a Public Repository **open to all members of the GitHub Community**. Any
 - Each algorithm should be applicable (if possible) to all the structures inside the library
 - Every piece of code produced here will be released under the [GNU General Public License v3.0](LICENSE)
 
+### CONTRIBUTING
+
+Coming ASAP
+
+
+#### How To:
+
+1. Fork this repository using this webpage
+2. `git clone https://github.com/{your-username}/hacktoberfest-scala-algorithms`
+3. Code your files in the proper directory based on the instructions you'll find in CONTRIBUTING
+4. Add all your files `git add your/directory/path/to/file/` (see new directory structure above)
+5. Commit your file changes `git commit -m "Whatever you did here, e.g. created linkedlist class in Scala"`
+6. Push your changes using `git push`
+7. Create a Pull Request targeting the master branch using this webpage
+
 [scala]: https://www.scala-lang.org/
 [github]: https://github.com
