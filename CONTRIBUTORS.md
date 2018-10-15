@@ -15,3 +15,6 @@
   - About: None
   - Programming Language: None
   - Website: https://flatmap.it
+- [lokke](https://github.com/lokke-me)
+  - Place: Germany
+  - About: Just started to learn scala
