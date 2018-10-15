@@ -71,6 +71,10 @@ git push origin {your-branch-name}
 * Wait for your PR review and merge approval!
 * __Star this repository__ if you had fun!
 
+# How to start programming in Scala
+
+- Feel free to contribute to our [learning resources](docs/learning_resources.md)
+
 
 [scala]: https://www.scala-lang.org/
 [github]: https://github.com
