@@ -17,6 +17,7 @@ package io.github.sentenza.hacktoberfest18.sort
 
 object CommonSortings {
   trait CommonSorting {
+    def swap(array: Array[Int], index1: Int, index2: Int)
     def bubbleSort(array: Array[Int]): Array[Int]
     def selectionSort(array: Array[Int]): Array[Int]
     def insertionSort(array: Array[Int]): Array[Int]
@@ -25,24 +26,38 @@ object CommonSortings {
   }
 
   object CommonSorting {
+    def swap(array: Array[Int], index1: Int, index2: Int) = {
+      val tmp = array(index1)
+      array(index1) = array(index2)
+      array(index2) = tmp
+    }
+
     def bubbleSort(array: Array[Int]): Array[Int] = {
       var swapped = false
 
       do{
         swapped = false;
-
         for(i <- 0 to array.length - 2){
           if(array(i) > array(i + 1)){
-            val tmp = array(i)
-            array(i) = array(i + 1)
-            array(i + 1) = tmp
+            swap(array, i, i + 1)
             swapped = true
           }
         }
       }
       while(swapped)
     }
-    //def selectionSort(array: Array[Int]): Array[Int] = ???
+
+    def selectionSort(array: Array[Int]): Array[Int] = {
+      for(i <- 0 until array.size - 1)
+        swap(array, i, (i + 1 until array.length).foldLeft(i)((currMin, currIndx) =>
+          if(array(currIndx) < array(currMin))
+            currIndx
+          else
+            currMin
+        ))
+
+        array
+    }
     //def insertionSort(array: Array[Int]): Array[Int] = ???
     //def quickSort(array: Array[Int]): Array[Int] = ???
     def mergeSort(array: Array[Int]): Array[Int] = {
