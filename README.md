@@ -42,9 +42,9 @@ These Scala HacktoberFest Scala _excercises_ assume an [SBT][sbt-intro] project 
 
 ### How to contribute
 
-
 * Fork this repository (Click the Fork button in the top right of this page, click your Profile Image)
 * Clone your fork down to your local machine `git clone https://github.com/{your-username}/hacktoberfest-scala-algorithms`
+* Execute the code launching `sbt` and then running `compile`, `test` and `run`
 * Create a branch for a new feature `git checkout -b feat/branch-name`
 ** Or if it's a bugfix to a file
 ```markdown
@@ -54,12 +54,12 @@ git checkout -b fix/branch-name
 * Add your name to the [CONTRIBUTORS.md][CONTRIBUTORS.md] file using following model
 
 ```markdown
-Name: [YOUR NICKNAME](Github Link)
-Place: city you belong to (optional)
-About: Short Intro (optional)
-Programming Language: Which programming language do you know?
-Twitter: (optional)
-Website: (optional)
+- Name: [YOUR NICKNAME](Github Link)
+  - Place: city you belong to (optional)
+  - About: Short Intro (optional)
+  - Programming Language: Which programming language do you know?
+  - Twitter: (optional)
+  - Website: (optional)
 ```
 * Commit and Push
 ```markdown

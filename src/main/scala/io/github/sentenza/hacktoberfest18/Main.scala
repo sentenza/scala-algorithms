@@ -2,6 +2,7 @@ package io.github.sentenza.hacktoberfest18
 import sort.mergeSort
 
 object Main extends App {
+<<<<<<< HEAD
 	
 	def printMenu(): Unit = {
 	  val menuText = """Choose an algorythm:
@@ -42,4 +43,7 @@ object Main extends App {
 	
 	printMenu()
 	
+=======
+  MenuIO.renderInteractiveMenu()
+>>>>>>> master
 }
