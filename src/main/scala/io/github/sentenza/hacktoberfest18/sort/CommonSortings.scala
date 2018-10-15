@@ -25,11 +25,37 @@ object CommonSortings {
   }
 
   object CommonSorting {
-    def bubbleSort(array: Array[Int]): Array[Int] = ???
-    def selectionSort(array: Array[Int]): Array[Int] = ???
-    def insertionSort(array: Array[Int]): Array[Int] = ???
-    def quickSort(array: Array[Int]): Array[Int] = ???
-    def mergeSort(array: Array[Int]): Array[Int] = ???
+    def bubbleSort(array: Array[Int]): Array[Int] = {
+      var swapped = false
+
+      do{
+        swapped = false;
+
+        for(i <- 0 to array.length - 2){
+          if(array(i) > array(i + 1)){
+            val tmp = array(i)
+            array(i) = array(i + 1)
+            array(i + 1) = tmp
+            swapped = true
+          }
+        }
+      }
+      while(swapped)
+    }
+    //def selectionSort(array: Array[Int]): Array[Int] = ???
+    //def insertionSort(array: Array[Int]): Array[Int] = ???
+    //def quickSort(array: Array[Int]): Array[Int] = ???
+    def mergeSort(array: Array[Int]): Array[Int] = {
+      if(array.length <= 1) array
+      else{
+          val piv = array(array.length / 2)
+          Array.concat(
+            mergeSort(array filter (piv >)),
+            array filter (piv ==),
+            mergeSort(array filter (piv <))
+          )
+      }
+    }
   }
 }
 
