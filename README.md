@@ -38,6 +38,8 @@ This is a Public Repository **open to all members of the GitHub Community**. Any
 - Each algorithm should be applicable (if possible) to all the structures inside the library
 - Every piece of code produced here will be released under the [GNU General Public License v3.0](LICENSE)
 
+These Scala HacktoberFest Scala _excercises_ assume an [SBT][sbt-intro] project scheme. The solution to each [issue][issues] should be placed within the `project-directory/src/main/scala/io/github/sentenza/hacktoberfest18/`. The exercise unit tests can be found within the `project-directory/src/test/io/github/sentenza/hacktoberfest18/`.
+
 ### How to contribute
 
 
@@ -72,3 +74,4 @@ git push origin {your-branch-name}
 
 [scala]: https://www.scala-lang.org/
 [github]: https://github.com
+[sbt-intro]: http://torre.me.uk/programming/2017/08/19/scala-with-sbt-and-emacs
