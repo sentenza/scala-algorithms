@@ -9,5 +9,15 @@ object Main extends App {
                                                                        
     """
 
+    val gplDisclaimer = """
+    HacktoberFest 2018 Scala Algorhitms Copyright (C) 2018  @sentenza
+    This program comes with ABSOLUTELY NO WARRANTY.
+    This is free software, and you are welcome to redistribute it
+    under certain conditions. All the details can be found at:
+    https://github.com/sentenza/hacktoberfest-scala-algorithms/blob/master/LICENSE.
+    """
+
     println(Console.BLUE + heading)
+
+    println(Console.YELLOW + gplDisclaimer)
 }
