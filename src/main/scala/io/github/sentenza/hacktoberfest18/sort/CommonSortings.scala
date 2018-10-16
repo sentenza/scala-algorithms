@@ -1,5 +1,7 @@
 package io.github.sentenza.hacktoberfest18.sort
 
+import java.util.Random
+
 /*
  * HacktoberFest 2018 - Scala Algorhitms
  * Copyright (C) 2018 sentenza
@@ -30,8 +32,10 @@ object CommonSortings {
     def insertionSort(array: Array[Int]): Array[Int] = ???
     def quickSort(array: Array[Int]): Array[Int] = {
       if (array.length>1) {
-        var pivot = array(0)
-        (quickSort(array.filter(a => a < pivot)) :+ pivot) ++ quickSort(array.filter(a => a > pivot))
+        val rand = new Random()
+        val pivot = array(rand.nextInt(array.length))
+
+        quickSort(array.filter(a => a < pivot))++ array.filter(a => a==pivot) ++ quickSort(array.filter(a => a > pivot))
       }
       else array
     }
