@@ -1,25 +1,7 @@
 package io.github.sentenza.hacktoberfest18
-import sort.mergeSort
 
 object Main extends App {
-<<<<<<< HEAD
-	
-	def printMenu(): Unit = {
-	  val menuText = """Choose an algorythm:
-						|1. MergeSort""".stripMargin
-	  println(menuText)
-	  val cmd = scala.io.StdIn.readLine()
-	  cmd match{
-		case "1" => {
-		  val testList = List(5, 8, 1, 3, 9, 7, 1, 4, 5, 6)
-		  println("Unordered list: " + testList.mkString(", "))
-		  val orderedList = mergeSort.mergeSort(testList)
-		  println("Ordered list: " + orderedList.mkString(", "))
-		  
-		}		
-		case _ => printMenu()
-	  }
-	}
+
 	
 	val heading = """
 	  _  _         _   _       _             ___       _     ___ __  _ ___ 
@@ -39,11 +21,8 @@ object Main extends App {
 
 	println(Console.BLUE + heading)
 
-	println(Console.YELLOW + gplDisclaimer)
-	
-	printMenu()
-	
-=======
-  MenuIO.renderInteractiveMenu()
->>>>>>> master
+	println(Console.YELLOW + gplDisclaimer)	
+
+	MenuIO.renderInteractiveMenu()
+
 }

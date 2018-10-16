@@ -17,7 +17,6 @@ package io.github.sentenza.hacktoberfest18.sort
 
 object CommonSortings {
   trait CommonSorting {
-    def swap(array: Array[Int], index1: Int, index2: Int)
     def bubbleSort(array: Array[Int]): Array[Int]
     def selectionSort(array: Array[Int]): Array[Int]
     def insertionSort(array: Array[Int]): Array[Int]
@@ -26,7 +25,13 @@ object CommonSortings {
   }
 
   object CommonSorting {
-    def swap(array: Array[Int], index1: Int, index2: Int) = {
+
+    /*
+     * swaps two elements with indices index1 and index2
+     * in a given array
+     * used in bubbleSort and selectionSort
+    */
+    def swap(array: Array[Int], index1: Int, index2: Int): Unit = {
       val tmp = array(index1)
       array(index1) = array(index2)
       array(index2) = tmp
@@ -45,6 +50,8 @@ object CommonSortings {
         }
       }
       while(swapped)
+
+      array
     }
 
     def selectionSort(array: Array[Int]): Array[Int] = {
@@ -56,20 +63,65 @@ object CommonSortings {
             currMin
         ))
 
-        array
+      array
     }
-    //def insertionSort(array: Array[Int]): Array[Int] = ???
-    //def quickSort(array: Array[Int]): Array[Int] = ???
-    def mergeSort(array: Array[Int]): Array[Int] = {
+    def insertionSort(array: Array[Int]): Array[Int] = {
+      for(j <- 1 until array.length){
+        var i = j - 1
+        val moving = array(j)
+        while(i >= 0 && array(i) > moving){
+          array(i + 1) = array(i)
+          i -= 1
+        }
+        array(i + 1) = moving
+      }
+
+      array
+    }
+
+    def quickSort(array: Array[Int]): Array[Int] = {
       if(array.length <= 1) array
       else{
-          val piv = array(array.length / 2)
-          Array.concat(
-            mergeSort(array filter (piv >)),
-            array filter (piv ==),
-            mergeSort(array filter (piv <))
-          )
+        val pivot = array(array.length / 2)
+        Array.concat(
+          quickSort(array filter (pivot >)),
+          array filter (pivot ==),
+          quickSort(array filter (pivot <))
+        )
       }
+    }
+
+    def mergeSort(array: Array[Int]): Array[Int] = {
+      def merge(part1: Array[Int], part2: Array[Int], l: Int, r: Int, mid: Int){
+        var left = l
+        var m = mid + 1
+
+        for(i <- l to r){
+          if(m > r || (left <= mid && part1(left) < part1(m))){
+            part2(i) = part1(left)
+            left += 1
+          }
+          else{
+            part2(i) = part1(m)
+            m += 1
+          }
+        }
+      }
+
+      def sort(part1: Array[Int], part2: Array[Int], l: Int, r: Int){
+        if(l >= r)
+          return
+
+        val mid = (l + r) / 2
+        sort(part1, part2, l, mid)
+        sort(part1, part2, mid + 1, r)
+        merge(part1, part2, l, r, mid)
+        Array.copy(part2, l, part1, l, r - l + 1)
+      }
+
+      val helperArray = new Array[Int](array.length)
+      sort(array, helperArray, 0, array.length - 1)
+      array
     }
   }
 }
