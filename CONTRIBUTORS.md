@@ -2,4 +2,5 @@
   - Place: Venice (IT), London (UK)
   - About: Guardian of the Tannhäuser Gate
   - Website: http://torre.me.uk
-
+- Name: [xoeseko](https://github.com/xoeseko)
+  - Programming Languages: Java, Python, Scala
