@@ -199,18 +199,16 @@ object CommonSortings {
       array(index2) = tmp
     }
 
-    def bubbleSort(array: Array[Int]): Array[Int] = {
+    def bubbleSort1(array: Array[Int]): Array[Int] = {
 
         def go(a: Array[Int], i: Int): Array[Int] = {
-          (a, i) match {
-            case (a, i) if i+1 >= a.length => a
-            case (a, i) if(a(i) > a(i+1)) => go(a.patch(i, Array(a(i+1), a(i)), 2), 0)
-            case (a, i) => go(a, i+1)
-          }
+            if(i+1 >= a.length) a
+            else if(a(i) > a(i+1)) go(a.patch(i, Array(a(i+1), a(i)), 2), 0)
+            else go(a, i+1)
         }
 
         go(array, 0)
-    }
+        }
 
   }
 }
