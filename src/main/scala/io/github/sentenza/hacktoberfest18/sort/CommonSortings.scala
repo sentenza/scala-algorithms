@@ -16,12 +16,12 @@ package io.github.sentenza.hacktoberfest18.sort
  */
 
 object CommonSortings {
-  /* 
-   * Implementations of this trait should provide non-destructive sort
-   * operations on arrays. That is, the array passed to a sort method
-   * should not be altered: A new array with the sorted values should be
-   * returned.
-   */
+  /**
+    * Implementations of this trait should provide non-destructive sort
+    * operations on arrays. That is, the array passed to a sort method
+    * should not be altered: A new array with the sorted values should be
+    * returned.
+    */
   trait CommonSorting {
     def bubbleSort(array: Array[Int]): Array[Int]
     def selectionSort(array: Array[Int]): Array[Int]
@@ -32,17 +32,20 @@ object CommonSortings {
 
   object CommonSorting {
 
-    /*
-     * swaps two elements with indices index1 and index2
-     * in a given array
-     * used in bubbleSort and selectionSort
-    */
-    def swap(array: Array[Int], index1: Int, index2: Int): Unit = {
-      val tmp = array(index1)
-      array(index1) = array(index2)
-      array(index2) = tmp
-    }
-
+    /**
+      * Bubble Sort
+      *
+      * NOTE: Although bubble sort is one of the simplest sorting algorithms to understand and
+      * implement, its O(n^2) complexity means that its efficiency decreases dramatically on
+      * lists of more than a small number of elements.
+      * TODO: Try to refactor this method in order to avoid any direct alteration (side effect)
+      * of the provided array. We should return a completely new array
+      * that contains the sorted elements.
+      *
+      * @see http://en.wikipedia.org/wiki/Bubble_sort
+      * @param array Array of sortable Integers
+      * @return The sorted array
+      */
     def bubbleSort(array: Array[Int]): Array[Int] = {
       var swapped = false
 
@@ -71,6 +74,7 @@ object CommonSortings {
 
       array
     }
+
     def insertionSort(array: Array[Int]): Array[Int] = {
       for(j <- 1 until array.length){
         var i = j - 1
@@ -128,6 +132,23 @@ object CommonSortings {
       val helperArray = new Array[Int](array.length)
       sort(array, helperArray, 0, array.length - 1)
       array
+    }
+
+    /**
+      * Swaps two elements with indices index1 and index2
+      * in a given array used in bubbleSort and selectionSort
+      * TODO: get rid of this method, because it only introduces
+      * a side effect. Take look at the principles of Functional
+      * programming.
+      *
+      * @param array The target array that will be modified
+      * @param index1 The index of the first element that has to be swapped
+      * @param index2 The index of the second element that has to be swapped
+      */
+    private def swap(array: Array[Int], index1: Int, index2: Int): Unit = {
+      val tmp = array(index1)
+      array(index1) = array(index2)
+      array(index2) = tmp
     }
   }
 }
