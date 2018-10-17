@@ -4,3 +4,8 @@
   - Website: http://torre.me.uk
 - [megri](https://github.com/megri)
   - Place: Gothenburg (SE)
+- [P3trur0](https://github.com/P3trur0)
+  - Place: Venice (IT), Petruro Irpino (AV)
+  - About: None
+  - Programming Language: None
+  - Website: https://flatmap.it
