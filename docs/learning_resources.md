@@ -30,6 +30,7 @@
 * [Practical Scala for Java Developers](https://www.safaribooksonline.com/library/view/practical-scala-for/9781491969472/). By Julian Templeman and Ben Evans. Online course on [Safari Online Books](https://www.safaribooksonline.com/home/).
     * [GitHub Repository](https://github.com/julian-t/EssentialScala) for this course.
 * [Scala 101](https://cognitiveclass.ai/learn/scala/#course2000). Free online course on [Cognitive Class](https://cognitiveclass.ai/).
+* [Scala Summer School - Learn Functional Programming in Scala](https://scalasummerschool.github.io/)
 
 
 ### Books
@@ -42,6 +43,7 @@
 * [Scala Exercises](https://www.scala-exercises.org)
 * [S-99: Ninety-Nine Scala Problems](http://aperiodic.net/phil/scala/s-99)
 * [Scala for Project Euler](https://pavelfatin.com/scala-for-project-euler)
+* [Scala Puzzlers](http://scalapuzzlers.com/)
 
 
 
