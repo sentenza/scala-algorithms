@@ -4,3 +4,9 @@
   - Website: http://torre.me.uk
 - [megri](https://github.com/megri)
   - Place: Gothenburg (SE)
+- [ivanopagano](https://github.com/ivanopagano)
+  - Place: Rome (IT)
+  - About: Code Gardener
+  - Programming Language: Scala, Java, Haskell, Elm, Javascript
+  - Twitter: @pagoda_5b
+  - Website: https://about.me/ivano_pagano
