@@ -42,6 +42,7 @@
 * [Scala Exercises](https://www.scala-exercises.org)
 * [S-99: Ninety-Nine Scala Problems](http://aperiodic.net/phil/scala/s-99)
 * [Scala for Project Euler](https://pavelfatin.com/scala-for-project-euler)
+* [Scala Puzzlers](http://scalapuzzlers.com/)
 
 
 
