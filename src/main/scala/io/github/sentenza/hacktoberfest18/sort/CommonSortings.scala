@@ -24,10 +24,15 @@ object CommonSortings {
     */
   trait CommonSorting {
     def bubbleSort(array: Array[Int]): Array[Int]
+    def cocktailShakerSort(array: Array[Int]): Array[Int]
+    def combSort(array: Array[Int]): Array[Int]
     def selectionSort(array: Array[Int]): Array[Int]
     def insertionSort(array: Array[Int]): Array[Int]
     def quickSort(array: Array[Int]): Array[Int]
     def mergeSort(array: Array[Int]): Array[Int]
+    def countSort(array: Array[Int]): Array[Int]
+    def radixSort(array: Array[Int]): Array[Int]
+    def bucketSort(array: Array[Int]): Array[Int]
   }
 
   object CommonSorting {
@@ -35,6 +40,9 @@ object CommonSortings {
     /**
       * Bubble Sort
       *
+      * "the bubble sort seems to have nothing to recommend it, except a catchy name and
+      * the fact that it leads to some interesting theoretical problems"
+      * - from The Art of Computer Programming by Donald Knuth
       * NOTE: Although bubble sort is one of the simplest sorting algorithms to understand and
       * implement, its O(n^2) complexity means that its efficiency decreases dramatically on
       * lists of more than a small number of elements.
@@ -62,6 +70,25 @@ object CommonSortings {
 
       array
     }
+
+    /**
+      * Cocktail Shaker Sort
+      * https://en.wikipedia.org/wiki/Cocktail_shaker_sort
+      * TODO: To be implemented
+      * @param array Array of sortable integers
+      * @return The sorted array
+      */
+    def cocktailShakerSort(array: Array[Int]): Array[Int] = ???
+
+    /**
+      * Comb Sort
+      * https://en.wikipedia.org/wiki/Comb_sort
+      * TODO: To be implemented
+      * @param array Array of sortable integers
+      * @return The sorted array
+      */
+    def combSort(array: Array[Int]): Array[Int] = ???
+
 
     def selectionSort(array: Array[Int]): Array[Int] = {
       for(i <- 0 until array.size - 1)
