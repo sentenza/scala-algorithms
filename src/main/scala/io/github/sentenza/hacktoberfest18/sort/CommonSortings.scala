@@ -177,6 +177,22 @@ object CommonSortings {
       array(index1) = array(index2)
       array(index2) = tmp
     }
+    def bubbleSort1(array: Array[Int]): Array[Int] = {
+
+        def go(a: Array[Int], i: Int): Array[Int] = {
+            if(i+1 >= a.length) a
+            else if(a(i) > a(i+1)) go(a.patch(i, Array(a(i+1), a(i)), 2), 0)
+            else go(a, i+1)
+        }
+
+        go(array, 0)
+        }
+
+
+    def selectionSort(array: Array[Int]): Array[Int] = ???
+    def insertionSort(array: Array[Int]): Array[Int] = ???
+    def quickSort(array: Array[Int]): Array[Int] = ???
+    def mergeSort(array: Array[Int]): Array[Int] = ???
   }
 }
 
