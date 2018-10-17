@@ -25,7 +25,17 @@ object CommonSortings {
   }
 
   object CommonSorting {
-    def bubbleSort(array: Array[Int]): Array[Int] = ???
+    def bubbleSort(array: Array[Int]): Array[Int] = {
+      var a = new ArrayBuffer[Int]
+      for(i<- 0 to array.length-1; j <- i to array.length-1){
+        if(array(j) > array(j-1)){
+          val temp = a(j)
+          a(j) = a(j-1)
+          a(j-1) = temp
+        }
+      }
+     a.toArray
+    }
     def selectionSort(array: Array[Int]): Array[Int] = ???
     def insertionSort(array: Array[Int]): Array[Int] = ???
     def quickSort(array: Array[Int]): Array[Int] = ???
