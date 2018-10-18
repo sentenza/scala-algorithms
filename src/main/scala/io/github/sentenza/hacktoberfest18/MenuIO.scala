@@ -20,11 +20,11 @@ import System.out.println
 
 object MenuIO {
     private val heading = """
-  _  _         _   _       _             ___       _     ___ __  _ ___ 
+  _  _         _   _       _             ___       _     ___ __  _ ___
  | || |__ _ __| |_| |_ ___| |__  ___ _ _| __|__ __| |_  |_  )  \/ ( _ )
  | __ / _` / _| / /  _/ _ \ '_ \/ -_) '_| _/ -_|_-<  _|  / / () | / _ \
  |_||_\__,_\__|_\_\\__\___/_.__/\___|_| |_|\___/__/\__| /___\__/|_\___/
-                                                                       
+
     """
 
     private val gplDisclaimer = """
@@ -46,7 +46,8 @@ object MenuIO {
       println("Please choose:")
       println("1: Sorting algorithms")
       // TODO: Add more categories here
-      println("0: Quit thisp program")
+      println("0: Quit this program")
+
       var choice = scala.io.StdIn.readInt()
       while (choice != 0) {
 
