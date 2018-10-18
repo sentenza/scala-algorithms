@@ -25,16 +25,12 @@ class ArrayUtil {
   /**
     * Builds an array of random numbers
     *
-    * @param length The lenght of the array to be built
+    * @param length The length of the array to be built
     * @return An array of random integers
     */
   def buildRandomArray(length: Int): Array[Int] = {
     val rand = new Random()
-
-    {
-      for (_ <- 0 until length) yield rand.nextInt(length)
-    }.toArray
-
+    Array.iterate(0, length)(_ => rand.nextInt(length))
   }
 
 }
