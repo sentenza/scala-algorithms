@@ -1,3 +1,6 @@
+### Official docs
+- [Scala collections](https://docs.scala-lang.org/overviews/collections/introduction.html)
+
 ### Online readings
 * [Twitter Scala School](https://twitter.github.io/scala_school)
 * [Tour of Scala](https://docs.scala-lang.org/tour/tour-of-scala.html)
