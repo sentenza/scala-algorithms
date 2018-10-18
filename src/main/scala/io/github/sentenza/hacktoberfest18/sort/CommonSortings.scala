@@ -78,7 +78,29 @@ object CommonSortings {
       * @param array Array of sortable integers
       * @return The sorted array
       */
-    def cocktailShakerSort(array: Array[Int]): Array[Int] = ???
+    def cocktailShakerSort(array: Array[Int]): Array[Int] = {
+      var (start, end) = (0, array.size - 2)
+      while (start <= end) {
+        var (newStart, newEnd) = (end, start)
+        for (i <- start to end) {
+          if (array(i) > array(i + 1)) {
+            swap(array, i, i+1)
+            newEnd = i
+          }
+        }
+        end = newEnd - 1
+
+        for (i <- end to start by -1) {
+          if (array(i) > array(i + 1)) {
+            swap(array, i, i+1)
+            newStart = i
+          }
+        }
+
+        start = newStart + 1
+      }
+      array
+    }
 
     /**
       * Comb Sort

@@ -24,6 +24,11 @@ class CommonSortingSpec extends WordSpec with Matchers{
 
   "CommonSorting" should {
 
+    "sort an array using the Cocktail Shaker sort algorithm" in {
+      val as = getArrays(defaultLength)
+      cocktailShakerSort(as._1) shouldBe as._2
+    }
+
     "sort an array using the Bubble sort algorithm" in {
       val as = getArrays(defaultLength)
       bubbleSort(as._1) shouldBe as._2
