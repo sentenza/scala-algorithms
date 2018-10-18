@@ -74,7 +74,6 @@ object CommonSortings {
     /**
       * Cocktail Shaker Sort
       * https://en.wikipedia.org/wiki/Cocktail_shaker_sort
-      * TODO: To be implemented
       * @param array Array of sortable integers
       * @return The sorted array
       */
