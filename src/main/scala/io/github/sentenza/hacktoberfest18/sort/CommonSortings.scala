@@ -1,5 +1,7 @@
 package io.github.sentenza.hacktoberfest18.sort
 
+import java.util.Random
+
 /*
  * HacktoberFest 2018 - Scala Algorhitms
  * Copyright (C) 2018 sentenza

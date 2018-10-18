@@ -2,6 +2,8 @@
   - Place: Venice (IT), London (UK)
   - About: Guardian of the Tannhäuser Gate
   - Website: http://torre.me.uk
+- Name: [xoeseko](https://github.com/xoeseko)
+  - Programming Languages: Java, Python, Scala
 - [megri](https://github.com/megri)
   - Place: Gothenburg (SE)
 - [ivanopagano](https://github.com/ivanopagano)
@@ -15,3 +17,4 @@
   - About: None
   - Programming Language: None
   - Website: https://flatmap.it
+>>>>>>>>> Temporary merge branch 2
