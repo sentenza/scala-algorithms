@@ -54,5 +54,11 @@ class CommonSortingSpec extends WordSpec with Matchers{
       quickSort(as._1) shouldBe as._2
     }
 
+    "sort an array using the Bucket sort algorithm" in {
+      val as = getArrays(defaultLength)
+      bucketSort(as._1) shouldBe as._2
+    }
   }
-}
+
+  //TODO: Add test cases for mutable arrays
+  //TODO: Add test cases for arrays including negative numbers
