@@ -1,11 +1,11 @@
-package io.github.sentenza.hacktoberfest18.sort
+package io.github.sentenza.hacktoberfest18.algos
 
 import io.github.sentenza.hacktoberfest18.util.ArrayUtil
 import org.scalatest.{Matchers, WordSpec}
-import io.github.sentenza.hacktoberfest18.sort.CommonSortings.CommonSorting._
+import MutableSorting._
 import scala.util.Random
 
-class CommonSortingSpec extends WordSpec with Matchers{
+class MutableSortingSpec extends WordSpec with Matchers{
   /**
     * The default length of the arrays that will be generated in this spec
     */
@@ -22,7 +22,7 @@ class CommonSortingSpec extends WordSpec with Matchers{
     (randomUnsortedArray, randomUnsortedArray.sorted)
   }
 
-  "CommonSorting" should {
+  "MutableSorting" should {
 
     "sort an array using the Cocktail Shaker sort algorithm" in {
       val as = getArrays(defaultLength)
