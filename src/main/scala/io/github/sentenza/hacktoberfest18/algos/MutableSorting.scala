@@ -188,7 +188,7 @@ import scala.collection.mutable.ArrayBuffer
       array
     }
 
-    def bucketSort(xs: Array[Int]): Array[Int] = ???
+    def bucketSort(xs: Array[Int]): Array[Int] = bucketSort(xs, 10, insertionSort)
     def countSort(xs: Array[Int]): Array[Int] = ???
     def radixSort(xs: Array[Int]): Array[Int] = ???
   
