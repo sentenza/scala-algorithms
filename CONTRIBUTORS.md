@@ -17,4 +17,3 @@
   - About: None
   - Programming Language: None
   - Website: https://flatmap.it
->>>>>>>>> Temporary merge branch 2

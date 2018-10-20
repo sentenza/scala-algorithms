@@ -188,42 +188,39 @@ import scala.collection.mutable.ArrayBuffer
       array
     }
 
-    def bucketSort(xs: Array[Int]): Array[Int] = bucketSort(xs, sqrt(xs.length).toInt, insertionSort)
+  /**
+    * @author Xoeseko
+    * Bucket sort is a sorting algorithm that sorts an array of elements by splitting the elements into n buckets
+    * and then reapplies another sorting method on the different buckets. Then merges the sorted buckets.
+    * It can also be used recursively until buckets contain one element each.
+    *
+    * @param xs Array of sortable integers
+    * @param n number of buckets in which to sort the elements.
+    * @param sort The sorting algorithm to apply once buckets are divided.
+    * @return the sorted array
+    */
+  def bucketSort(xs: Array[Int], n: Int = 10, sort: Array[Int] => Array[Int] = insertionSort): Array[Int] = {
+    val buckets = new Array[Array[Int]](n)
+    val temp: ArrayBuffer[Int] = new ArrayBuffer[Int]()
+    val range: Int = (xs.max / n)+1
+    temp ++= xs
+
+    if(temp.length > 1) {
+      for (i <- 0 until n) {
+        buckets(i) = sort(temp.filter(a => a >= range*i && a < range*(i+1)).toArray)
+      }
+    } else return xs
+
+    var finalArray: ArrayBuffer[Int] = new ArrayBuffer[Int]()
+
+    for(i <- buckets.indices; j <- buckets(i).indices){
+      finalArray += buckets(i)(j)
+    }
+    finalArray.toArray
+  }
+
     def countSort(xs: Array[Int]): Array[Int] = ???
     def radixSort(xs: Array[Int]): Array[Int] = ???
-  
-    /**
-      * Bucket sort is a sorting algorithm that sorts an array of elements by splitting the elements into n buckets
-      * and then reapplies another sorting method on the different buckets. Then merges the sorted buckets.
-      * It can also be used recursively until buckets contain one element each.
-      *
-      * @param array Array of sortable integers
-      * @param n number of buckets in which to sort the elements.
-      * @param sort The sorting algorithm to apply once buckets are divided.
-      * @return the sorted array
-      */
-    def bucketSort(array: Array[Int], n: Int = 10, sort: Array[Int] => Array[Int] = insertionSort): Array[Int] = {
-      //Using the square root of the amount of buckets such that each bucket
-      //will have sqrt(n) items in it on average.
-      val n = sqrt(array.length).toInt
-      val buckets = new ArrayBuffer[Array[Int]]()
-      val temp: ArrayBuffer[Int] = new ArrayBuffer[Int]()
-      val range: Int = (array.max / n)+1
-      temp ++= array
-
-      if(temp.length > 1) {
-        for (i <- 0 until n) {
-          buckets += sort(temp.filter(a => a >= range*i && a < range*(i+1)).toArray)
-        }
-      } else array
-
-      var finalArray: ArrayBuffer[Int] = new ArrayBuffer[Int]()
-
-      for(i <- 0 until buckets.length; j <- 0 until buckets(i).length){
-        finalArray += buckets(i)(j)
-      }
-      finalArray.toArray
-    }
 
 
     /**
