@@ -1,4 +1,4 @@
-package io.github.sentenza.hacktoberfest18.sort
+package io.github.sentenza.hacktoberfest18.algos
 
 import math.sqrt
 import scala.collection.mutable.ArrayBuffer
@@ -18,65 +18,48 @@ import scala.collection.mutable.ArrayBuffer
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-object CommonSortings {
-  /**
+/**
     * Implementations of this trait should provide non-destructive sort
     * operations on arrays. That is, the array passed to a sort method
     * should not be altered: A new array with the sorted values should be
     * returned.
     */
-  trait CommonSorting {
-    def bubbleSort(array: Array[Int]): Array[Int]
-    def cocktailShakerSort(array: Array[Int]): Array[Int]
-    def combSort(array: Array[Int]): Array[Int]
-    def selectionSort(array: Array[Int]): Array[Int]
-    def insertionSort(array: Array[Int]): Array[Int]
-    def quickSort(array: Array[Int]): Array[Int]
-    def mergeSort(array: Array[Int]): Array[Int]
-    def countSort(array: Array[Int]): Array[Int]
-    def radixSort(array: Array[Int]): Array[Int]
-    def bucketSort(array: Array[Int]): Array[Int]
-  }
+  object MutableSorting extends Sorting[Array, Int] {
 
-  object CommonSorting {
-
-    /**
-      * Bubble Sort
+    /** @inheritdoc
       *
       * "the bubble sort seems to have nothing to recommend it, except a catchy name and
       * the fact that it leads to some interesting theoretical problems"
       * - from The Art of Computer Programming by Donald Knuth
       * NOTE: Although bubble sort is one of the simplest sorting algorithms to understand and
-      * implement, its O(n^2) complexity means that its efficiency decreases dramatically on
+      * implement, its {{{O(n^2)}}} complexity means that its efficiency decreases dramatically on
       * lists of more than a small number of elements.
       * TODO: Try to refactor this method in order to avoid any direct alteration (side effect)
       * of the provided array. We should return a completely new array
       * that contains the sorted elements.
       *
-      * @see http://en.wikipedia.org/wiki/Bubble_sort
-      * @param array Array of sortable Integers
+      * @param xs Array of sortable Integers
       * @return The sorted array
       */
-    def bubbleSort(array: Array[Int]): Array[Int] = {
+    def bubbleSort(xs: Array[Int]): Array[Int] = {
       var swapped = false
 
       do{
         swapped = false;
-        for(i <- 0 to array.length - 2){
-          if(array(i) > array(i + 1)){
-            swap(array, i, i + 1)
+        for(i <- 0 to xs.length - 2){
+          if(xs(i) > xs(i + 1)){
+            swap(xs, i, i + 1)
             swapped = true
           }
         }
       }
       while(swapped)
 
-      array
+      xs
     }
 
-    /**
-      * Cocktail Shaker Sort
-      * https://en.wikipedia.org/wiki/Cocktail_shaker_sort
+    /** @inheritdoc
+      *
       * @param array Array of sortable integers
       * @return The sorted array
       */
@@ -104,28 +87,17 @@ object CommonSortings {
       array
     }
 
-    /**
-      * Comb Sort
-      * https://en.wikipedia.org/wiki/Comb_sort
+    /** @inheritdoc
       * TODO: To be implemented
       * @param array Array of sortable integers
       * @return The sorted array
       */
     def combSort(array: Array[Int]): Array[Int] = ???
 
-
-    def selectionSort(array: Array[Int]): Array[Int] = {
-      for(i <- 0 until array.size - 1)
-        swap(array, i, (i + 1 until array.length).foldLeft(i)((currMin, currIndx) =>
-          if(array(currIndx) < array(currMin))
-            currIndx
-          else
-            currMin
-        ))
-
-      array
-    }
-
+    /** @inheritdoc
+      * @param array Array of sortable integers
+      * @return The sorted array
+      */
     def insertionSort(array: Array[Int]): Array[Int] = {
       for(j <- 1 until array.length){
         var i = j - 1
@@ -140,6 +112,33 @@ object CommonSortings {
       array
     }
 
+    /** @inheritdoc
+      * @param array Array of sortable integers
+      * @return The sorted array
+      */
+    def selectionSort(array: Array[Int]): Array[Int] = {
+      for(i <- 0 until array.size - 1)
+        swap(array, i, (i + 1 until array.length).foldLeft(i)((currMin, currIndx) =>
+          if(array(currIndx) < array(currMin))
+            currIndx
+          else
+            currMin
+        ))
+
+      array
+    }
+
+  /** Heap Sort
+    * 
+    * @param xs Array of sortable integers
+    * @return The sorted array
+    */
+    def heapSort(xs: Array[Int]): Array[Int] = ???
+
+    /** @inheritdoc
+      * @param array Array of sortable integers
+      * @return The sorted array
+      */
     def quickSort(array: Array[Int]): Array[Int] = {
       if(array.length <= 1) array
       else{
@@ -152,6 +151,10 @@ object CommonSortings {
       }
     }
 
+    /** @inheritdoc
+      * @param array Array of sortable integers
+      * @return The sorted array
+      */
     def mergeSort(array: Array[Int]): Array[Int] = {
       def merge(part1: Array[Int], part2: Array[Int], l: Int, r: Int, mid: Int){
         var left = l
@@ -185,6 +188,10 @@ object CommonSortings {
       array
     }
 
+    def bucketSort(xs: Array[Int]): Array[Int] = ???
+    def countSort(xs: Array[Int]): Array[Int] = ???
+    def radixSort(xs: Array[Int]): Array[Int] = ???
+  
     /**
       * Bucket sort is a sorting algorithm that sorts an array of elements by splitting the elements into n buckets
       * and then reapplies another sorting method on the different buckets. Then merges the sorted buckets.
@@ -236,5 +243,3 @@ object CommonSortings {
       array(index2) = tmp
     }
   }
-}
-
