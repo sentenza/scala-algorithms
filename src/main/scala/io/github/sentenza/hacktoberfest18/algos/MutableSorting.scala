@@ -200,8 +200,8 @@ import scala.collection.mutable.ArrayBuffer
     * @return the sorted array
     */
   def bucketSort(xs: Array[Int], n: Int = 10, sort: Array[Int] => Array[Int] = insertionSort): Array[Int] = {
-    val buckets = new Array[Array[Int]](n)
-    val temp: ArrayBuffer[Int] = new ArrayBuffer[Int]()
+    val buckets = Array.ofDim[Array[Int]](n)
+    val temp = new ArrayBuffer[Int]()
     val range: Int = (xs.max / n)+1
     temp ++= xs
 
@@ -211,7 +211,7 @@ import scala.collection.mutable.ArrayBuffer
       }
     } else return xs
 
-    var finalArray: ArrayBuffer[Int] = new ArrayBuffer[Int]()
+    val finalArray = new ArrayBuffer[Int]()
 
     for(i <- buckets.indices; j <- buckets(i).indices){
       finalArray += buckets(i)(j)
