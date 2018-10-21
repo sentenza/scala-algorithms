@@ -84,7 +84,7 @@ trait Sorting[F[_], T] {
   /** Bucket Sort
     *
     */
-  def bucketSort(xs: F[T]): F[T]
+  def bucketSort(xs: F[T], n: Int, sort: F[T] => F[T]): F[T]
 
   /** Count Sort
     *
