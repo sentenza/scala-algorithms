@@ -54,5 +54,10 @@ class MutableSortingSpec extends WordSpec with Matchers{
       quickSort(as._1) shouldBe as._2
     }
 
+    "sort an array using the Count sort algorithm" in {
+      val as = getArrays(defaultLength)
+      countSort(as._1) shouldBe as._2
+    }
+
   }
 }

@@ -186,7 +186,39 @@ package io.github.sentenza.hacktoberfest18.algos
     }
 
     def bucketSort(xs: Array[Int]): Array[Int] = ???
-    def countSort(xs: Array[Int]): Array[Int] = ???
+
+  /** @inheritdoc
+    * @param array Array of sortable integers
+    * @return The sorted array
+    */
+    def countSort(xs: Array[Int]): Array[Int] = {
+      if (xs.length <= 1) xs
+      else {
+        var min, max = xs(0)
+        for (v <- xs) {
+          min = if (v < min) v else min
+          max = if (v > max) v else max
+        }
+        val aux = Array.fill(max - min + 1) { 0 }
+        val sorted = new Array[Int](xs.length)
+
+        for (v <- xs) {
+          aux(v - min) += 1
+        }
+
+        var i = 0
+        for (k <- min to max) {
+          while (aux(k - min) > 0) {
+            aux(k - min) -= 1
+            sorted(i) = k
+            i += 1
+          }
+        }
+
+        sorted
+      }
+
+    }
     def radixSort(xs: Array[Int]): Array[Int] = ???
   
     /**
