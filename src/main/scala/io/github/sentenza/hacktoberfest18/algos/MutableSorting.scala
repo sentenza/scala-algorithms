@@ -194,11 +194,8 @@ package io.github.sentenza.hacktoberfest18.algos
     def countSort(xs: Array[Int]): Array[Int] = {
       if (xs.length <= 1) xs
       else {
-        var min, max = xs(0)
-        for (v <- xs) {
-          min = if (v < min) v else min
-          max = if (v > max) v else max
-        }
+        val min = xs.reduceLeft(_ min _)
+        val max = xs.reduceLeft(_ max _)
         val aux = Array.fill(max - min + 1) { 0 }
         val sorted = new Array[Int](xs.length)
 
