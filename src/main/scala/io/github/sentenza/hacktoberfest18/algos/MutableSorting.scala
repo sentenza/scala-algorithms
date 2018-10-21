@@ -1,5 +1,8 @@
 package io.github.sentenza.hacktoberfest18.algos
 
+import math.sqrt
+import scala.collection.mutable.ArrayBuffer
+
 /*
  * HacktoberFest 2018 - Scala Algorhitms
  * Copyright (C) 2018 sentenza
@@ -185,10 +188,41 @@ package io.github.sentenza.hacktoberfest18.algos
       array
     }
 
-    def bucketSort(xs: Array[Int]): Array[Int] = ???
+  /**
+    * @author Xoeseko
+    * Bucket sort is a sorting algorithm that sorts an array of elements by splitting the elements into n buckets
+    * and then reapplies another sorting method on the different buckets. Then merges the sorted buckets.
+    * It can also be used recursively until buckets contain one element each.
+    *
+    * @param xs Array of sortable integers
+    * @param n number of buckets in which to sort the elements.
+    * @param sort The sorting algorithm to apply once buckets are divided.
+    * @return the sorted array
+    */
+  def bucketSort(xs: Array[Int], n: Int = 10, sort: Array[Int] => Array[Int] = insertionSort): Array[Int] = {
+    val buckets = Array.ofDim[Array[Int]](n)
+    val temp = new ArrayBuffer[Int]()
+    val range: Int = (xs.max / n)+1
+    temp ++= xs
+
+    if(temp.length > 1) {
+      for (i <- 0 until n) {
+        buckets(i) = sort(temp.filter(a => a >= range*i && a < range*(i+1)).toArray)
+      }
+    } else return xs
+
+    val finalArray = new ArrayBuffer[Int]()
+
+    for(i <- buckets.indices; j <- buckets(i).indices){
+      finalArray += buckets(i)(j)
+    }
+    finalArray.toArray
+  }
+
     def countSort(xs: Array[Int]): Array[Int] = ???
     def radixSort(xs: Array[Int]): Array[Int] = ???
-  
+
+
     /**
       * Swaps two elements with indices index1 and index2
       * in a given array used in bubbleSort and selectionSort

@@ -5,7 +5,7 @@ import org.scalatest.{Matchers, WordSpec}
 import MutableSorting._
 import scala.util.Random
 
-class MutableSortingSpec extends WordSpec with Matchers{
+class MutableSortingSpec extends WordSpec with Matchers {
   /**
     * The default length of the arrays that will be generated in this spec
     */
@@ -14,6 +14,7 @@ class MutableSortingSpec extends WordSpec with Matchers{
 
   /**
     * Helper method that returns a couple of array (unsorted, sorted)
+    *
     * @param l The length of the array that will be generated
     * @return (unsortedArray, sortedArray)
     */
@@ -54,5 +55,9 @@ class MutableSortingSpec extends WordSpec with Matchers{
       quickSort(as._1) shouldBe as._2
     }
 
+    "sort an array using the Bucket sort algorithm" in {
+      val as = getArrays(defaultLength)
+      bucketSort(as._1) shouldBe as._2
+    }
   }
 }
