@@ -23,41 +23,42 @@ class MutableSortingSpec extends WordSpec with Matchers {
     (randomUnsortedArray, randomUnsortedArray.sorted)
   }
 
+  /* creates a random array and applies the algorithm,
+   * comparing the result with a sorted version
+   */
+  private def compareAfterSortingWith(algo: Array[Int] => Array[Int]) = {
+    val (unsorted, sorted) = getArrays(defaultLength)
+    algo(unsorted) shouldBe sorted
+  }
+
   "MutableSorting" should {
 
     "sort an array using the Cocktail Shaker sort algorithm" in {
-      val as = getArrays(defaultLength)
-      cocktailShakerSort(as._1) shouldBe as._2
+      compareAfterSortingWith(cocktailShakerSort)
     }
 
     "sort an array using the Bubble sort algorithm" in {
-      val as = getArrays(defaultLength)
-      bubbleSort(as._1) shouldBe as._2
+      compareAfterSortingWith(bubbleSort)
     }
 
     "sort an array using the Selection sort algorithm" in {
-      val as = getArrays(defaultLength)
-      selectionSort(as._1) shouldBe as._2
+      compareAfterSortingWith(selectionSort)
     }
 
     "sort an array using the Insertion sort algorithm" in {
-      val as = getArrays(defaultLength)
-      insertionSort(as._1) shouldBe as._2
+      compareAfterSortingWith(insertionSort)
     }
 
     "sort an array using the Merge sort algorithm" in {
-      val as = getArrays(defaultLength)
-      mergeSort(as._1) shouldBe as._2
+      compareAfterSortingWith(mergeSort)
     }
 
     "sort an array using the Quick sort algorithm" in {
-      val as = getArrays(defaultLength)
-      quickSort(as._1) shouldBe as._2
+      compareAfterSortingWith(quickSort)
     }
 
-    "sort an array using the Bucket sort algorithm" in {
-      val as = getArrays(defaultLength)
-      bucketSort(as._1) shouldBe as._2
+    "sort an array using the default Bucket sort algorithm" in {
+      compareAfterSortingWith(bucketSort(_))
     }
   }
 }
