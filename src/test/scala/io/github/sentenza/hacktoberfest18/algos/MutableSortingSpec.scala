@@ -60,5 +60,10 @@ class MutableSortingSpec extends WordSpec with Matchers {
     "sort an array using the default Bucket sort algorithm" in {
       compareAfterSortingWith(bucketSort(_))
     }
+
+    "sort an array using the Count sort algorithm" in {
+      compareAfterSortingWith(countSort)
+    }
+
   }
 }

@@ -219,7 +219,36 @@ import scala.collection.mutable.ArrayBuffer
     finalArray.toArray
   }
 
-    def countSort(xs: Array[Int]): Array[Int] = ???
+  /** @inheritdoc
+    * @param array Array of sortable integers
+    * @return The sorted array
+    */
+  def countSort(xs: Array[Int]): Array[Int] = {
+    if (xs.length <= 1) xs
+    else {
+      val min = xs.reduceLeft(_ min _)
+      val max = xs.reduceLeft(_ max _)
+      val aux = Array.fill(max - min + 1) { 0 }
+      val sorted = new Array[Int](xs.length)
+
+      for (v <- xs) {
+        aux(v - min) += 1
+      }
+
+      var i = 0
+      for (k <- min to max) {
+        while (aux(k - min) > 0) {
+          aux(k - min) -= 1
+          sorted(i) = k
+          i += 1
+        }
+      }
+
+      sorted
+    }
+
+  }
+
     def radixSort(xs: Array[Int]): Array[Int] = ???
 
 
