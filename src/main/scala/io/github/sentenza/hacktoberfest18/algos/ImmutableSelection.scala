@@ -20,31 +20,31 @@ import scala.math.Ordered
 
 /**
   * Implementations of this trait should provide non-destructive select
-  * operations on array. That is, the array passed to a select method
-  * should not be altered: A value at the specified sorted index should be
-  * returned.
+  * operations on linked lists. That is, the linked list passed to a select
+  * method should not be altered: A value at the specified sorted index
+  * should be returned.
   */
-object ImmutableSelection extends Selection[Array, Int] {
+object ImmutableSelection extends Selection[List, Int] {
 
   /** @inheritdoc
     *
-    * @param array Array of sortable, selectable integers
-    * @param Int An sorted index, that is, an index referring to the nth largest element of the list
+    * @param list Linked list of sortable, selectable integers
+    * @param idx An sorted index, that is, an index referring to the nth largest element of the list
     * @return A possible element of the array at the sorted index
     */
-  def quickSelect(array: Array[Int], idx: Int): Option[Int] = {
-    if (idx < 0 || array.size <= idx) return None
+  def quickSelect(list: List[Int], idx: Int): Option[Int] = {
+    if (idx < 0 || list.size <= idx) return None
 
-    array match {
-      case Array() => None
-      case Array(pivot, rest @ _*) => {
+    list match {
+      case Nil => None
+      case pivot :: rest => {
         val (smaller, larger) = rest partition (_ <= pivot)
         val pivotIdx = smaller.size
 
         idx.compare(pivotIdx) match {
-          case needleInSmaller if needleInSmaller < 0 => quickSelect(smaller.toArray, idx)
+          case needleInSmaller if needleInSmaller < 0 => quickSelect(smaller, idx)
           case needleIsPivot if needleIsPivot == 0 => Some(pivot)
-          case needleInLarger if needleInLarger > 0 => quickSelect(larger.toArray, idx - pivotIdx - 1)
+          case needleInLarger if needleInLarger > 0 => quickSelect(larger, idx - pivotIdx - 1)
         }
       }
     }
