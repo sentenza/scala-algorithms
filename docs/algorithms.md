@@ -5,6 +5,11 @@
    * [Data science - Topcoder](https://www.topcoder.com/community/data-science/data-science-tutorials/)
    * [Fundamentals Of Algorithms- Geeks For Geeks](http://www.geeksforgeeks.org/fundamentals-of-algorithms/)
    * [Visual Algorithm - visualising data structures and algorithms through animation](https://visualgo.net/en)
+   
+## Videos
+
+- https://www.youtube.com/playlist?list=PLEbnTDJUr_IeHYw_sfBOJ6gk5pie0yP-0
+- https://www.youtube.com/watch?v=JPyuH4qXLZ0
 
 ## Online classes (Free)
   * Coursera 
