@@ -18,7 +18,7 @@ import scala.collection.mutable.ArrayBuffer
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-/**
+  /**
     * Implementations of this trait should provide non-destructive sort
     * operations on arrays. That is, the array passed to a sort method
     * should not be altered: A new array with the sorted values should be
@@ -129,7 +129,7 @@ import scala.collection.mutable.ArrayBuffer
     }
 
   /** Heap Sort
-    * 
+    *
     * @param xs Array of sortable integers
     * @return The sorted array
     */
