@@ -65,5 +65,9 @@ class MutableSortingSpec extends WordSpec with Matchers {
       compareAfterSortingWith(countSort)
     }
 
+    "sort an array using the Radix sort algorithm" in {
+      compareAfterSortingWith(radixSort(_))
+    }
+
   }
 }

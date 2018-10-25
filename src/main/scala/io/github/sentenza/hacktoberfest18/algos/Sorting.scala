@@ -94,5 +94,5 @@ trait Sorting[F[_], T] {
   /** Radix Sort
     *
     */
-  def radixSort(xs: F[T]): F[T]
+  def radixSort(xs: F[T], base: Int): F[T]
 }
