@@ -1,6 +1,5 @@
 package io.github.sentenza.hacktoberfest18.algos
-
-import math.sqrt
+import scala.annotation.tailrec
 import scala.collection.mutable.ArrayBuffer
 
 /*
@@ -88,11 +87,37 @@ import scala.collection.mutable.ArrayBuffer
     }
 
     /** @inheritdoc
-      * TODO: To be implemented
       * @param array Array of sortable integers
       * @return The sorted array
       */
-    def combSort(array: Array[Int]): Array[Int] = ???
+    def combSort(array: Array[Int]): Array[Int] = {
+
+      def nextGap(gap : Int) : Int = ((gap*10)/13).max(1)
+
+      @tailrec
+      def comp(array:Array[Int], gap : Int, i : Int = 0, swapped : Boolean = false) : Boolean = {
+        val ig = i + gap
+        if(ig == array.length) {
+          swapped
+        }else if (array(i) > array(ig)) {
+          swap(array, i, ig)
+          comp(array, gap, i + 1, swapped = true)
+        }else {
+          comp(array, gap, i + 1, swapped)
+        }
+      }
+
+      @tailrec
+      def sort(array:Array[Int], gap : Int) : Array[Int] = {
+        if (comp(array, gap)) {
+          sort(array, nextGap(gap))
+        } else {
+          array
+        }
+      }
+
+      sort(array,nextGap(array.length))
+    }
 
     /** @inheritdoc
       * @param array Array of sortable integers
