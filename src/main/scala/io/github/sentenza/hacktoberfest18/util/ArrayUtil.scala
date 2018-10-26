@@ -26,11 +26,12 @@ class ArrayUtil {
     * Builds an array of random numbers
     *
     * @param length The length of the array to be built
+    * @param maxElement The maximum possible value to assign to an element of the array
     * @return An array of random integers
     */
-  def buildRandomArray(length: Int): Array[Int] = {
-    val rand = new Random()
-    Array.iterate(0, length)(_ => rand.nextInt(length))
+  def buildRandomArray(length: Int, maxElement: Int = Int.MaxValue / 10): Array[Int] = {
+    val maximum = if (maxElement <= Int.MaxValue / 10) maxElement else Int.MaxValue
+    Array.fill(length) { scala.util.Random.nextInt(maximum) }
   }
 
 }
