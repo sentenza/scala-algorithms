@@ -18,9 +18,9 @@ import scala.annotation.tailrec
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-
 object MenuIO {
-    private val heading = """
+  private val heading =
+    """
       _  _         _   _       _             ___       _     ___ __  _ ___
      | || |__ _ __| |_| |_ ___| |__  ___ _ _| __|__ __| |_  |_  )  \/ ( _ )
      | __ / _` / _| / /  _/ _ \ '_ \/ -_) '_| _/ -_|_-<  _|  / / () | / _ \
@@ -28,7 +28,8 @@ object MenuIO {
 
     """
 
-    private val gplDisclaimer = """
+  private val gplDisclaimer =
+    """
     HacktoberFest 2018 Scala Algorhitms Copyright (C) 2018  @sentenza
     This program comes with ABSOLUTELY NO WARRANTY.
     This is free software, and you are welcome to redistribute it
@@ -36,42 +37,42 @@ object MenuIO {
     https://github.com/sentenza/hacktoberfest-scala-algorithms/blob/master/LICENSE.
     """
 
-    /**
-     * This function should be called at the very beginning of the Main execution
-     * to fetch the disclaimer message and the project Logo to be printed out
-     */
-    def printDisclaimer() { println(heading + gplDisclaimer) }
+  /**
+    * This function should be called at the very beginning of the Main execution
+    * to fetch the disclaimer message and the project Logo to be printed out
+    */
+  def printDisclaimer() { println(heading + gplDisclaimer) }
 
-    private val noOp = () => ()
+  private val noOp = () => ()
 
-    case class MenuEntry(selector: Int, display: String, code: () => Unit)
+  case class MenuEntry(selector: Int, display: String, code: () => Unit)
 
-    // TODO: Add more categories here
-    private val entries =
+  // TODO: Add more categories here
+  private val entries =
     List(
       MenuEntry(1, "Sorting algorithms", () => println("You chose sorting")),
       MenuEntry(0, "Quit the program", noOp)
     )
 
-    @tailrec
-    def renderInteractiveMenu(): Unit = {
-      println("Please choose:")
-      entries.foreach {
-        case MenuEntry(num, label, _) =>
-          println(s"$num: $label")
-      }
-
-      scala.io.StdIn.readInt() match {
-        case 0 =>
-          ()
-        case choice if entries.exists(_.selector == choice) =>
-          entries.find(_.selector == choice).foreach{
-            case MenuEntry(_, _, code) => code()
-          }
-          renderInteractiveMenu()
-        case _ =>
-          println("Invalid selection")
-          renderInteractiveMenu()
-      }
+  @tailrec
+  def renderInteractiveMenu(): Unit = {
+    println("Please choose:")
+    entries.foreach {
+      case MenuEntry(num, label, _) =>
+        println(s"$num: $label")
     }
+
+    scala.io.StdIn.readInt() match {
+      case 0 =>
+        ()
+      case choice if entries.exists(_.selector == choice) =>
+        entries.find(_.selector == choice).foreach {
+          case MenuEntry(_, _, code) => code()
+        }
+        renderInteractiveMenu()
+      case _ =>
+        println("Invalid selection")
+        renderInteractiveMenu()
+    }
+  }
 }

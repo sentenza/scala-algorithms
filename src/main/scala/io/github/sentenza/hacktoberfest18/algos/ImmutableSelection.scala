@@ -39,12 +39,14 @@ object ImmutableSelection extends Selection[List, Int] {
       case Nil => None
       case pivot :: rest => {
         val (smaller, larger) = rest partition (_ <= pivot)
-        val pivotIdx = smaller.size
+        val pivotIdx          = smaller.size
 
         idx.compare(pivotIdx) match {
-          case needleInSmaller if needleInSmaller < 0 => quickSelect(smaller, idx)
+          case needleInSmaller if needleInSmaller < 0 =>
+            quickSelect(smaller, idx)
           case needleIsPivot if needleIsPivot == 0 => Some(pivot)
-          case needleInLarger if needleInLarger > 0 => quickSelect(larger, idx - pivotIdx - 1)
+          case needleInLarger if needleInLarger > 0 =>
+            quickSelect(larger, idx - pivotIdx - 1)
         }
       }
     }

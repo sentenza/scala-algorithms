@@ -34,7 +34,7 @@ object LooplessFunctional {
   def unfoldr[A, B](step: B => Option[(A, B)])(b: B): List[A] =
     step(b) match {
       case Some((x, y)) => x :: unfoldr(step)(y)
-      case None => List.empty
+      case None         => List.empty
     }
 
   /** First example algo presented, flattens nested lists*/
@@ -45,8 +45,8 @@ object LooplessFunctional {
 
     //the unfolding step
     val step: LL => Option[(A, LL)] = {
-      case List(Nil) => None
-      case Nil => None
+      case List(Nil)         => None
+      case Nil               => None
       case (a :: as) :: rest => Some(a, as :: rest)
     }
 
