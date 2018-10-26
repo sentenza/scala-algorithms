@@ -45,6 +45,7 @@ object LooplessFunctional {
 
     //the unfolding step
     val step: LL => Option[(A, LL)] = {
+      case List(Nil) => None
       case Nil => None
       case (a :: as) :: rest => Some(a, as :: rest)
     }
