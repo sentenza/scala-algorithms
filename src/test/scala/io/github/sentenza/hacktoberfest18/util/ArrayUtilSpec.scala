@@ -1,7 +1,6 @@
 package io.github.sentenza.hacktoberfest18.util
 
 import org.scalatest.{Assertion, Matchers, WordSpec, Inspectors}
-import scala.util.Random
 
 class ArrayUtilSpec extends WordSpec with Matchers {
   "The ArrayUtil" should {
