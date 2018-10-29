@@ -122,5 +122,5 @@ object ImmutableSorting extends Sorting[List, Int] {
     * @param xs List of sortable Integers
     * @return The sorted list
     */
-  def radixSort(xs: List[Int]): List[Int] = ???
+  def radixSort(xs: List[Int], base: Int): List[Int] = ???
 }
