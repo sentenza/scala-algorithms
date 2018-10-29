@@ -18,20 +18,19 @@ import scala.util.Random
  */
 
 /**
-  * A list of useful functions to work with arrays
+  * A list of useful functions to work with linked lists
   */
-class ArrayUtil {
+class ListUtil {
 
   /**
-    * Builds an array of random numbers
+    * Builds a list of random numbers
     *
-    * @param length The length of the array to be built
-    * @param maxElement The maximum possible value to assign to an element of the array
+    * @param length The length of the list to be built
     * @return An array of random integers
     */
-  def buildRandomArray(length: Int, maxElement: Int = Int.MaxValue / 10): Array[Int] = {
-    val maximum = if (maxElement <= Int.MaxValue / 10) maxElement else Int.MaxValue
-    Array.fill(length) { scala.util.Random.nextInt(maximum) }
+  def buildRandomList(length: Int): List[Int] = {
+    val rand = new Random()
+    List.fill(length)(rand.nextInt(length))
   }
 
 }

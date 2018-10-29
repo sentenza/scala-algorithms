@@ -17,7 +17,7 @@ package io.github.sentenza.hacktoberfest18.algos
 
 /**
   * Definitions of the common sorting algorithms.
-  * 
+  *
   * Note that usually one can claim that the known sorting algorithms would not actually be the same
   * if implemented without loops and mutable variables.
   * The reasoning is that you usually lose the ability keep the same time-space analysis results.
