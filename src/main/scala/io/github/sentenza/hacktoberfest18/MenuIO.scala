@@ -2,6 +2,7 @@ package io.github.sentenza.hacktoberfest18
 
 import System.out.println
 import scala.annotation.tailrec
+import scala.util.{Try, Success, Failure}
 
 /*
  * HacktoberFest 2018 - Scala Algorhitms
@@ -49,7 +50,7 @@ object MenuIO {
     // TODO: Add more categories here
     private val entries =
     List(
-      MenuEntry(1, "Sorting algorithms", () => println("You chose sorting")),
+      MenuEntry(1, "Sorting algorithms", () => println("You chose sorting\n")),
       MenuEntry(0, "Quit the program", noOp)
     )
 
@@ -61,16 +62,16 @@ object MenuIO {
           println(s"$num: $label")
       }
 
-      scala.io.StdIn.readInt() match {
-        case 0 =>
+      Try(scala.io.StdIn.readInt()) match {
+        case Success(0) =>
           ()
-        case choice if entries.exists(_.selector == choice) =>
+        case Success(choice) if entries.exists(_.selector == choice) =>
           entries.find(_.selector == choice).foreach{
             case MenuEntry(_, _, code) => code()
           }
           renderInteractiveMenu()
         case _ =>
-          println("Invalid selection")
+          println("Invalid selection\n")
           renderInteractiveMenu()
       }
     }
