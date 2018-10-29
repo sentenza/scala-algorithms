@@ -1,6 +1,4 @@
-package io.github.sentenza.hacktoberfest18.util
-
-import scala.util.Random
+package io.github.sentenza.hacktoberfest18.adt
 
 /*
  * HacktoberFest 2018 - Scala Algorhitms
@@ -17,21 +15,25 @@ import scala.util.Random
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-/**
-  * A list of useful functions to work with arrays
+/** Functional Queue
+  *
+  * A *fully persistent* data structure with three operations:
+  * - head: returns the first element of the queue
+  * - tail: returns a queue without the first element
+  * - enqueue: returns a NEW queue with a given element appended to the end
   */
-class ArrayUtil {
+trait Queue[T] {
+
+  /** @return The first element of the queue */
+  def head: T
+
+  /** @return A queue without the first element */
+  def tail: Queue[T]
 
   /**
-    * Builds an array of random numbers
-    *
-    * @param length The length of the array to be built
-    * @param maxElement The maximum possible value to assign to an element of the array
-    * @return An array of random integers
+    * Appends and element x to the end of the queue
+    * @param x The element to be appended to the end
+    * @return A new queue containing x at its end
     */
-  def buildRandomArray(length: Int, maxElement: Int = Int.MaxValue / 10): Array[Int] = {
-    val maximum = if (maxElement <= Int.MaxValue / 10) maxElement else Int.MaxValue
-    Array.fill(length) { scala.util.Random.nextInt(maximum) }
-  }
-
+  def enqueue(x: T): Queue[T]
 }

@@ -1,6 +1,4 @@
-package io.github.sentenza.hacktoberfest18.util
-
-import scala.util.Random
+package io.github.sentenza.hacktoberfest18.algos
 
 /*
  * HacktoberFest 2018 - Scala Algorhitms
@@ -18,20 +16,13 @@ import scala.util.Random
  */
 
 /**
-  * A list of useful functions to work with arrays
+  * Definitions of the functions that will implement all the common selection algorithms.
   */
-class ArrayUtil {
+trait Selection[F[_], T] {
+  /* *** Partition-based Selection *** */
 
-  /**
-    * Builds an array of random numbers
-    *
-    * @param length The length of the array to be built
-    * @param maxElement The maximum possible value to assign to an element of the array
-    * @return An array of random integers
+  /** Quick Select
+    * [[https://en.wikipedia.org/wiki/Quickselect Wikipedia: Quick Select]]
     */
-  def buildRandomArray(length: Int, maxElement: Int = Int.MaxValue / 10): Array[Int] = {
-    val maximum = if (maxElement <= Int.MaxValue / 10) maxElement else Int.MaxValue
-    Array.fill(length) { scala.util.Random.nextInt(maximum) }
-  }
-
+  def quickSelect(xs: F[T], idx: Int): Option[T]
 }
