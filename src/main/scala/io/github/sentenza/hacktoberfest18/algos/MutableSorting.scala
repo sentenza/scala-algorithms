@@ -217,7 +217,6 @@ object MutableSorting extends Sorting[Array, Int] {
   }
 
   /**
-    * @author Xoeseko
     * Bucket sort is a sorting algorithm that sorts an array of elements by splitting the elements into n buckets
     * and then reapplies another sorting method on the different buckets. Then merges the sorted buckets.
     * It can also be used recursively until buckets contain one element each.
@@ -226,6 +225,7 @@ object MutableSorting extends Sorting[Array, Int] {
     * @param n number of buckets in which to sort the elements.
     * @param sort The sorting algorithm to apply once buckets are divided.
     * @return the sorted array
+    * @author Xoeseko
     */
   def bucketSort(xs: Array[Int],
                  n: Int = 10,
