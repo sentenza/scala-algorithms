@@ -217,7 +217,6 @@ object MutableSorting extends Sorting[Array, Int] {
   }
 
   /**
-    * @author Xoeseko
     * Bucket sort is a sorting algorithm that sorts an array of elements by splitting the elements into n buckets
     * and then reapplies another sorting method on the different buckets. Then merges the sorted buckets.
     * It can also be used recursively until buckets contain one element each.
@@ -226,6 +225,7 @@ object MutableSorting extends Sorting[Array, Int] {
     * @param n number of buckets in which to sort the elements.
     * @param sort The sorting algorithm to apply once buckets are divided.
     * @return the sorted array
+    * @author Xoeseko
     */
   def bucketSort(xs: Array[Int],
                  n: Int = 10,
@@ -280,8 +280,53 @@ object MutableSorting extends Sorting[Array, Int] {
 
   }
 
-  def radixSort(xs: Array[Int]): Array[Int] = ???
+  /**
+    * @author Xoeseko
+    * Radix Sort is a sorting algorithm that sorts an array of numbers into according to each number's most significant
+    * symbols (bits, digits...) depending on the given base
+    * @param xs an array to be sorted
+    * @param base the sorting base and also the number of buckets
+    * @return the sorted array
+    */
+    def radixSort(xs: Array[Int], base: Int = 10): Array[Int] = {
+      var array = xs
+      def listToBuckets(arr: Array[Int], b: Int, it: Int): Array[Array[Int]] = {
+        val buckets = Array.ofDim[ArrayBuffer[Int]](base)
+        // Initialize buckets
+        for (i <- 0 until buckets.length){
+          buckets(i) = new ArrayBuffer[Int]()
+        }
+        for (n <- arr){
+          // Start by getting the current digit and assigning the number to corresponding bucket.
+          val digit = (n / math.pow(b, it).toInt) % b
+          buckets(digit) += n
+        }
+      buckets.map(a => a.toArray)
+      }
 
+      def bucketsToList(buckets: Array[Array[Int]]): Array[Int] ={
+        val numbers = new Array[Int](xs.length)
+        var index = 0
+        for (b <- buckets; n <- b){
+          numbers(index) = n
+          index += 1
+        }
+        numbers
+      }
+
+      val max = xs.max
+
+
+
+      var i = 0
+      while (math.pow(base, i) <= max){
+         array = bucketsToList(listToBuckets(array, base, i))
+        i+=1
+      }
+
+      array
+    }
+  
   /**
     * Swaps two elements with indices index1 and index2
     * in a given array used in bubbleSort and selectionSort

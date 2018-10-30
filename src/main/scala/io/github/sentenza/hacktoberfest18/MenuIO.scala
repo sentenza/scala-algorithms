@@ -76,5 +76,4 @@ object MenuIO {
           renderInteractiveMenu()
       }
     }
-  }
 }
