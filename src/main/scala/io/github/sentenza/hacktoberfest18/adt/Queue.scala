@@ -44,6 +44,16 @@ trait Queue[+T] {
   def enqueue[U >: T](x: U): Queue[U]
 
   /**
+    * Converts the queue in a List
+    */
+  def toList: List[T]
+
+  /**
+    * @param other Another Queue
+    */
+  def equals[U >: T](other: Queue[U]): Boolean
+
+  /**
     * @return True if the queue is empty
     */
   def isEmpty: Boolean
@@ -53,7 +63,9 @@ trait Queue[+T] {
     */
   def nonEmpty: Boolean
 
-  override def toString(): String
+  def size: Int
+
+  override def toString: String
 }
 
 /**
@@ -81,9 +93,9 @@ object Queue {
       * This is an impure function but we need it in order to minimise the
       * complexity of reversing an immutable list and then copying across
       * all the elements to have at each moment:
-      * queue = leading :: (trailing.reverse)
+      * queue = leading ::: (trailing.reverse)
       */
-    private def mirror(): Unit =
+    private def mirror(force: Boolean = false): Unit =
       if (leading.isEmpty) {
         while (trailing.nonEmpty) {
           // Reversing
@@ -99,12 +111,22 @@ object Queue {
 
     def tail: QueueImpl[T] = {
       mirror() // Internal side effect
-      new QueueImpl(leading.tail, trailing)
+      if (this.size == 0)
+        new QueueImpl[T](Nil, Nil)
+      else
+        new QueueImpl(leading.tail, trailing)
     }
 
     // NOTE: We're adding the new element x to head of the trailing List
     def enqueue[U >: T](x: U): Queue[U] =
       new QueueImpl[U](leading, x :: trailing)
+
+    def toList: List[T] = {
+      leading ::: trailing.reverse
+    }
+
+    override def equals[U >: T](other: Queue[U]): Boolean =
+      this.toList == other.toList
 
     def nonEmpty: Boolean = {
       leading.nonEmpty || trailing.nonEmpty
@@ -113,6 +135,9 @@ object Queue {
     def isEmpty: Boolean =
       leading.isEmpty && trailing.isEmpty
 
+    def size: Int =
+      leading.size + trailing.size
+
     /**
       * @param separator The String separator (e.g. ",", ":"
       * @param l The leading list
@@ -120,12 +145,15 @@ object Queue {
       */
     private def buildPrint[U >: T](separator: String)(l: List[U])(t: List[U]): String = t match {
       case Nil => l.mkString("Queue(", separator, ")")
-      case _   => l.mkString("Queue(", separator, separator) + t.mkString("", separator, ")")
-
+      case _ => {
+        if (l.nonEmpty)
+          l.mkString("Queue(", separator, separator) + t.mkString("", separator, ")")
+        else t.mkString("Queue(", separator, ")")
+      }
     }
 
-    override def toString(): String = {
-      buildPrint(", ")(leading)(trailing)
+    override def toString: String = {
+      buildPrint(", ")(leading)(trailing.reverse)
     }
   }
 
