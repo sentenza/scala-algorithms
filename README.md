@@ -1,4 +1,4 @@
-# Hacktoberfest 2018 - Algorithms and Data Structures 
+# Hacktoberfest 2019 - Algorithms and Data Structures 
 
 This repository is essentially a **collection of programming exercises written in Scala** that will involve:
 
@@ -26,7 +26,7 @@ This repository is essentially a **collection of programming exercises written i
 
 ***The authors are not affiliated with DigitalOcean or Hacktoberfest***
 
-![Hacktoberfest](https://user-images.githubusercontent.com/2479647/46922007-677fc300-cffa-11e8-8268-ae59b576cfb7.jpg)
+![hacktoberfest-2019](https://user-images.githubusercontent.com/2479647/65616971-d2c86800-dfb3-11e9-8189-68f791bc8365.jpg)
 
 Anyone can contribute to this repo to make their contribution to open-source on [Github][github]
  
