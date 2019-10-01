@@ -21,3 +21,6 @@
 - [JackTreble](https://github.com/JackTreble)
 - [Lacaranian](https://github.com/Lacaranian)
   - Place: Denver, CO (US)
+- [AllyKatx](https://github.com/allykatx)
+  - Place: NYC
+  - Programming Language: Java, ASP, Javascript
