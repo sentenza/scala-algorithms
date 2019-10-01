@@ -16,12 +16,12 @@ class QueueSpec extends WordSpec with Matchers {
     }
 
     "return a List of its elements when calling toList()" in {
-      fiboQueue.toList shouldBe a[List[Int]]
+      fiboQueue.toList shouldBe a[List[_]]
       fiboQueue.toList shouldBe List(13, 21, 34, 55, 89, 144, 233)
     }
 
     "have a tail method that returns a new Queue without its head" in {
-      fiboQueue.tail shouldBe a[Queue[Int]]
+      fiboQueue.tail shouldBe a[Queue[_]]
       fiboQueue.tail equals Queue(21, 34, 55, 89, 144, 233)
       fiboQueue.tail.tail.tail.tail.tail.tail.head shouldBe 233
     }
@@ -30,9 +30,9 @@ class QueueSpec extends WordSpec with Matchers {
       val q1 = Queue(13)
       val q2 = q1.enqueue(21)
       val q3 = q2.enqueue(44).enqueue(77)
-      q3 shouldBe a[Queue[Int]]
+      q3 shouldBe a[Queue[_]]
       val qChar = Queue('a).enqueue('b')
-      qChar shouldBe a[Queue[Char]]
+      qChar shouldBe a[Queue[_]]
       q2 equals Queue(13, 77, 21)
     }
 
