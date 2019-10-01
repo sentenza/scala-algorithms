@@ -21,6 +21,10 @@ project/plugins/project/
 .worksheet
 .idea
 
+## Metals
+.metals
+.bloop
+
 # Temporary
 .netrwhist
 *~
