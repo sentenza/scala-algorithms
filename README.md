@@ -1,16 +1,32 @@
-# Hacktoberfest 2018 - Algorithms and Data Structures 
+# Hacktoberfest 2019 - Algorithms and Data Structures 
 
 This repository is essentially a **collection of programming exercises written in Scala** that will involve:
 
 - Data Structures
+  - Iterable _Bag_
+  - Iterable FIFO Queue
+  - Iterable Pushdown (LIFO) Stack
+  - Undirected graphs (Graph)
+  - Directed graphs (Dgraph)  
 - Algorithms
+  - Searching
+    - Symbol tables
+    - Binary Search Trees
+    - Balanced Search Trees (red-black BSTs)
+    - Hash Tables
+  - Sorting
+    - Exchange Sorts (e.g. quicksort)
+    - Selection Sorts (e.g. heapsort)
+    - Insertion Sorts
+    - Merge Sorts
+    - Distribution Sorts (e.g. bucketsort)
 - The [Scala][scala] programming language
 
 ![Scala Logo](https://eventil.s3.amazonaws.com/uploads/group/avatar/682/medium_scala-logo.png)
 
 ***The authors are not affiliated with DigitalOcean or Hacktoberfest***
 
-![Hacktoberfest](https://user-images.githubusercontent.com/2479647/46922007-677fc300-cffa-11e8-8268-ae59b576cfb7.jpg)
+![hacktoberfest-2019](https://user-images.githubusercontent.com/2479647/65616971-d2c86800-dfb3-11e9-8189-68f791bc8365.jpg)
 
 Anyone can contribute to this repo to make their contribution to open-source on [Github][github]
  
