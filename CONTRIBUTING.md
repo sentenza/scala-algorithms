@@ -2,7 +2,7 @@
 
 ## Contributions
 
-All contributions are welcome. By contributing, you accept to give the
+All contributions to this project are **very welcome**. By contributing, you accept to give the
 terms and conditions of the GNU GENERAL PUBLIC LICENSE v3, as explained
 in [LICENSE](LICENSE). 
 
@@ -12,12 +12,51 @@ the GNU General Public License is intended to guarantee your freedom to
 share and change all versions of a program--to make sure it remains free
 software for all its users.
 
+## Semantic Git commit messages
+Please use following commit message format.
+
+* chore (boring tasks etc; no production code change) -> ```git test -m 'chore: commit-message-here'```
+* docs (changes to documentation) -> ```git commit -m 'docs: commit-message-here'```
+* feat (new feature) -> ```git commit -m 'feat: commit-message-here'```
+* fix (bug fix) -> ```git commit -m 'fix: commit-message-here'```
+* refactor (refactoring production code) -> ```git commit -m 'refactor: commit-message-here'```
+* style (formatting, missing semi colons, etc; no code change) -> ```git commit -m 'style: commit-message-here'```
+* test (adding missing tests, refactoring tests; no production code change) -> ```git test -m 'refactor: commit-message-here'```
+
+Inspired by Sparkbox's awesome article on [semantic commit messages](http://seesparkbox.com/foundry/semantic_commit_messages). 
+
+### Commit contents guidelines
+
++ First, try to use `git commit` instead of `git commit -m`, which will open a new editor
++ Put a title to explain what you are doing in this commit
++ Put more descriptions in the new paragraph
+
+Example:
+```
+[#55] Live and let die :gun: =>
+
+* feat: [NG] add quantity of items per product removed.
+* feat: [NG] add support for asynchronous events for GTM.
+* feat: [SCALA] handle clicks with event delegation.
+* docs: add some documentation.
+* fix: `list` properties for enhancements in listing packages pages.
+* fix: asynchronous event for removeFromCart.
+* fix: structure of the products property.
+* feat: handle cart update.
+* refactor: rename `$recommend` to `$jpid` in `productRecommend()`.
+* refactor: rename `JW.addToCart` to `JW.updateCart`.
+* refactor: rename `npd_packages` to `developer_packages` in config.
+```
+
+We could also squash commits together whenever this makes sense. For more information, please ref to https://git-scm.com/book/en/v2/Git-Tools-Rewriting-History#Squashing-Commits
+
+
 ## Style guide
 
 Your code must look like that:
 
 ```scala
-package io.github.sentenza.hacktoberfest18
+package io.github.sentenza.hacktoberfest
 package mypackage
 
 import scala.util.{ Try, Success, Failure }
@@ -98,6 +137,13 @@ extends Class1 with Trait2 {
 
 }
 ```
+
+## Branch naming conventions
+ 1. Use grouping tokens (words) at the beginning of your branch names.
+ 2. Define and use short lead tokens to differentiate branches in a way that is meaningful to your workflow.
+ 2. Use slashes to separate parts of your branch names.
+ 3. Do not use bare numbers as leading parts.
+ 5. Avoid long descriptive names for long-lived branches.
 
 ### Notes
 
