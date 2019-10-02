@@ -1,9 +1,9 @@
-package io.github.sentenza.hacktoberfest18.util
+package io.github.sentenza.hacktoberfest.util
 
 import scala.util.Random
 
 /*
- * HacktoberFest 2018 - Scala Algorhitms
+ * HacktoberFest - Scala Algorhitms
  * Copyright (C) 2018 sentenza
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -18,19 +18,20 @@ import scala.util.Random
  */
 
 /**
-  * A list of useful functions to work with linked lists
+  * A list of useful functions to work with arrays
   */
-class ListUtil {
+class ArrayUtil {
 
   /**
-    * Builds a list of random numbers
+    * Builds an array of random numbers
     *
-    * @param length The length of the list to be built
+    * @param length The length of the array to be built
+    * @param maxElement The maximum possible value to assign to an element of the array
     * @return An array of random integers
     */
-  def buildRandomList(length: Int): List[Int] = {
-    val rand = new Random()
-    List.fill(length)(rand.nextInt(length))
+  def buildRandomArray(length: Int, maxElement: Int = Int.MaxValue / 10): Array[Int] = {
+    val maximum = if (maxElement <= Int.MaxValue / 10) maxElement else Int.MaxValue
+    Array.fill(length) { scala.util.Random.nextInt(maximum) }
   }
 
 }

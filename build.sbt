@@ -1,13 +1,12 @@
-scalaVersion := "2.12.7"
-name := "hacktoberfest-2018-algorithms"
+scalaVersion := "2.13.1"
+name := "hacktoberfest-algorithms"
 organization := "hacktoberfest"
 // We will use Semver for this project
-version := "0.0.9"
+version := "0.11.0"
 
 // libraries
-lazy val scalaTestVersion = "3.0.1"
-lazy val ammoniteVersion = "1.3.2"
+val scalaTestVersion = "3.0.8"
+val ammoniteVersion  = "1.7.4"
 
-
-libraryDependencies += "org.scalatest"       %% "scalatest"            % scalaTestVersion  % "test"
-libraryDependencies += "com.lihaoyi" % "ammonite" % ammoniteVersion % "test" cross CrossVersion.full
+libraryDependencies += "org.scalatest" %% "scalatest" % scalaTestVersion % "test"
+libraryDependencies += "com.lihaoyi"   % "ammonite"   % ammoniteVersion  % "test" cross CrossVersion.full

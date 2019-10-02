@@ -1,7 +1,7 @@
-package io.github.sentenza.hacktoberfest18.algos
+package io.github.sentenza.hacktoberfest.algos
 
 /*
- * HacktoberFest 2018 - Scala Algorhitms
+ * HacktoberFest - Scala Algorhitms
  * Copyright (C) 2018 sentenza
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -16,8 +16,13 @@ package io.github.sentenza.hacktoberfest18.algos
  */
 
 /**
-  * Definitions of the functions that will implement all the common searching algorithms.
+  * Definitions of the functions that will implement all the common selection algorithms.
   */
-trait Searching {
-  // TO BE DEFINED
+trait Selection[F[_], T] {
+  /* *** Partition-based Selection *** */
+
+  /** Quick Select
+    * [[https://en.wikipedia.org/wiki/Quickselect Wikipedia: Quick Select]]
+    */
+  def quickSelect(xs: F[T], idx: Int): Option[T]
 }

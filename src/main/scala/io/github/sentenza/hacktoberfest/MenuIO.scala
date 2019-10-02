@@ -1,11 +1,11 @@
-package io.github.sentenza.hacktoberfest18
+package io.github.sentenza.hacktoberfest
 
 import System.out.println
 import scala.annotation.tailrec
 import scala.util.{Try, Success, Failure}
 
 /*
- * HacktoberFest 2018 - Scala Algorhitms
+ * HacktoberFest - Scala Algorhitms
  * Copyright (C) 2018 sentenza
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -31,7 +31,7 @@ object MenuIO {
 
   private val gplDisclaimer =
     """
-    HacktoberFest 2018 Scala Algorhitms Copyright (C) 2018  @sentenza
+    HacktoberFest Scala Algorhitms Copyright (C) 2018-2019  @sentenza
     This program comes with ABSOLUTELY NO WARRANTY.
     This is free software, and you are welcome to redistribute it
     under certain conditions. All the details can be found at:

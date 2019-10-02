@@ -1,4 +1,4 @@
-package io.github.sentenza.hacktoberfest18.util
+package io.github.sentenza.hacktoberfest.util
 
 object GenericUtil {
 

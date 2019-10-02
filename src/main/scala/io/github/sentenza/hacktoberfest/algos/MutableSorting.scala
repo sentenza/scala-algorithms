@@ -1,9 +1,9 @@
-package io.github.sentenza.hacktoberfest18.algos
+package io.github.sentenza.hacktoberfest.algos
 import scala.annotation.tailrec
 import scala.collection.mutable.ArrayBuffer
 
 /*
- * HacktoberFest 2018 - Scala Algorhitms
+ * HacktoberFest - Scala Algorhitms
  * Copyright (C) 2018 sentenza
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -173,9 +173,9 @@ object MutableSorting extends Sorting[Array, Int] {
     else {
       val pivot = array(array.length / 2)
       Array.concat(
-        quickSort(array filter (pivot >)),
-        array filter (pivot ==),
-        quickSort(array filter (pivot <))
+        quickSort(array filter (x => pivot > x)),
+        array filter (x => pivot == x),
+        quickSort(array filter (x => pivot < x))
       )
     }
   }

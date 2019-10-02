@@ -15,7 +15,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 
 ---
-## 0.10.0
-### Migration
+## 0.11.0
+### Changed
 - Scala v2.13.1
 - sbt v1.3.2
+- scalafmt v2.1.0
+- scalatest v3.0.8

@@ -1,11 +1,11 @@
-package io.github.sentenza.hacktoberfest18.algos
+package io.github.sentenza.hacktoberfest.algos
 
-import io.github.sentenza.hacktoberfest18.util.ListUtil
+import io.github.sentenza.hacktoberfest.util.ListUtil
 import org.scalatest.{Matchers, WordSpec}
-import ImmutableSorting._
+import ImmutableSelection._
 import scala.util.Random
 
-class ImmutableSortingSpec extends WordSpec with Matchers {
+class ImmutableSelectionSpec extends WordSpec with Matchers {
   /**
     * The default length of the arrays that will be generated in this spec.
     */
@@ -28,16 +28,18 @@ class ImmutableSortingSpec extends WordSpec with Matchers {
   /* creates a random array and set of random indices, and applies the algorithm,
    * comparing the result with a value lifted from the sorted version
    */
-  private def compareAfterSortingWith(algo: List[Int] => List[Int]) = {
+  private def compareAfterSelectionWith(algo: (List[Int], Int) => Option[Int]) = {
     val (unsorted, sorted) = getLists(defaultLength)
 
-    algo(unsorted) shouldBe sorted
+    randomIndices.foreach(idx => {
+      algo(unsorted, idx) shouldBe sorted.lift(idx)
+    })
   }
 
-  "ImmutableSorting" should {
+  "ImmutableSelection" should {
 
-    "sort a list using the Bubble sort algorithm" in {
-      compareAfterSortingWith(bubbleSort)
+    "select the nth largest element of an array using the Quick Select selection algorithm" in {
+      compareAfterSelectionWith(quickSelect)
     }
   }
 }

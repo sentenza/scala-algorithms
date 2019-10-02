@@ -1,7 +1,7 @@
-package io.github.sentenza.hacktoberfest18.adt
+package io.github.sentenza.hacktoberfest.adt
 
 /*
- * HacktoberFest 2018 - Scala Algorhitms
+ * HacktoberFest - Scala Algorhitms
  * Copyright (C) 2018 sentenza
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by

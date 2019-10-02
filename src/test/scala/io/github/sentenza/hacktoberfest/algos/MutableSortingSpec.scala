@@ -1,6 +1,6 @@
-package io.github.sentenza.hacktoberfest18.algos
+package io.github.sentenza.hacktoberfest.algos
 
-import io.github.sentenza.hacktoberfest18.util.ArrayUtil
+import io.github.sentenza.hacktoberfest.util.ArrayUtil
 import org.scalatest.{Matchers, WordSpec}
 import MutableSorting._
 import scala.util.Random

@@ -1,7 +1,9 @@
-package io.github.sentenza.hacktoberfest18.algos
+package io.github.sentenza.hacktoberfest.util
+
+import scala.util.Random
 
 /*
- * HacktoberFest 2018 - Scala Algorhitms
+ * HacktoberFest - Scala Algorhitms
  * Copyright (C) 2018 sentenza
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -16,13 +18,19 @@ package io.github.sentenza.hacktoberfest18.algos
  */
 
 /**
-  * Definitions of the functions that will implement all the common selection algorithms.
+  * A list of useful functions to work with linked lists
   */
-trait Selection[F[_], T] {
-  /* *** Partition-based Selection *** */
+class ListUtil {
 
-  /** Quick Select
-    * [[https://en.wikipedia.org/wiki/Quickselect Wikipedia: Quick Select]]
+  /**
+    * Builds a list of random numbers
+    *
+    * @param length The length of the list to be built
+    * @return An array of random integers
     */
-  def quickSelect(xs: F[T], idx: Int): Option[T]
+  def buildRandomList(length: Int): List[Int] = {
+    val rand = new Random()
+    List.fill(length)(rand.nextInt(length))
+  }
+
 }

@@ -1,4 +1,4 @@
-package io.github.sentenza.hacktoberfest18
+package io.github.sentenza.hacktoberfest
 
 object Main extends App {
   MenuIO.printDisclaimer()

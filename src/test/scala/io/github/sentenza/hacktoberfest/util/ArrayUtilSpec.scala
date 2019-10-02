@@ -1,4 +1,4 @@
-package io.github.sentenza.hacktoberfest18.util
+package io.github.sentenza.hacktoberfest.util
 
 import org.scalatest.{Assertion, Matchers, WordSpec, Inspectors}
 

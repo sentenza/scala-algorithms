@@ -1,4 +1,4 @@
-package io.github.sentenza.hacktoberfest18.algos
+package io.github.sentenza.hacktoberfest.algos
 
 import org.scalatest.{Matchers, WordSpec}
 import LooplessFunctional._
