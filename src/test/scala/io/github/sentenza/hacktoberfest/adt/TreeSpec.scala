@@ -12,4 +12,14 @@ class TreeSpec extends WordSpec with Matchers {
       Tree.size(testTree) shouldBe 7
     }
   }
+
+  "A Tree" should {
+    "have a depth() method to compute its depth" in {
+      val testTree = Branch(
+        Branch(Leaf("a"), Leaf("b")),
+        Branch(Leaf("c"), Leaf("d"))
+      )
+      Tree.depth(testTree) shouldBe 2
+    }
+  }
 }

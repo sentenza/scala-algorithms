@@ -43,9 +43,12 @@ object Tree {
 
   /**
     * @param tree The tree to work on
-    * @return the maximum path lenght from the root of a Tree to any leaf
+    * @return the maximum path length from the root of a Tree to any leaf
     */
-  def depth[T](tree: Tree[T]): Int = ???
+  def depth[T](tree: Tree[T]): Int = tree match {
+    case _: Leaf[T]   => 0 // A Leaf counts 0
+    case Branch(l, r) => 1 + (if(depth(l) > depth(r)) depth(l) else depth(r)) // A Branch counts 1
+  }
 
   /**
     * @param tree The tree to work on
