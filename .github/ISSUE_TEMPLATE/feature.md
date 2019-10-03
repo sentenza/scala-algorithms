@@ -2,6 +2,12 @@
 > The feature should have a reason to exist: what do I need as the user described in the summary?<br>
 > This part details any detail that could not be passed by the **summary**.
 
+### Contributing Guidelines
+- Add the missing implementation
+- Add a test case in the specs
+- Don't be afraid to submit a new PR
+- Have fun!
+
 ### Acceptance Criteria
 
 1. If I do A =>
