@@ -1,6 +1,7 @@
 package io.github.sentenza.hacktoberfest.adt
 
 import org.scalatest.{Matchers, WordSpec}
+import io.github.sentenza.hacktoberfest.adt.{Branch => B, Leaf => L}
 
 class TreeSpec extends WordSpec with Matchers {
   "A Tree" should {
@@ -11,9 +12,7 @@ class TreeSpec extends WordSpec with Matchers {
       )
       Tree.size(testTree) shouldBe 7
     }
-  }
 
-  "A Tree" should {
     "have a depth() method to compute its depth" in {
       val testTree = Branch(
         Branch(Leaf("a"), Leaf("b")),
@@ -21,5 +20,47 @@ class TreeSpec extends WordSpec with Matchers {
       )
       Tree.depth(testTree) shouldBe 2
     }
+  }
+
+  "Tree.depth()" should {
+    val treeD1 = B(L("x"), L("y"))
+    val treeD2 = B(L("z"), B(L("t"), L("r")))
+    val treeD3 = B(L("zero"), treeD2)
+
+    "be 1 when there's only a single branch" in {
+      Tree.depth(treeD1) shouldBe 1
+    }
+
+    "be 2 when there is a root branch attached to another branch" in {
+      Tree.depth(treeD2) shouldBe 2
+    }
+
+    "be 3 when the depth of Tree is Three" in {
+      Tree.depth(treeD3) shouldBe 3
+    }
+
+    "be 0 for a Leaf" in {
+      Tree.depth(L("leaf")) shouldBe 0
+    }
+
+    "return the sum of depths for a Tree of Trees" in {
+      val t = B(
+        L(1),
+        treeD2
+      )
+      Tree.depth(t) shouldBe 3
+    }
+
+    "be 5 for a Tree with 5 Branches deep" in {
+      val treeD5 = Branch( // 1
+        L("left leaf == 0"),
+        Branch( // 2
+          treeD1,
+          treeD3
+        )
+      )
+      Tree.depth(treeD5) shouldBe 5
+    }
+
   }
 }

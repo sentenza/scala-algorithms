@@ -37,17 +37,18 @@ object Tree {
     * @return the number of nodes of a Tree
     */
   def size[T](tree: Tree[T]): Int = tree match {
-    case _: Leaf[T]   => 1 // A Leaf counts 1
+    case _: Leaf[T]   => 1                     // A Leaf counts 1
     case Branch(l, r) => 1 + size(l) + size(r) // A Branch counts 1
   }
 
   /**
+    * Returns the maximum depth of the Tree recursively
     * @param tree The tree to work on
     * @return the maximum path length from the root of a Tree to any leaf
     */
   def depth[T](tree: Tree[T]): Int = tree match {
-    case _: Leaf[T]   => 0 // A Leaf counts 0
-    case Branch(l, r) => 1 + (if(depth(l) > depth(r)) depth(l) else depth(r)) // A Branch counts 1
+    case _: Leaf[T]   => 0                                                     // A Leaf counts 0
+    case Branch(l, r) => 1 + (if (depth(l) > depth(r)) depth(l) else depth(r)) // A Branch counts 1
   }
 
   /**
