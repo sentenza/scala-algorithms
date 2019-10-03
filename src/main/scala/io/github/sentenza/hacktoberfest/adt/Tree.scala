@@ -52,12 +52,16 @@ object Tree {
   }
 
   /**
+    * Returns a Tree with all the values replaced with the given function
     * @param tree The tree to work on
     * @param f The function to be applied to each leaf of the Tree
     * @tparam F The type of the element that will be returned by f
     * @return A new Tree which will be made by applying f to the original Tree
     */
-  def map[T, F](tree: Tree[T], f: T => F): Tree[F] = ???
+  def map[T, F](tree: Tree[T], f: (T) => F): Tree[F] = tree match {
+    case Leaf(v) => Leaf(f(v))
+    case Branch(l, r) => Branch(map(l, f), map(r, f))
+  }
 
   //  def maximum[T](): T = ???
 }

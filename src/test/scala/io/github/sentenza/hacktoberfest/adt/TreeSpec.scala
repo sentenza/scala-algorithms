@@ -20,6 +20,17 @@ class TreeSpec extends WordSpec with Matchers {
       )
       Tree.depth(testTree) shouldBe 2
     }
+
+    "have a map() method to replace the tree values" in {
+      val testTree = Branch(
+        Branch(Leaf(1), Leaf(3)),
+        Branch(Leaf(2), Leaf(4))
+      )
+      Tree.map(testTree, (x: Int) => x + 1) shouldBe Branch(
+        Branch(Leaf(2), Leaf(4)),
+        Branch(Leaf(3), Leaf(5))
+      )
+    }
   }
 
   "Tree.depth()" should {
@@ -61,6 +72,25 @@ class TreeSpec extends WordSpec with Matchers {
       )
       Tree.depth(treeD5) shouldBe 5
     }
+  }
 
+  "Tree.map()" should {
+    "work when there's only a Leaf" in {
+      Tree.map(Leaf(1), (x: Int) => x * 2) shouldBe Leaf(2)
+    }
+
+    "be independent of the tree depth" in {
+      Tree.map(
+        Branch(Branch(Branch(Leaf(1), Leaf(2)), Leaf(3)), Leaf(4)),
+        (x: Int) => x - 1
+      ) shouldBe Branch(Branch(Branch(Leaf(0), Leaf(1)), Leaf(2)), Leaf(3))
+    }
+
+    "work across types" in {
+      Tree.map(
+        Branch(Leaf(1), Branch(Leaf(2), Leaf(3))),
+        (x: Int) => x * Math.PI
+      ) shouldBe Branch(Leaf(Math.PI), Branch(Leaf(2 * Math.PI), Leaf(3 * Math.PI)))
+    }
   }
 }
