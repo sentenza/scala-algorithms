@@ -1,6 +1,7 @@
 package io.github.sentenza.hacktoberfest
 
 import java.lang.System.out.println
+import java.lang.reflect.Method
 import java.util.concurrent.atomic.AtomicInteger
 
 import io.github.sentenza.hacktoberfest.algos.{ImmutableSorting, MutableSorting, Sorting}
@@ -53,8 +54,6 @@ object MenuIO {
   def readNumberInputs = scala.io.StdIn.readLine().split(",").map(_.toInt)
 
   case class MenuEntry(selector: Int, display: String, code: () => Unit)
-
-  // TODO: Add more categories here
   private val entries =
     List(
       MenuEntry(1, "Sorting algorithms", () => {
@@ -94,11 +93,14 @@ object MenuIO {
   }
 
   private def execute[F[_],T](sorting: Sorting[_,_], method: String, numberInputs: F[_]) = {
-    findMethod(sorting, method).invoke(sorting, numberInputs).asInstanceOf[F[_]]
+    findMethod(sorting, method) match {
+      case Some(m:Method) => m.invoke(sorting, numberInputs).asInstanceOf[F[_]]
+      case None => throw new RuntimeException(s"Method $method not found in $sorting")
+    }
   }
 
   private def findMethod(sorting: Sorting[_,_], method: String) =
-    sorting.getClass.getMethods.find(m => m.getName.compare(method) == 0).get
+    sorting.getClass.getMethods.find(m => m.getName.compare(method) == 0)
 
   @tailrec
   def renderInteractiveMenu(entries:List[MenuEntry]=entries): Unit = {
