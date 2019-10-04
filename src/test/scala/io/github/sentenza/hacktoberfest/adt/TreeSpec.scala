@@ -93,4 +93,23 @@ class TreeSpec extends WordSpec with Matchers {
       ) shouldBe Branch(Leaf(Math.PI), Branch(Leaf(2 * Math.PI), Leaf(3 * Math.PI)))
     }
   }
+
+  "A Tree" should {
+    "have a map() method to compute applying an function to its values" in {
+      val testTree = Branch[String](
+        Branch[String](Leaf[String]("amazon"), Leaf[String]("blue")),
+        Branch[String](Leaf[String]("cream"), Leaf[String]("dungeon"))
+      )
+
+      Tree.map(testTree, (v:String) => v.charAt(0)) shouldBe Branch[Char](
+        Branch[Char](Leaf[Char]('a'), Leaf[Char]('b')),
+        Branch[Char](Leaf[Char]('c'), Leaf[Char]('d'))
+      )
+
+      Tree.map(testTree, (v:String) => v.size) shouldBe Branch[Int](
+        Branch[Int](Leaf[Int](6), Leaf[Int](4)),
+        Branch[Int](Leaf[Int](5), Leaf[Int](7))
+      )
+    }
+  }
 }
