@@ -1,6 +1,10 @@
 package io.github.sentenza.hacktoberfest
 
 import System.out.println
+
+import io.github.sentenza.hacktoberfest.algos.MutableSorting
+import io.github.sentenza.hacktoberfest.util.{ArrayUtil, GenericUtil}
+
 import scala.annotation.tailrec
 import scala.util.{Try, Success, Failure}
 
@@ -51,7 +55,22 @@ object MenuIO {
   // TODO: Add more categories here
   private val entries =
     List(
-      MenuEntry(1, "Sorting algorithms", () => println("You chose sorting\n")),
+      MenuEntry(
+        1,
+        "Sorting algorithms",
+        () => {
+          val arrayUtil   = new ArrayUtil()
+          val randomArray = arrayUtil.buildRandomArray(10)
+          val toPrint     = randomArray.mkString(", ")
+          println(s"Before sorting $toPrint")
+          val sorted = GenericUtil.time {
+            MutableSorting.quickSort(randomArray)
+          }
+          val after = sorted.mkString(", ")
+          println(s"Sorted $after")
+          println("You chose sorting")
+        }
+      ),
       MenuEntry(0, "Quit the program", noOp)
     )
 

@@ -65,6 +65,8 @@ trait Queue[+T] {
 
   def size: Int
 
+  def foldLeft[T, U](qs: Queue[T], z: U)(f: (U, T) => U): U
+
   override def toString: String
 }
 
@@ -137,6 +139,8 @@ object Queue {
 
     def size: Int =
       leading.size + trailing.size
+
+    def foldLeft[T, U](qs: Queue[T], z: U)(f: (U, T) => U): U = ???
 
     /**
       * @param separator The String separator (e.g. ",", ":"
