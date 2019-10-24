@@ -1,8 +1,8 @@
-scalaVersion := "2.13.1"
-name := "hacktoberfest-algorithms"
-organization := "hacktoberfest"
+ThisBuild / scalaVersion := "2.13.1"
+ThisBuild / name := "hacktoberfest-algorithms"
+ThisBuild / organization := "hacktoberfest"
 // We will use Semver for this project
-version := "0.11.0"
+ThisBuild / version := "0.12.0"
 
 // libraries
 val scalaTestVersion = "3.0.8"
@@ -15,13 +15,13 @@ libraryDependencies += "com.lihaoyi"   % "ammonite"   % ammoniteVersion  % "test
 watchTriggeredMessage := Watch.clearScreenOnTrigger
 shellPrompt := (_ => fancyPrompt(name.value))
 
+def cyan(projectName: String): String =
+  scala.Console.CYAN + projectName + scala.Console.RESET
+
 def fancyPrompt(projectName: String): String =
   s"""|
       |[info] Welcome to the ${cyan(projectName)} project!
       |sbt> """.stripMargin
-
-def cyan(projectName: String): String =
-  scala.Console.CYAN + projectName + scala.Console.RESET
 
 //   Projects
 lazy val `fp-library` =
@@ -37,6 +37,7 @@ lazy val `application-library` =
     .settings(shellPrompt := (_ => fancyPrompt(name.value)))
     .dependsOn(`fp-library`)
 
+// This project should contain just the main method
 lazy val `end-of-the-world` =
   project
     .in(file("./3-end-of-the-world"))
@@ -52,4 +53,4 @@ addCommandAlias("lib", "project fp-library")
 
 addCommandAlias("app", "project application-library")
 
-addCommandAlias("main", "project end-of-the-world")
+addCommandAlias("eow", "project end-of-the-world")
