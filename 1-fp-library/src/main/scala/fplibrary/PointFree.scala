@@ -1,4 +1,4 @@
-package fplibrary
+package io.github.sentenza.hacktoberfest.fplibrary
 
 object PointFree {
   // val ac = compose(ab, bc)
@@ -10,4 +10,23 @@ object PointFree {
     // Returning C
     c
   }
+
+  def composeKleisliOld[A, B, C](
+      adb: A => Description[B],
+      bdc: B => Description[C]
+  ): A => Description[C] = a => {
+    val db: Description[B] = adb(a)
+    val b                  = db.apply()
+
+    val dc = bdc(b)
+
+    dc
+  }
+
+  def composeKleisli[A, B, C, D[_]: Monad](adb: A => D[B], bdc: B => D[C]): A => D[C] = a => {
+    val db: D[B] = adb(a)
+    val dc = Monad[D].flatMap(db)(bdc)
+    dc
+  }
+
 }

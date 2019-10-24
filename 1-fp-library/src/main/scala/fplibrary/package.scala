@@ -1,7 +1,6 @@
 package io.github.sentenza.hacktoberfest
 
 package object fplibrary {
-  import _root_.fplibrary.PointFree
   private type Thunk[A]                 = () => A
   type Description[A]                   = Thunk[A]
   private type RegularArrow[A, B]       = A => B
@@ -16,4 +15,14 @@ package object fplibrary {
     // Let's also define an Arrow
     @inline def -->[C](bc: B => C): A => C = PointFree.compose(ab, bc)
   }
+
+  implicit final class InfixNotationForPointFreeKleisli[A, B, D[_]](private val adb: A => D[B])
+      extends AnyVal {
+    @inline def `;;`[C](bdc: B => D[C])(implicit M: Monad[D]): A => D[C] =
+      PointFree.composeKleisli(adb, bdc)
+    // Haskell Fish
+    @inline def >=>[C](bdc: B => D[C])(implicit M: Monad[D]): A => D[C] =
+      PointFree.composeKleisli(adb, bdc)
+  }
+
 }
