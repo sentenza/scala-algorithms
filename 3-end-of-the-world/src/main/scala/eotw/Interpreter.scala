@@ -5,8 +5,8 @@ import io.github.sentenza.hacktoberfest.application.Program
 
 object Interpreter {
   def main(args: Array[String]): Unit = {
-    val description: Description[Unit]        = Program.createDescription(args)
-    def interpret[A](desc: Description[A]): A = desc.apply()
+    val description: IO[Unit]        = Program.createIO(args)
+    def interpret[A](desc: IO[A]): A = desc.unsafeRun()
     print(Console.YELLOW)
     printDisclaimer()
     print(Console.RED)

@@ -3,11 +3,11 @@ package io.github.sentenza.hacktoberfest.application
 import io.github.sentenza.hacktoberfest.fplibrary._
 
 object Program {
-  // def createDescription(args: Array[String]): Description[Unit] =
+  // def createIO(args: Array[String]): IO[Unit] =
   //   () => displayMessages()
 
-  lazy val unreadableCreateDescription: Array[String] => Description[Unit] = args =>
-    Description.create(
+  lazy val unreadableCreateIO: Array[String] => IO[Unit] = args =>
+    IO.create(
       display(
         hyphens(
           display(
@@ -32,12 +32,11 @@ object Program {
 
   // --> is equal to the std library "andThen"
   
-  import io.github.sentenza.hacktoberfest.fplibrary.Description._
   // Format: OFF
-  lazy val createDescription: Array[String] => Description[Unit] =
-    ignoreArgs --> hyphens -->    displayKleisli >=>
-    createMessage -->             displayKleisli >=>
-      hyphens -->                 displayKleisli
+  lazy val createIO: Array[String] => IO[Unit] =
+    ignoreArgs    --> hyphens -->     displayKleisli >=>
+    createMessage -->                 displayKleisli >=>
+    hyphens       -->                 displayKleisli
   //Format: ON
 
   // Transforming defs into functions - Old version had def
@@ -51,8 +50,8 @@ object Program {
   private lazy val ignoreArgs: Array[String] => Unit = _ => ()
 
   // Kleisli
-  private lazy val displayKleisli: Any => Description[Unit] = input =>
-    Description.create(println(input))
-  private lazy val promptKleisli: Any => Description[String] = _ =>
-    Description.create(scala.io.StdIn.readLine())
+  private lazy val displayKleisli: Any => IO[Unit] = input =>
+    IO.create(println(input))
+  private lazy val promptKleisli: Any => IO[String] = _ =>
+    IO.create(scala.io.StdIn.readLine())
 }

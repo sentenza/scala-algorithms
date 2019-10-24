@@ -12,20 +12,21 @@ object PointFree {
   }
 
   def composeKleisliOld[A, B, C](
-      adb: A => Description[B],
-      bdc: B => Description[C]
-  ): A => Description[C] = a => {
-    val db: Description[B] = adb(a)
-    val b                  = db.apply()
+      adb: A => IO[B],
+      bdc: B => IO[C]
+  ): A => IO[C] = a => {
+    val db: IO[B] = adb(a)
+    val b         = db.unsafeRun()
 
     val dc = bdc(b)
 
     dc
   }
 
+  // Kleisli Composition won't actually work without Monads (try to remove Monad from D[_]: Monad)
   def composeKleisli[A, B, C, D[_]: Monad](adb: A => D[B], bdc: B => D[C]): A => D[C] = a => {
     val db: D[B] = adb(a)
-    val dc = Monad[D].flatMap(db)(bdc)
+    val dc       = Monad[D].flatMap(db)(bdc)
     dc
   }
 
