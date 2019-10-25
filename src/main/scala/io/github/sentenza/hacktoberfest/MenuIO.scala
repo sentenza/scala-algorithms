@@ -1,9 +1,9 @@
 package io.github.sentenza.hacktoberfest
 
-import java.lang.System.out.println
 import java.lang.reflect.Method
 import java.util.concurrent.atomic.AtomicInteger
 
+import io.github.sentenza.hacktoberfest.util.{ArrayUtil, GenericUtil}
 import io.github.sentenza.hacktoberfest.algos.{ImmutableSorting, MutableSorting, Sorting}
 
 import scala.annotation.tailrec
@@ -54,73 +54,84 @@ object MenuIO {
   def readNumberInputs = scala.io.StdIn.readLine().split(",").map(_.toInt)
 
   case class MenuEntry(selector: Int, display: String, code: () => Unit)
+
   private val entries =
     List(
-      MenuEntry(1, "Sorting algorithms", () => {
-        println("You chose sorting\n")
-        renderInteractiveMenu(List(
-          MenuEntry(2, "MutableSorting", () => {
-            println("You chose mutable sorting.")
-            renderInteractiveMenu(createMethodMenuEntries(MutableSorting))
-          }),
-          MenuEntry(1, "ImmutableSorting", () => {
-            println("You chose immutable sorting.")
-            renderInteractiveMenu(createMethodMenuEntries(ImmutableSorting))
-          }),
-          MenuEntry(0, "Quit sorting", () => noOp)
-        ))
-      }),
-      MenuEntry(0, "Quit the program",() => System.exit(0))
+      MenuEntry(
+        1,
+        "Sorting algorithms",
+        () => {
+          println("You chose sorting\n")
+          renderInteractiveMenu(
+            List(
+              MenuEntry(2, "MutableSorting", () => {
+                println("You chose mutable sorting.")
+                // renderInteractiveMenu(createMethodMenuEntries(MutableSorting))
+                renderInteractiveMenu()
+              }),
+              MenuEntry(1, "ImmutableSorting", () => {
+                println("You chose immutable sorting.")
+                // renderInteractiveMenu(createMethodMenuEntries(ImmutableSorting))
+                renderInteractiveMenu()
+              }),
+              MenuEntry(0, "Quit sorting", noOp)
+            )
+          )
+        }
+      ),
+      MenuEntry(0, "Quit the program", () => System.exit(0))
     )
-
-  private def createMethodMenuEntries(sorting: Sorting[_,_]) = {
-    val count = new AtomicInteger()
-    retrieveMethodNames(sorting)
-      .map(mName =>
-        MenuEntry(count.incrementAndGet(), mName, () => executeSortMethod(sorting, mName))
-      ).toList
-  }
-
-  private def retrieveMethodNames(sorting:Sorting[_,_]) =
-    sorting.getClass.getMethods.map(_.getName).filter(_.endsWith("Sort")).distinct
-
-  private def executeSortMethod(sorting: Sorting[_,_], method: String) = {
-    println("You've chosen " + method + "! Please enter a list of comma separated integers.")
-    val numberInputs = readNumberInputs
-    println(s"You entered:${numberInputs.mkString(",")}. They are going to be sorted by $method.\n Sorting...")
-    val sorted = execute(sorting, method, numberInputs)
-    println(s"Your number entries sorted are: ${sorted.mkString(",")}")
-  }
-
-  private def execute[F[_],T](sorting: Sorting[_,_], method: String, numberInputs: F[_]) = {
-    findMethod(sorting, method) match {
-      case Some(m:Method) => m.invoke(sorting, numberInputs).asInstanceOf[F[_]]
-      case None => throw new RuntimeException(s"Method $method not found in $sorting")
-    }
-  }
-
-  private def findMethod(sorting: Sorting[_,_], method: String) =
-    sorting.getClass.getMethods.find(m => m.getName.compare(method) == 0)
-
   @tailrec
-  def renderInteractiveMenu(entries:List[MenuEntry]=entries): Unit = {
+  def renderInteractiveMenu(entries: List[MenuEntry] = entries): Unit = {
     println("Please choose:")
     entries.foreach {
       case MenuEntry(num, label, _) =>
         println(s"$num: $label")
     }
 
-      Try(scala.io.StdIn.readInt()) match {
-        case Success(0) =>
-          ()
-        case Success(choice) if entries.exists(_.selector == choice) =>
-          entries.find(_.selector == choice).foreach{
-            case MenuEntry(_, _, code) => code()
-          }
-          renderInteractiveMenu()
-        case _ =>
-          println("Invalid selection\n")
-          renderInteractiveMenu()
-      }
+    Try(scala.io.StdIn.readInt()) match {
+      case Success(0) =>
+        ()
+      case Success(choice) if entries.exists(_.selector == choice) =>
+        entries.find(_.selector == choice).foreach {
+          case MenuEntry(_, _, code) => code()
+        }
+        renderInteractiveMenu()
+      case _ =>
+        println("Invalid selection\n")
+        renderInteractiveMenu()
     }
+  }
+
+  // private def createMethodMenuEntries(sorting: Sorting[_, _]) = {
+  //   val count = new AtomicInteger()
+  //   retrieveMethodNames(sorting)
+  //     .map(
+  //       mName => MenuEntry(count.incrementAndGet(), mName, () => executeSortMethod(sorting, mName))
+  //     )
+  //     .toList
+  // }
+
+  // private def retrieveMethodNames(sorting: Sorting[_, _]) =
+  //   sorting.getClass.getMethods.map(_.getName).filter(_.endsWith("Sort")).distinct
+
+  // private def executeSortMethod(sorting: Sorting[_, _], method: String) = {
+  //   println("You've chosen " + method + "! Please enter a list of comma separated integers.")
+  //   val numberInputs = readNumberInputs
+  //   println(
+  //     s"You entered:${numberInputs.mkString(",")}. They are going to be sorted by $method.\n Sorting..."
+  //   )
+  //   val sorted = execute(sorting, method, numberInputs)
+  //   println(s"Your number entries sorted are: ${sorted.mkString(",")}")
+  // }
+
+  // private def execute[F[_], T](sorting: Sorting[_, _], method: String, numberInputs: F[_]) = {
+  //   findMethod(sorting, method) match {
+  //     case Some(m: Method) => m.invoke(sorting, numberInputs).asInstanceOf[F[_]]
+  //     case None            => throw new RuntimeException(s"Method $method not found in $sorting")
+  //   }
+  // }
+
+  // private def findMethod(sorting: Sorting[_, _], method: String) =
+  //   sorting.getClass.getMethods.find(m => m.getName.compare(method) == 0)
 }
