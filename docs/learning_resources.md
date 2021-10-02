@@ -1,5 +1,3 @@
-* [Scala Summer School - Learn Functional Programming in Scala](https://scalasummerschool.github.io/)
-
 ### Books
 * [Programming in Scala](https://amzn.to/2OAAgc3) (2016)(3rd) by Martin Odersky, Lex Spoon, and Bill Venners (Book)
 * [Functional Programming, Simplified](https://alvinalexander.com/scala/functional-programming-simplified-book)
@@ -46,7 +44,9 @@
     * [GitHub Repository](https://github.com/julian-t/EssentialScala) for this course.
 * [Scala 101](https://cognitiveclass.ai/learn/scala/#course2000). Free online course on [Cognitive Class](https://cognitiveclass.ai/).
 
+**Other**
 
+* [Scala Summer School - Learn Functional Programming in Scala](https://scalasummerschool.github.io/)
 
 
 ### Get your hands dirty
