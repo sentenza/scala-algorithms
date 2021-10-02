@@ -1,4 +1,4 @@
-# Hacktoberfest 2019 - Algorithms and Data Structures 
+# Hacktoberfest - Algorithms and Data Structures 
 
 ![hacktoberfest-2019](https://user-images.githubusercontent.com/2479647/65616971-d2c86800-dfb3-11e9-8189-68f791bc8365.jpg)
 
