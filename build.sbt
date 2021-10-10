@@ -1,4 +1,4 @@
-scalaVersion := "2.13.1"
+scalaVersion := "2.13.6"
 name := "hacktoberfest-algorithms"
 organization := "hacktoberfest"
 // We will use Semver for this project
