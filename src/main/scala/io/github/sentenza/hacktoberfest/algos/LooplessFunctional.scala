@@ -37,7 +37,7 @@ object LooplessFunctional {
       case None         => List.empty
     }
 
-  /** First example algo presented, flattens nested lists*/
+  /** First example algo presented, flattens nested lists */
   def concat[A](nested: List[List[A]]): List[A] = {
 
     //make typing shorter

@@ -15,8 +15,7 @@ package io.github.sentenza.hacktoberfest.algos
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-/**
-  * Definitions of the common sorting algorithms.
+/** Definitions of the common sorting algorithms.
   *
   * Note that usually one can claim that the known sorting algorithms would not actually be the same
   * if implemented without loops and mutable variables.
@@ -82,17 +81,14 @@ trait Sorting[F[_], T] {
   /* ****** Distribution Sorts ****** */
 
   /** Bucket Sort
-    *
     */
   def bucketSort(xs: F[T], n: Int, sort: F[T] => F[T]): F[T]
 
   /** Count Sort
-    *
     */
   def countSort(xs: F[T]): F[T]
 
   /** Radix Sort
-    *
     */
   def radixSort(xs: F[T], base: Int): F[T]
 }

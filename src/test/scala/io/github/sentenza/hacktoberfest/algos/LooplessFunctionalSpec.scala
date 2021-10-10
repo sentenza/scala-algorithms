@@ -5,16 +5,16 @@ import LooplessFunctional._
 
 class LooplessFunctionalSpec extends WordSpec with Matchers {
 
-    "Loopless Functional algorithms" should {
+  "Loopless Functional algorithms" should {
 
-      "concatenate nested lists" in {
-        val nested = List(List(1, 2), List(3), List(4, 5, 6), List.empty, List(7,8))
-        val concatenated = (1 to 8).toList
+    "concatenate nested lists" in {
+      val nested       = List(List(1, 2), List(3), List(4, 5, 6), List.empty, List(7, 8))
+      val concatenated = (1 to 8).toList
 
-        concat(nested) shouldBe concatenated
-
-      }
+      concat(nested) shouldBe concatenated
 
     }
+
+  }
 
 }

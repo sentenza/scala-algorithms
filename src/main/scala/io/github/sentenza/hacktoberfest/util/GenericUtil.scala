@@ -2,8 +2,7 @@ package io.github.sentenza.hacktoberfest.util
 
 object GenericUtil {
 
-  /**
-    * Tracks (and prints out) the elapsed time when executing a function
+  /** Tracks (and prints out) the elapsed time when executing a function
     * (a block of code).
     *
     * Usage:

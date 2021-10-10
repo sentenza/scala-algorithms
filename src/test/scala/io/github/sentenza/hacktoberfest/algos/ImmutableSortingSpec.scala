@@ -6,16 +6,15 @@ import ImmutableSorting._
 import scala.util.Random
 
 class ImmutableSortingSpec extends WordSpec with Matchers {
-  /**
-    * The default length of the arrays that will be generated in this spec.
+
+  /** The default length of the arrays that will be generated in this spec.
     */
-  private val random = new Random()
+  private val random        = new Random()
   private val defaultLength = Math.max(100, random.nextInt(1000))
-  private val listUtil = new ListUtil()
+  private val listUtil      = new ListUtil()
   private val randomIndices = List.fill(5)(random.nextInt(defaultLength)).distinct
 
-  /**
-    * Helper method that returns a couple of array (unsorted, sorted).
+  /** Helper method that returns a couple of array (unsorted, sorted).
     *
     * @param l The length of the array that will be generated
     * @return (unsortedArray, sortedArray)

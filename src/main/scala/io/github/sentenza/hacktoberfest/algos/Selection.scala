@@ -15,8 +15,7 @@ package io.github.sentenza.hacktoberfest.algos
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-/**
-  * Definitions of the functions that will implement all the common selection algorithms.
+/** Definitions of the functions that will implement all the common selection algorithms.
   */
 trait Selection[F[_], T] {
   /* *** Partition-based Selection *** */

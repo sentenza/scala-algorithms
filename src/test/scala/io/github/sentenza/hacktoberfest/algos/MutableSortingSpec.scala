@@ -7,15 +7,13 @@ import scala.util.Random
 
 class MutableSortingSpec extends WordSpec with Matchers {
 
-  /**
-    * The default length of the arrays that will be generated in this spec
+  /** The default length of the arrays that will be generated in this spec
     */
   private val defaultLength = new Random().nextInt(100)
   private val defaultMax    = new Random().nextInt(99)
   private val arrayUtil     = new ArrayUtil()
 
-  /**
-    * Helper method that returns a couple of array (unsorted, sorted)
+  /** Helper method that returns a couple of array (unsorted, sorted)
     *
     * @param l The length of the array that will be generated
     * @param m The maximum possible element value

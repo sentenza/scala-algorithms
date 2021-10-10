@@ -18,8 +18,7 @@ import scala.math.Ordered
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-/**
-  * Implementations of this trait should provide non-destructive select
+/** Implementations of this trait should provide non-destructive select
   * operations on linked lists. That is, the linked list passed to a select
   * method should not be altered: A value at the specified sorted index
   * should be returned.
