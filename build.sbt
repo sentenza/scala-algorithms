@@ -5,7 +5,7 @@ organization := "hacktoberfest"
 version := "0.11.0"
 
 // libraries
-val scalaTestVersion = "3.0.8"
+val scalaTestVersion = "3.0.9"
 val ammoniteVersion  = "1.7.4"
 
 libraryDependencies += "org.scalatest" %% "scalatest" % scalaTestVersion % "test"
