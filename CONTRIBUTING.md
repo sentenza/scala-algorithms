@@ -16,9 +16,10 @@ versions of a program -- to make sure it remains free software for all its users
 - Each algorithm should be applicable (if possible) to all the data structures inside the library
 - Every piece of code produced here will be released under the [GNU General Public License v3.0](LICENSE)
 
-These Scala HacktoberFest Scala _exercises_ assume an [SBT][sbt-intro] project scheme. The solution to
-each issue should be placed within the `project-directory/src/main/scala/io/github/sentenza/hacktoberfest/`.
-The exercise unit tests can be found within the `project-directory/src/test/io/github/sentenza/hacktoberfest/`.
+These Scala HacktoberFest Scala _exercises_ assume an [SBT][sbt-intro] project scheme.
+
+* The solution to each issue should be placed within the `project-directory/src/main/scala/io/github/sentenza/hacktoberfest/`.
+* The exercise unit tests can be found within the `project-directory/src/test/io/github/sentenza/hacktoberfest/`.
 
 ### How to contribute
 
@@ -200,4 +201,4 @@ class Foo4[Sweet <: Cool](foo: String, bar: String)(implicit someth: Anyth[MyCla
   e.g. [generic.scala](https://github.com/milessabin/shapeless/blob/master/core/src/main/scala/shapeless/generic.scala)
 * [Banana RDF](https://github.com/banana-rdf/banana-rdf/)
   
-[sbt-intro]: http://torre.me.uk/programming/2017/08/19/scala-with-sbt-and-emacs
+[sbt-intro]: https://torre.me.uk/2017/08/19/scala-with-sbt-and-emacs/
