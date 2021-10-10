@@ -1,9 +1,11 @@
 package io.github.sentenza.hacktoberfest.adt
 
-import org.scalatest.{Matchers, WordSpec}
+import org.scalatest.matchers.should.Matchers
+import org.scalatest.wordspec.AnyWordSpec
 
-class QueueSpec extends WordSpec with Matchers {
-  val fiboQueue = Queue(13, 21, 34, 55, 89, 144, 233)
+
+class QueueSpec extends AnyWordSpec with Matchers {
+  val fiboQueue: Queue[Int] = Queue(13, 21, 34, 55, 89, 144, 233)
   "A Queue" should {
     "return its first element when using head()" in {
       fiboQueue.head shouldBe 13
@@ -31,7 +33,7 @@ class QueueSpec extends WordSpec with Matchers {
       val q2 = q1.enqueue(21)
       val q3 = q2.enqueue(44).enqueue(77)
       q3 shouldBe a[Queue[_]]
-      val qChar = Queue('a).enqueue('b')
+      val qChar = Queue(Symbol("a")).enqueue('b')
       qChar shouldBe a[Queue[_]]
       q2 equals Queue(13, 77, 21)
     }

@@ -1,7 +1,7 @@
 package io.github.sentenza.hacktoberfest.adt
 
 /*
- * HacktoberFest - Scala Algorhitms
+ * HacktoberFest - Scala Algorithms
  * Copyright (C) 2018 sentenza
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -95,7 +95,7 @@ object Queue {
       * all the elements to have at each moment:
       * queue = leading ::: (trailing.reverse)
       */
-    private def mirror(force: Boolean = false): Unit =
+    private def mirror(): Unit =
       if (leading.isEmpty) {
         while (trailing.nonEmpty) {
           // Reversing

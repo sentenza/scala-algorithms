@@ -2,11 +2,11 @@ package io.github.sentenza.hacktoberfest
 
 import System.out.println
 import scala.annotation.tailrec
-import scala.util.{Try, Success, Failure}
+import scala.util.{Try, Success}
 
 /*
- * HacktoberFest - Scala Algorhitms
- * Copyright (C) 2018 sentenza
+ * HacktoberFest - Scala Algorithms
+ * Copyright (C) 2018-2021 sentenza
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -22,16 +22,16 @@ import scala.util.{Try, Success, Failure}
 object MenuIO {
   private val heading =
     """
-      _  _         _   _       _             ___       _     ___ __  _ ___
-     | || |__ _ __| |_| |_ ___| |__  ___ _ _| __|__ __| |_  |_  )  \/ ( _ )
-     | __ / _` / _| / /  _/ _ \ '_ \/ -_) '_| _/ -_|_-<  _|  / / () | / _ \
-     |_||_\__,_\__|_\_\\__\___/_.__/\___|_| |_|\___/__/\__| /___\__/|_\___/
+      _  _         _   _       _             ___       _
+     | || |__ _ __| |_| |_ ___| |__  ___ _ _| __|__ __| |_
+     | __ / _` / _| / /  _/ _ \ '_ \/ -_) '_| _/ -_|_-<  _|
+     |_||_\__,_\__|_\_\\__\___/_.__/\___|_| |_|\___/__/\__|
 
     """
 
   private val gplDisclaimer =
     """
-    HacktoberFest Scala Algorhitms Copyright (C) 2018-2019  @sentenza
+    HacktoberFest Scala Algorithms Copyright (C) 2018-2021  @sentenza
     This program comes with ABSOLUTELY NO WARRANTY.
     This is free software, and you are welcome to redistribute it
     under certain conditions. All the details can be found at:
@@ -42,9 +42,11 @@ object MenuIO {
     * This function should be called at the very beginning of the Main execution
     * to fetch the disclaimer message and the project Logo to be printed out
     */
-  def printDisclaimer() { println(heading + gplDisclaimer) }
+  def printDisclaimer(): Unit = { println(heading + gplDisclaimer) }
 
   private val noOp = () => ()
+
+  def readNumberInputs: Array[Int] = scala.io.StdIn.readLine().split(",").map(_.toInt)
 
   case class MenuEntry(selector: Int, display: String, code: () => Unit)
 
@@ -54,6 +56,7 @@ object MenuIO {
       MenuEntry(1, "Sorting algorithms", () => println("You chose sorting\n")),
       MenuEntry(0, "Quit the program", noOp)
     )
+
 
   @tailrec
   def renderInteractiveMenu(): Unit = {

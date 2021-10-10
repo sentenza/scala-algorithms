@@ -1,18 +1,19 @@
 package io.github.sentenza.hacktoberfest.algos
 
 import io.github.sentenza.hacktoberfest.util.ListUtil
-import org.scalatest.{Matchers, WordSpec}
 import ImmutableSorting._
+import org.scalatest.matchers.should.Matchers
+import org.scalatest.wordspec.AnyWordSpec
+
 import scala.util.Random
 
-class ImmutableSortingSpec extends WordSpec with Matchers {
+class ImmutableSortingSpec extends AnyWordSpec with Matchers {
   /**
     * The default length of the arrays that will be generated in this spec.
     */
   private val random = new Random()
   private val defaultLength = Math.max(100, random.nextInt(1000))
   private val listUtil = new ListUtil()
-  private val randomIndices = List.fill(5)(random.nextInt(defaultLength)).distinct
 
   /**
     * Helper method that returns a couple of array (unsorted, sorted).

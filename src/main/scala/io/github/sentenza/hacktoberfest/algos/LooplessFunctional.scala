@@ -1,7 +1,7 @@
 package io.github.sentenza.hacktoberfest.algos
 
 /*
- * HacktoberFest - Scala Algorhitms
+ * HacktoberFest - Scala Algorithms
  * Copyright (C) 2018 sentenza
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -22,9 +22,9 @@ package io.github.sentenza.hacktoberfest.algos
   */
 object LooplessFunctional {
 
-  /** Buils a list from a particular value
+  /** Builds a list from a particular value
     * This is considered the principal building block
-    * of loopless algos in the mentioned work
+    * of loopless algorithms in the mentioned work
     *
     * While the function takes a single step operation,
     * in all the sequent algorithms the step is actually
@@ -45,16 +45,18 @@ object LooplessFunctional {
 
     //the unfolding step
     val step: LL => Option[(A, LL)] = {
+      case (a :: as) :: rest =>
+        val result: (A, LL) = (a, as :: rest)
+        Some(result)
       case List(Nil)         => None
       case Nil               => None
-      case (a :: as) :: rest => Some(a, as :: rest)
+      case _ => None
     }
 
     //prolog for concat, removes empty nestings
     val prologue: LL => LL = _.filter(_.nonEmpty)
 
     unfoldr(step compose prologue)(nested)
-
   }
 
 }
