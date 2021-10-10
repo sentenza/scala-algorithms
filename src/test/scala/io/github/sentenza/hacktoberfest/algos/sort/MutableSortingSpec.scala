@@ -1,7 +1,7 @@
-package io.github.sentenza.hacktoberfest.algos
+package io.github.sentenza.hacktoberfest.algos.sort
 
+import io.github.sentenza.hacktoberfest.algos.sort.MutableSorting._
 import io.github.sentenza.hacktoberfest.util.ArrayUtil
-import MutableSorting._
 import org.scalatest.matchers.should.Matchers
 import org.scalatest.wordspec.AnyWordSpec
 
@@ -9,19 +9,20 @@ import scala.util.Random
 
 class MutableSortingSpec extends AnyWordSpec with Matchers {
 
-  /**
-    * The default length of the arrays that will be generated in this spec
+  /** The default length of the arrays that will be generated in this spec
     */
   private val defaultLength = new Random().nextInt(100)
   private val defaultMax    = new Random().nextInt(99)
   private val arrayUtil     = new ArrayUtil()
 
-  /**
-    * Helper method that returns a couple of array (unsorted, sorted)
+  /** Helper method that returns a couple of array (unsorted, sorted)
     *
-    * @param l The length of the array that will be generated
-    * @param m The maximum possible element value
-    * @return (unsortedArray, sortedArray)
+    * @param l
+    *   The length of the array that will be generated
+    * @param m
+    *   The maximum possible element value
+    * @return
+    *   (unsortedArray, sortedArray)
     */
   private def getArrays(l: Int, m: Int): (Array[Int], Array[Int]) = {
     val randomUnsortedArray = arrayUtil.buildRandomArray(l, m)

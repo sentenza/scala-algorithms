@@ -3,7 +3,6 @@ package io.github.sentenza.hacktoberfest.adt
 import org.scalatest.matchers.should.Matchers
 import org.scalatest.wordspec.AnyWordSpec
 
-
 class QueueSpec extends AnyWordSpec with Matchers {
   val fiboQueue: Queue[Int] = Queue(13, 21, 34, 55, 89, 144, 233)
   "A Queue" should {

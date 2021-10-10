@@ -17,16 +17,16 @@ import scala.util.Random
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-/**
-  * A list of useful functions to work with linked lists
+/** A list of useful functions to work with linked lists
   */
 class ListUtil {
 
-  /**
-    * Builds a list of random numbers
+  /** Builds a list of random numbers
     *
-    * @param length The length of the list to be built
-    * @return An array of random integers
+    * @param length
+    *   The length of the list to be built
+    * @return
+    *   An array of random integers
     */
   def buildRandomList(length: Int): List[Int] = {
     val rand = new Random()

@@ -38,9 +38,8 @@ object MenuIO {
     https://github.com/sentenza/hacktoberfest-scala-algorithms/blob/master/LICENSE.
     """
 
-  /**
-    * This function should be called at the very beginning of the Main execution
-    * to fetch the disclaimer message and the project Logo to be printed out
+  /** This function should be called at the very beginning of the Main execution to fetch the
+    * disclaimer message and the project Logo to be printed out
     */
   def printDisclaimer(): Unit = { println(heading + gplDisclaimer) }
 
@@ -57,26 +56,24 @@ object MenuIO {
       MenuEntry(0, "Quit the program", noOp)
     )
 
-
   @tailrec
   def renderInteractiveMenu(): Unit = {
     println("Please choose:")
-    entries.foreach {
-      case MenuEntry(num, label, _) =>
-        println(s"$num: $label")
+    entries.foreach { case MenuEntry(num, label, _) =>
+      println(s"$num: $label")
     }
 
-      Try(scala.io.StdIn.readInt()) match {
-        case Success(0) =>
-          ()
-        case Success(choice) if entries.exists(_.selector == choice) =>
-          entries.find(_.selector == choice).foreach{
-            case MenuEntry(_, _, code) => code()
-          }
-          renderInteractiveMenu()
-        case _ =>
-          println("Invalid selection\n")
-          renderInteractiveMenu()
-      }
+    Try(scala.io.StdIn.readInt()) match {
+      case Success(0) =>
+        ()
+      case Success(choice) if entries.exists(_.selector == choice) =>
+        entries.find(_.selector == choice).foreach { case MenuEntry(_, _, code) =>
+          code()
+        }
+        renderInteractiveMenu()
+      case _ =>
+        println("Invalid selection\n")
+        renderInteractiveMenu()
     }
+  }
 }

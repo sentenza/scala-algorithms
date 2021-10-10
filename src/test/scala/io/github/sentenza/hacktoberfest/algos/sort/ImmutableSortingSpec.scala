@@ -1,25 +1,26 @@
-package io.github.sentenza.hacktoberfest.algos
+package io.github.sentenza.hacktoberfest.algos.sort
 
+import io.github.sentenza.hacktoberfest.algos.sort.ImmutableSorting._
 import io.github.sentenza.hacktoberfest.util.ListUtil
-import ImmutableSorting._
 import org.scalatest.matchers.should.Matchers
 import org.scalatest.wordspec.AnyWordSpec
 
 import scala.util.Random
 
 class ImmutableSortingSpec extends AnyWordSpec with Matchers {
-  /**
-    * The default length of the arrays that will be generated in this spec.
-    */
-  private val random = new Random()
-  private val defaultLength = Math.max(100, random.nextInt(1000))
-  private val listUtil = new ListUtil()
 
-  /**
-    * Helper method that returns a couple of array (unsorted, sorted).
+  /** The default length of the arrays that will be generated in this spec.
+    */
+  private val random        = new Random()
+  private val defaultLength = Math.max(100, random.nextInt(1000))
+  private val listUtil      = new ListUtil()
+
+  /** Helper method that returns a couple of array (unsorted, sorted).
     *
-    * @param l The length of the array that will be generated
-    * @return (unsortedArray, sortedArray)
+    * @param l
+    *   The length of the array that will be generated
+    * @return
+    *   (unsortedArray, sortedArray)
     */
   private def getLists(l: Int): (List[Int], List[Int]) = {
     val randomUnsortedList = listUtil.buildRandomList(l)

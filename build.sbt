@@ -4,13 +4,13 @@ val FlexmarkVersion  = "0.62.2"
 lazy val root = (project in file("."))
   .settings(
     organization := "io.github.sentenza.hacktoberfest",
-    name := "hacktoberfest-algorithms",
-    version := "0.12.0",
+    name         := "hacktoberfest-algorithms",
+    version      := "0.12.0",
     scalaVersion := "2.13.6",
     libraryDependencies ++= Seq(
-      "org.scalatest"        %% "scalatest"   % ScalaTestVersion          % Test,
-      "org.scalatestplus"    %% "mockito-3-4" % (ScalaTestVersion + ".0") % Test,
-      "org.scalactic"        %% "scalactic"   % ScalaTestVersion          % Test,
+      "org.scalatest"       %% "scalatest"    % ScalaTestVersion          % Test,
+      "org.scalatestplus"   %% "mockito-3-4"  % (ScalaTestVersion + ".0") % Test,
+      "org.scalactic"       %% "scalactic"    % ScalaTestVersion          % Test,
       "com.vladsch.flexmark" % "flexmark-all" % FlexmarkVersion           % Test
     ),
     addCompilerPlugin("org.typelevel" %% "kind-projector"     % "0.13.2" cross CrossVersion.full),

@@ -15,17 +15,18 @@ package io.github.sentenza.hacktoberfest.util
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-/**
-  * A list of useful functions to work with arrays
+/** A list of useful functions to work with arrays
   */
 class ArrayUtil {
 
-  /**
-    * Builds an array of random numbers
+  /** Builds an array of random numbers
     *
-    * @param length The length of the array to be built
-    * @param maxElement The maximum possible value to assign to an element of the array
-    * @return An array of random integers
+    * @param length
+    *   The length of the array to be built
+    * @param maxElement
+    *   The maximum possible value to assign to an element of the array
+    * @return
+    *   An array of random integers
     */
   def buildRandomArray(length: Int, maxElement: Int = Int.MaxValue / 10): Array[Int] = {
     val maximum = if (maxElement <= Int.MaxValue / 10) maxElement else Int.MaxValue
