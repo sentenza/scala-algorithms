@@ -1,29 +1,29 @@
-*.class
-*.log
-
-# Ensime specific
-.ensime_cache
-.ensime
+## sbt
+logs
+target
+/.idea
+/.idea_modules
+/.classpath
+/.gradle
+/.project
+/.settings
+/public/*
 
 # sbt specific
 .cache
 .history
 .lib/
+.bsp/*
 dist/*
-target/
 lib_managed/
 src_managed/
 project/boot/
-project/plugins/project/
 
 # Scala-IDE specific
 .scala_dependencies
 .worksheet
+.ropeproject
 .idea
-
-## Metals
-.metals
-.bloop
 
 # Temporary
 .netrwhist
@@ -41,6 +41,8 @@ project/plugins/project/
 
 # System Files
 .DS_Store
-Thumbs.db
+Thumbs.db%
 
-*.sc
+## Metals
+.metals
+.bloop

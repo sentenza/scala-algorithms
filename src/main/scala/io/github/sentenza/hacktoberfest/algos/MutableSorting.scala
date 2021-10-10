@@ -3,7 +3,7 @@ import scala.annotation.tailrec
 import scala.collection.mutable.ArrayBuffer
 
 /*
- * HacktoberFest - Scala Algorhitms
+ * HacktoberFest - Scala Algorithms
  * Copyright (C) 2018 sentenza
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -185,7 +185,7 @@ object MutableSorting extends Sorting[Array, Int] {
     * @return The sorted array
     */
   def mergeSort(array: Array[Int]): Array[Int] = {
-    def merge(part1: Array[Int], part2: Array[Int], l: Int, r: Int, mid: Int) {
+    def merge(part1: Array[Int], part2: Array[Int], l: Int, r: Int, mid: Int): Unit = {
       var left = l
       var m    = mid + 1
 
@@ -200,7 +200,7 @@ object MutableSorting extends Sorting[Array, Int] {
       }
     }
 
-    def sort(part1: Array[Int], part2: Array[Int], l: Int, r: Int) {
+    def sort(part1: Array[Int], part2: Array[Int], l: Int, r: Int): Unit = {
       if (l >= r)
         return
 
@@ -281,12 +281,12 @@ object MutableSorting extends Sorting[Array, Int] {
   }
 
   /**
-    * @author Xoeseko
     * Radix Sort is a sorting algorithm that sorts an array of numbers into according to each number's most significant
     * symbols (bits, digits...) depending on the given base
     * @param xs an array to be sorted
     * @param base the sorting base and also the number of buckets
     * @return the sorted array
+    * @author Xoeseko
     */
     def radixSort(xs: Array[Int], base: Int = 10): Array[Int] = {
       var array = xs
@@ -298,7 +298,7 @@ object MutableSorting extends Sorting[Array, Int] {
         }
         for (n <- arr){
           // Start by getting the current digit and assigning the number to corresponding bucket.
-          val digit = (n / math.pow(b, it).toInt) % b
+          val digit = (n / math.pow(b.toDouble, it.toDouble).toInt) % b
           buckets(digit) += n
         }
       buckets.map(a => a.toArray)
@@ -319,14 +319,14 @@ object MutableSorting extends Sorting[Array, Int] {
 
 
       var i = 0
-      while (math.pow(base, i) <= max){
+      while (math.pow(base.toDouble, i.toDouble) <= max){
          array = bucketsToList(listToBuckets(array, base, i))
         i+=1
       }
 
       array
     }
-  
+
   /**
     * Swaps two elements with indices index1 and index2
     * in a given array used in bubbleSort and selectionSort

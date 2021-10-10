@@ -10,8 +10,8 @@ import scala.annotation.tailrec
 import scala.util.{Success, Try}
 
 /*
- * HacktoberFest - Scala Algorhitms
- * Copyright (C) 2018 sentenza
+ * HacktoberFest - Scala Algorithms
+ * Copyright (C) 2018-2021 sentenza
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -27,16 +27,16 @@ import scala.util.{Success, Try}
 object MenuIO {
   private val heading =
     """
-      _  _         _   _       _             ___       _     ___ __  _ ___
-     | || |__ _ __| |_| |_ ___| |__  ___ _ _| __|__ __| |_  |_  )  \/ ( _ )
-     | __ / _` / _| / /  _/ _ \ '_ \/ -_) '_| _/ -_|_-<  _|  / / () | / _ \
-     |_||_\__,_\__|_\_\\__\___/_.__/\___|_| |_|\___/__/\__| /___\__/|_\___/
+      _  _         _   _       _             ___       _
+     | || |__ _ __| |_| |_ ___| |__  ___ _ _| __|__ __| |_
+     | __ / _` / _| / /  _/ _ \ '_ \/ -_) '_| _/ -_|_-<  _|
+     |_||_\__,_\__|_\_\\__\___/_.__/\___|_| |_|\___/__/\__|
 
     """
 
   private val gplDisclaimer =
     """
-    HacktoberFest Scala Algorhitms Copyright (C) 2018-2019  @sentenza
+    HacktoberFest Scala Algorithms Copyright (C) 2018-2021  @sentenza
     This program comes with ABSOLUTELY NO WARRANTY.
     This is free software, and you are welcome to redistribute it
     under certain conditions. All the details can be found at:
@@ -47,11 +47,11 @@ object MenuIO {
     * This function should be called at the very beginning of the Main execution
     * to fetch the disclaimer message and the project Logo to be printed out
     */
-  def printDisclaimer() { println(heading + gplDisclaimer) }
+  def printDisclaimer(): Unit = { println(heading + gplDisclaimer) }
 
   private val noOp = () => ()
 
-  def readNumberInputs = scala.io.StdIn.readLine().split(",").map(_.toInt)
+  def readNumberInputs: Array[Int] = scala.io.StdIn.readLine().split(",").map(_.toInt)
 
   case class MenuEntry(selector: Int, display: String, code: () => Unit)
   private val entries =
@@ -84,7 +84,7 @@ object MenuIO {
   private def retrieveMethodNames(sorting:Sorting[_,_]) =
     sorting.getClass.getMethods.map(_.getName).filter(_.endsWith("Sort")).distinct
 
-  private def executeSortMethod(sorting: Sorting[_,_], method: String) = {
+  private def executeSortMethod(sorting: Sorting[_,_], method: String): Unit = {
     println("You've chosen " + method + "! Please enter a list of comma separated integers.")
     val numberInputs = readNumberInputs
     println(s"You entered:${numberInputs.mkString(",")}. They are going to be sorted by $method.\n Sorting...")
@@ -92,18 +92,18 @@ object MenuIO {
     println(s"Your number entries sorted are: ${sorted.mkString(",")}")
   }
 
-  private def execute[F[_],T](sorting: Sorting[_,_], method: String, numberInputs: F[_]) = {
+  private def execute[F[_],T](sorting: Sorting[_,_], method: String, numberInputs: F[_]) : F[_]= {
     findMethod(sorting, method) match {
       case Some(m:Method) => m.invoke(sorting, numberInputs).asInstanceOf[F[_]]
       case None => throw new RuntimeException(s"Method $method not found in $sorting")
     }
   }
 
-  private def findMethod(sorting: Sorting[_,_], method: String) =
+  private def findMethod(sorting: Sorting[_,_], method: String): Option[Method] =
     sorting.getClass.getMethods.find(m => m.getName.compare(method) == 0)
 
   @tailrec
-  def renderInteractiveMenu(entries:List[MenuEntry]=entries): Unit = {
+  def renderInteractiveMenu(entries: List[MenuEntry] = entries): Unit = {
     println("Please choose:")
     entries.foreach {
       case MenuEntry(num, label, _) =>

@@ -1,12 +1,18 @@
-scalaVersion := "2.13.1"
-name := "hacktoberfest-algorithms"
-organization := "hacktoberfest"
-// We will use Semver for this project
-version := "0.11.0"
+val ScalaTestVersion = "3.2.10"
+val FlexmarkVersion  = "0.62.2"
 
-// libraries
-val scalaTestVersion = "3.0.8"
-val ammoniteVersion  = "1.7.4"
-
-libraryDependencies += "org.scalatest" %% "scalatest" % scalaTestVersion % "test"
-libraryDependencies += "com.lihaoyi"   % "ammonite"   % ammoniteVersion  % "test" cross CrossVersion.full
+lazy val root = (project in file("."))
+  .settings(
+    organization := "io.github.sentenza.hacktoberfest",
+    name := "hacktoberfest-algorithms",
+    version := "0.12.0",
+    scalaVersion := "2.13.6",
+    libraryDependencies ++= Seq(
+      "org.scalatest"        %% "scalatest"   % ScalaTestVersion          % Test,
+      "org.scalatestplus"    %% "mockito-3-4" % (ScalaTestVersion + ".0") % Test,
+      "org.scalactic"        %% "scalactic"   % ScalaTestVersion          % Test,
+      "com.vladsch.flexmark" % "flexmark-all" % FlexmarkVersion           % Test
+    ),
+    addCompilerPlugin("org.typelevel" %% "kind-projector"     % "0.13.2" cross CrossVersion.full),
+    addCompilerPlugin("com.olegpy"    %% "better-monadic-for" % "0.3.1")
+  )

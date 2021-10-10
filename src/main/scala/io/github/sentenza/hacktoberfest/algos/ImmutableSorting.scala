@@ -1,9 +1,7 @@
 package io.github.sentenza.hacktoberfest.algos
-import scala.annotation.tailrec
-import scala.collection.mutable.ListBuffer
 
 /*
- * HacktoberFest - Scala Algorhitms
+ * HacktoberFest - Scala Algorithms
  * Copyright (C) 2018 sentenza
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -39,7 +37,7 @@ object ImmutableSorting extends Sorting[List, Int] {
           (elem :: restBubbled, swapped)
         }
         case secondElem :: secondRest => {
-          val (restBubbled, swapped) = bubbled(elem :: secondRest)
+          val (restBubbled, _) = bubbled(elem :: secondRest)
 
           (secondElem :: restBubbled, true)
         }

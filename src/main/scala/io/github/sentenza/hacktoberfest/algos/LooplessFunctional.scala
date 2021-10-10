@@ -1,7 +1,7 @@
 package io.github.sentenza.hacktoberfest.algos
 
 /*
- * HacktoberFest - Scala Algorhitms
+ * HacktoberFest - Scala Algorithms
  * Copyright (C) 2018 sentenza
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -22,9 +22,9 @@ package io.github.sentenza.hacktoberfest.algos
   */
 object LooplessFunctional {
 
-  /** Buils a list from a particular value
+  /** Builds a list from a particular value
     * This is considered the principal building block
-    * of loopless algos in the mentioned work
+    * of loopless algorithms in the mentioned work
     *
     * While the function takes a single step operation,
     * in all the sequent algorithms the step is actually
@@ -54,7 +54,6 @@ object LooplessFunctional {
     val prologue: LL => LL = _.filter(_.nonEmpty)
 
     unfoldr(step compose prologue)(nested)
-
   }
 
 }
