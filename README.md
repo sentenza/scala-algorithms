@@ -16,16 +16,14 @@
 
 ## List of Algorithms
 
-This repository is essentially a **collection of programming exercises written in Scala** that will involve Algorithms
+* This repository is essentially a **collection of programming exercises written in Scala** that will involve Algorithms
 and Data Structures.
-
-See our [directory](DIRECTORY.md) for easier navigation and better overview of the project.
+* See our [directory](DIRECTORY.md) for easier navigation and better overview of the project.
 
 ## Getting Started
 
 Read through our [Contribution Guidelines](CONTRIBUTING.md) before you contribute.
-
-Anyone can contribute to this repo to make their contribution to open-source on [Github][github]
+Anyone can contribute to this repo to make their contribution to open-source on [Github][github].
 
 Celebrate <a href="https://hacktoberfest.digitalocean.com/" target="_blank">HacktoberFest</a> by getting involved in the
 Open Source Community by completing some simple (or not so simple) tasks in this project.
@@ -38,7 +36,7 @@ to this project without being a collaborator.
 Hacktoberfest is a month-long celebration of open source software held in the month of October to get people involved
 in **open-source**.
 
-# How to start programming in Scala
+### How to start programming in Scala
 
 - Feel free to contribute to our [learning resources](docs/learning_resources.md)
 
