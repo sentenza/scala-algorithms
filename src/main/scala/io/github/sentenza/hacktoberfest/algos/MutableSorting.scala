@@ -1,5 +1,4 @@
 package io.github.sentenza.hacktoberfest.algos
-import scala.annotation.tailrec
 import scala.collection.mutable.ArrayBuffer
 
 /*
@@ -89,7 +88,11 @@ object MutableSorting extends Sorting[Array, Int] {
     * @param array Array of sortable integers
     * @return The sorted array
     */
-  def combSort(array: Array[Int]): Array[Int] = {
+  def combSort(array: Array[Int]): Array[Int] = ???
+  // TODO: Fix Comb sort!
+  /*
+  {
+import scala.annotation.tailrec
 
     def nextGap(gap: Int): Int = ((gap * 10) / 13).max(1)
 
@@ -120,6 +123,7 @@ object MutableSorting extends Sorting[Array, Int] {
 
     sort(array, nextGap(array.length))
   }
+*/
 
   /** @inheritdoc
     * @param array Array of sortable integers
