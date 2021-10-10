@@ -71,10 +71,10 @@
     * SearchSinglyLinkedListRecursion
     * SinglyLinkedList
 * Queues
+    * [Functional Queue](https://github.com/sentenza/hacktoberfest-scala-algorithms/blob/master/src/main/scala/io/github/sentenza/hacktoberfest/adt/Queue.scala)
     * GenericArrayListQueue
     * LinkedQueue
     * PriorityQueues
-    * Queues
 * Stacks
     * BalancedBrackets
     * DecimalToAnyUsingStack
@@ -88,7 +88,7 @@
     * BinaryTree
     * BSTIterative
     * BSTRecursive
-    * GenericTree
+    * [GenericTree](https://github.com/sentenza/hacktoberfest-scala-algorithms/blob/master/src/main/scala/io/github/sentenza/hacktoberfest/adt/Tree.scala)
     * LevelOrderTraversal
     * LevelOrderTraversalQueue
     * PrintTopViewOfTree
@@ -242,10 +242,9 @@
 * SearchAlgorithm
 * TernarySearch
 
-## Sorts
+## Sorts (on immutable collections)
 * BitonicSort
-* BubbleSort
-* BubbleSortRecursion
+* [BubbleSort](https://github.com/sentenza/hacktoberfest-scala-algorithms/blob/3e966e02deaba69d26d7ddfe8f5ff3b6282de90f/src/main/scala/io/github/sentenza/hacktoberfest/algos/sort/ImmutableSorting.scala#L15)
 * BucketSort
 * CocktailShakerSort
 * CombSort
@@ -264,6 +263,29 @@
 * SortAlgorithm
 * SortUtils
 * TimSort
+
+## Sorts (on mutable collections)
+* BitonicSort
+* [BubbleSort](https://github.com/sentenza/hacktoberfest-scala-algorithms/blob/3e966e02deaba69d26d7ddfe8f5ff3b6282de90f/src/main/scala/io/github/sentenza/hacktoberfest/algos/sort/MutableSorting.scala#L27)
+* BucketSort
+* CocktailShakerSort
+* CombSort
+* CountingSort
+* CycleSort
+* GnomeSort
+* HeapSort
+* InsertionSort
+* InsertionSortRecursive
+* Mergesort
+* PancakeSort
+* Quicksort
+* RadixSort
+* SelectionSort
+* ShellSort
+* SortAlgorithm
+* SortUtils
+* TimSort
+
 
 ## Strings
 * Alphabetical
