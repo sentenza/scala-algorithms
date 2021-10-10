@@ -45,9 +45,12 @@ object LooplessFunctional {
 
     //the unfolding step
     val step: LL => Option[(A, LL)] = {
+      case (a :: as) :: rest =>
+        val result: (A, LL) = (a, as :: rest)
+        Some(result)
       case List(Nil)         => None
       case Nil               => None
-      case (a :: as) :: rest => Some(a, as :: rest)
+      case _ => None
     }
 
     //prolog for concat, removes empty nestings

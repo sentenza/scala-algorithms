@@ -1,9 +1,10 @@
 package io.github.sentenza.hacktoberfest.adt
 
-import org.scalatest.{Matchers, WordSpec}
 import io.github.sentenza.hacktoberfest.adt.{Branch => B, Leaf => L}
+import org.scalatest.matchers.should.Matchers
+import org.scalatest.wordspec.AnyWordSpec
 
-class TreeSpec extends WordSpec with Matchers {
+class TreeSpec extends AnyWordSpec with Matchers {
   "A Tree" should {
     "have a size() method to compute its size" in {
       val testTree = Branch(

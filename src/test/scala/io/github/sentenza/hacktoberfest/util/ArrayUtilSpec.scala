@@ -1,8 +1,10 @@
 package io.github.sentenza.hacktoberfest.util
 
-import org.scalatest.{Assertion, Matchers, WordSpec, Inspectors}
+import org.scalatest.matchers.should.Matchers
+import org.scalatest.wordspec.AnyWordSpec
+import org.scalatest.Inspectors
 
-class ArrayUtilSpec extends WordSpec with Matchers {
+class ArrayUtilSpec extends AnyWordSpec with Matchers {
   "The ArrayUtil" should {
     "return an array of n elements" in {
       val arrayUtil = new ArrayUtil()

@@ -1,11 +1,13 @@
 package io.github.sentenza.hacktoberfest.algos
 
 import io.github.sentenza.hacktoberfest.util.ArrayUtil
-import org.scalatest.{Matchers, WordSpec}
 import MutableSorting._
+import org.scalatest.matchers.should.Matchers
+import org.scalatest.wordspec.AnyWordSpec
+
 import scala.util.Random
 
-class MutableSortingSpec extends WordSpec with Matchers {
+class MutableSortingSpec extends AnyWordSpec with Matchers {
 
   /**
     * The default length of the arrays that will be generated in this spec

@@ -2,7 +2,7 @@ package io.github.sentenza.hacktoberfest
 
 import System.out.println
 import scala.annotation.tailrec
-import scala.util.{Try, Success, Failure}
+import scala.util.{Try, Success}
 
 /*
  * HacktoberFest - Scala Algorithms

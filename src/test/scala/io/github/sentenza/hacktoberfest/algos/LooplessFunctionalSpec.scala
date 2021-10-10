@@ -1,9 +1,10 @@
 package io.github.sentenza.hacktoberfest.algos
 
-import org.scalatest.{Matchers, WordSpec}
 import LooplessFunctional._
+import org.scalatest.matchers.should.Matchers
+import org.scalatest.wordspec.AnyWordSpec
 
-class LooplessFunctionalSpec extends WordSpec with Matchers {
+class LooplessFunctionalSpec extends AnyWordSpec with Matchers {
 
     "Loopless Functional algorithms" should {
 
