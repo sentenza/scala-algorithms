@@ -1,6 +1,8 @@
 val ScalaTestVersion = "3.2.10"
 val FlexmarkVersion  = "0.62.2"
 
+scalafmtOnCompile := true
+
 lazy val root = (project in file("."))
   .settings(
     organization := "io.github.sentenza.hacktoberfest",
