@@ -3,6 +3,7 @@
 * **the style is subject to change as we learn or need to refine**
 * new code must follow this standard
 * older code should be refactored as it gets worked on
+* ⭐ __Star this repository__ to support us!
 
 ## Development Rules
 
@@ -19,26 +20,26 @@ These Scala HacktoberFest Scala _exercises_ assume an [SBT][sbt-intro] project s
 
 ## How to contribute
 
-* Please avoid opening issues asking to be _assigned_ to a particular algorithm.
+* 🙏 Please avoid opening issues asking to be _assigned_ to a particular algorithm.
   This merely creates unnecessary noise for maintainers. Instead, please submit
   your implementation in a pull request, and it will be evaluated by project maintainers.
 * If you are unable to find an open issue referring to the same problem, depending on the type of
   issue follow the appropriate steps:
 
 ### Do you want to add a new algorithm?
-* **Ensure the same issue was not already reported** in
+* **Ensure the same issue was not already reported** 🔎 in
   [Project Issues](https://github.com/sentenza/hacktoberfest-scala-algorithms/issues)
-* You might want to look into our algorithms [DIRECTORY](DIRECTORY.md) to find something that needs to be implemented
-- [Open a new issue](https://github.com/sentenza/hacktoberfest-scala-algorithms/issues/new).
+* You might want to look into our algorithms 📂 [DIRECTORY](DIRECTORY.md) to find something that needs to be implemented
+* 📩 [Open a new issue](https://github.com/sentenza/hacktoberfest-scala-algorithms/issues/new).
   Be sure to include a **title and a clear description** and a **test case** demonstrating the new feature that you want
   to add to the project.
-* Create a branch for a new feature `git checkout -b "<ISSUE-NUMBER>-branch-name`
+* Create a branch for a new feature `git checkout -b "<ISSUE-NUMBER>-branch-name"`
 * Add your name to the [CONTRIBUTORS.md][CONTRIBUTORS.md] file
 * Wait for your PR review and merge approval!
-* __Star this repository__ if you had fun!
+* ⭐ __Star this repository__ if you had fun!
 
 ### Do you want to contribute to the documentation?
-* **Ensure the same issue was not already reported** in
+* **Ensure the same issue was not already reported** 🔎 in
   [Project Issues](https://github.com/sentenza/hacktoberfest-scala-algorithms/issues)
 * Create a new PR describing in a clear and concise way what you're going to improve in our current docs
 
