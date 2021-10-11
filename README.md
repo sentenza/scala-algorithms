@@ -11,15 +11,11 @@
 [![Scala Steward badge](https://img.shields.io/badge/Scala_Steward-helping-blue.svg?style=flat&logo=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAAQCAMAAAARSr4IAAAAVFBMVEUAAACHjojlOy5NWlrKzcYRKjGFjIbp293YycuLa3pYY2LSqql4f3pCUFTgSjNodYRmcXUsPD/NTTbjRS+2jomhgnzNc223cGvZS0HaSD0XLjbaSjElhIr+AAAAAXRSTlMAQObYZgAAAHlJREFUCNdNyosOwyAIhWHAQS1Vt7a77/3fcxxdmv0xwmckutAR1nkm4ggbyEcg/wWmlGLDAA3oL50xi6fk5ffZ3E2E3QfZDCcCN2YtbEWZt+Drc6u6rlqv7Uk0LdKqqr5rk2UCRXOk0vmQKGfc94nOJyQjouF9H/wCc9gECEYfONoAAAAASUVORK5CYII=)](https://scala-steward.org)
 <a href="https://github.com/sentenza/hacktoberfest-scala-algorithms/blob/master/CONTRIBUTING.md">
     <img src="https://img.shields.io/static/v1.svg?label=Contributions&message=Welcome&color=0059b3&style=flat-square" height="20" alt="Contributions Welcome">
-</a> 
-
-**_The authors are not affiliated with DigitalOcean or Hacktoberfest_**
-
-## List of Algorithms
+</a>
 
 * This repository is essentially a **collection of programming exercises written in Scala** that will involve Algorithms
 and Data Structures.
-* See our [directory](DIRECTORY.md) for easier navigation and better overview of the project.
+* Take a look at our [DIRECTORY](DIRECTORY.md) for easier navigation and better overview of the project.
 
 ## Getting Started
 
@@ -40,6 +36,10 @@ in **open-source**.
 ### How to start programming in Scala
 
 - Feel free to contribute to our [learning resources](docs/learning_resources.md)
+
+#### DISCLAIMER
+
+**_The authors are not affiliated with DigitalOcean_**
 
 [github]: https://github.com
 
