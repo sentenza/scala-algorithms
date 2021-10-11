@@ -7,6 +7,7 @@
 
 # Hacktoberfest - Algorithms and Data Structures
 
+[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg?color=orange)](https://www.gnu.org/licenses/gpl-3.0)
 ![GitHub Workflow Status](https://img.shields.io/github/workflow/status/sentenza/hacktoberfest-scala-algorithms/Scala%20CI)
 [![Scala Steward badge](https://img.shields.io/badge/Scala_Steward-helping-blue.svg?style=flat&logo=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAAQCAMAAAARSr4IAAAAVFBMVEUAAACHjojlOy5NWlrKzcYRKjGFjIbp293YycuLa3pYY2LSqql4f3pCUFTgSjNodYRmcXUsPD/NTTbjRS+2jomhgnzNc223cGvZS0HaSD0XLjbaSjElhIr+AAAAAXRSTlMAQObYZgAAAHlJREFUCNdNyosOwyAIhWHAQS1Vt7a77/3fcxxdmv0xwmckutAR1nkm4ggbyEcg/wWmlGLDAA3oL50xi6fk5ffZ3E2E3QfZDCcCN2YtbEWZt+Drc6u6rlqv7Uk0LdKqqr5rk2UCRXOk0vmQKGfc94nOJyQjouF9H/wCc9gECEYfONoAAAAASUVORK5CYII=)](https://scala-steward.org)
 <a href="https://github.com/sentenza/hacktoberfest-scala-algorithms/blob/master/CONTRIBUTING.md">
@@ -40,6 +41,17 @@ in **open-source**.
 #### DISCLAIMER
 
 **_The authors are not affiliated with DigitalOcean_**
+
+## LICENSE
+
+<a href="https://www.gnu.org/licenses/quick-guide-gplv3.html"><img src="https://www.gnu.org/graphics/gplv3-127x51.png" align="right" alt="GNU GPLv3" /></a>
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+See [LICENSE](LICENSE)
+
 
 [github]: https://github.com
 
