@@ -1,48 +1,5 @@
 # Code style
 
-## Semantic Git commit messages
-
-Please use following commit message format.
-
-* chore (boring tasks etc; no production code change) -> ```git test -m 'chore: commit-message-here'```
-* docs (changes to documentation) -> ```git commit -m 'docs: commit-message-here'```
-* feat (new feature) -> ```git commit -m 'feat: commit-message-here'```
-* fix (bug fix) -> ```git commit -m 'fix: commit-message-here'```
-* refactor (refactoring production code) -> ```git commit -m 'refactor: commit-message-here'```
-* style (formatting, missing semi colons, etc; no code change) -> ```git commit -m 'style: commit-message-here'```
-* test (adding missing tests, refactoring tests; no production code change)
-  -> ```git test -m 'refactor: commit-message-here'```
-
-Inspired by Sparkbox's awesome article
-on [semantic commit messages](http://seesparkbox.com/foundry/semantic_commit_messages).
-
-### Commit contents guidelines
-
-+ For big changes, try to use `git commit` instead of `git commit -m`, which will open a new editor
-+ Put a title to explain what you are doing in this commit
-+ Put more descriptions in the new paragraph
-
-Example:
-
-```
-[#55] Live and let die :gun: =>
-
-* feat: [NG] add quantity of items per product removed.
-* feat: [NG] add support for asynchronous events for GTM.
-* feat: [SCALA] handle clicks with event delegation.
-* docs: add some documentation.
-* fix: `list` properties for enhancements in listing packages pages.
-* fix: asynchronous event for removeFromCart.
-* fix: structure of the products property.
-* feat: handle cart update.
-* refactor: rename `$recommend` to `$jpid` in `productRecommend()`.
-* refactor: rename `JW.addToCart` to `JW.updateCart`.
-* refactor: rename `npd_packages` to `developer_packages` in config.
-```
-
-We could also squash commits together whenever this makes sense. For more information, please ref
-to [Squashing commits](https://git-scm.com/book/en/v2/Git-Tools-Rewriting-History#Squashing-Commits).
-
 ## Style guide
 
 Your code must look like that:
@@ -122,6 +79,49 @@ class Foo4[Sweet <: Cool](foo: String, bar: String)(implicit someth: Anyth[MyCla
 
 }
 ```
+
+## Semantic Git commit messages
+
+Please use following commit message format.
+
+* chore (boring tasks etc; no production code change) -> ```git test -m 'chore: commit-message-here'```
+* docs (changes to documentation) -> ```git commit -m 'docs: commit-message-here'```
+* feat (new feature) -> ```git commit -m 'feat: commit-message-here'```
+* fix (bug fix) -> ```git commit -m 'fix: commit-message-here'```
+* refactor (refactoring production code) -> ```git commit -m 'refactor: commit-message-here'```
+* style (formatting, missing semi colons, etc; no code change) -> ```git commit -m 'style: commit-message-here'```
+* test (adding missing tests, refactoring tests; no production code change)
+  -> ```git test -m 'refactor: commit-message-here'```
+
+Inspired by Sparkbox's awesome article
+on [semantic commit messages](http://seesparkbox.com/foundry/semantic_commit_messages).
+
+### Commit contents guidelines
+
++ For big changes, try to use `git commit` instead of `git commit -m`, which will open a new editor
++ Put a title to explain what you are doing in this commit
++ Put more descriptions in the new paragraph
+
+Example:
+
+```
+[#55] Live and let die :gun: =>
+
+* feat: [NG] add quantity of items per product removed.
+* feat: [NG] add support for asynchronous events for GTM.
+* feat: [SCALA] handle clicks with event delegation.
+* docs: add some documentation.
+* fix: `list` properties for enhancements in listing packages pages.
+* fix: asynchronous event for removeFromCart.
+* fix: structure of the products property.
+* feat: handle cart update.
+* refactor: rename `$recommend` to `$jpid` in `productRecommend()`.
+* refactor: rename `JW.addToCart` to `JW.updateCart`.
+* refactor: rename `npd_packages` to `developer_packages` in config.
+```
+
+We could also squash commits together whenever this makes sense. For more information, please ref
+to [Squashing commits](https://git-scm.com/book/en/v2/Git-Tools-Rewriting-History#Squashing-Commits).
 
 ## Branch naming conventions
 
