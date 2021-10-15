@@ -6,7 +6,8 @@ import scala.util.{Try, Success}
 import io.github.sentenza.hacktoberfest.algos.sort.MutableSorting
 import io.github.sentenza.hacktoberfest.algos.sort.ImmutableSorting
 import io.github.sentenza.hacktoberfest.algos.sort.Sorting
-import java.lang.reflect.Method
+import scala.reflect.runtime.universe._
+import scala.reflect.ClassTag
 
 /*
  * HacktoberFest - Scala Algorithms
@@ -49,7 +50,7 @@ object MenuIO {
 
   def readNumberInputs(): Array[Int] = {
     print("Please enter a list of comma separated integers: ")
-    scala.io.StdIn.readLine().split(",").map(_.toInt)
+    scala.io.StdIn.readLine().split(",").map(_.trim.toInt)
   }
 
   case class MenuEntry(selector: Int, display: String, code: () => Unit = () => ())
@@ -57,16 +58,16 @@ object MenuIO {
   /* The following section generalize how to display collections as
    * strings, needed to interact with user input on the console
    */
-  trait Show[F[_]] {
-    def toString[T](f: F[T]): String
+  trait Show[T] {
+    def toString(t: T): String
   }
 
-  implicit val showArray: Show[Array] = new Show[Array] {
-    def toString[T](f: Array[T]): String = f.mkString(",")
+  implicit def showArray[T]: Show[Array[T]] = new Show[Array[T]] {
+    def toString(t: Array[T]): String = t.mkString(",")
   }
 
-  implicit def showIterable[F[_] <: Iterable[_]]: Show[F] = new Show[F] {
-    def toString[T](f: F[T]): String = f.mkString(",")
+  implicit def showIterable[T, F[_] <: Iterable[_]]: Show[F[T]] = new Show[F[T]] {
+    def toString(t: F[T]): String = t.mkString(",")
   }
 
   // TODO: Add more categories here
@@ -90,7 +91,8 @@ object MenuIO {
       () => {
         println("You chose mutable sorting.")
         renderInteractiveMenu(
-          createMethodMenuEntries[Array, Int, MutableSorting.type](MutableSorting)(
+          createSortMenuEntries[Array, Int, MutableSorting.type](
+            MutableSorting,
             readNumberInputs()
           )
         )
@@ -102,7 +104,8 @@ object MenuIO {
       () => {
         println("You chose immutable sorting.")
         renderInteractiveMenu(
-          createMethodMenuEntries[List, Int, ImmutableSorting.type](ImmutableSorting)(
+          createSortMenuEntries[List, Int, ImmutableSorting.type](
+            ImmutableSorting,
             readNumberInputs().toList
           )
         )
@@ -119,8 +122,6 @@ object MenuIO {
     }
 
     Try(scala.io.StdIn.readInt()) match {
-      case Success(0) =>
-        ()
       case Success(choice) if entries.exists(_.selector == choice) =>
         entries.find(_.selector == choice).foreach { case MenuEntry(_, _, code) =>
           code()
@@ -132,48 +133,49 @@ object MenuIO {
     }
   }
 
-  private def createMethodMenuEntries[F[_]: Show, T, S <: Sorting[F, T]](
-      sorting: S
-  )(toSort: => F[T]) =
-    retrieveMethodNames[F, T, S](sorting)
-      .foldLeft(1 -> List.empty[MenuEntry]) { case ((count, entries), mName) =>
+  private def createSortMenuEntries[F[_], T, S <: Sorting[F, T]: TypeTag: ClassTag](
+      sorting: S,
+      toSort: => F[T]
+  )(implicit show: Show[F[T]], ftt: TypeTag[F[T]]) = {
+
+    val (_, entries) = collectSortMethods(sorting)
+      .foldLeft(1 -> List.empty[MenuEntry]) { case ((count, entries), (sortMethod, retType)) =>
+        val sortName = sortMethod.symbol.name.decodedName.toString
         count + 1 -> (entries :+ MenuEntry(
           count,
-          mName,
-          () => executeSortMethod[F, T, S](sorting, mName)(toSort)
+          sortName,
+          () => executeSortMethod[F[T]](sortMethod, retType)(toSort)
         ))
       }
-      ._2
 
-  private def retrieveMethodNames[F[_], T, S <: Sorting[F, T]](sorting: S) =
-    sorting.getClass.getMethods.map(_.getName).filter(_.endsWith("Sort")).distinct
-
-  private def executeSortMethod[F[_]: Show, T, S <: Sorting[F, T]](
-      sorting: S,
-      method: String
-  )(toSort: => F[T]): Unit = {
-    println(s"You've chosen $method!")
-
-    // forces the on-demand evaluation of the input collection
-    val in     = toSort
-    val shower = implicitly[Show[F]]
-    println(
-      s"You entered:${shower.toString(in)}. They are going to be sorted by $method.\n Sorting..."
-    )
-    val sorted = execute[F, T, S](sorting, method, in)
-    println(s"Your number entries sorted are: ${shower.toString(sorted)}")
+    entries
   }
 
-  private def execute[F[_], T, S <: Sorting[F, T]](
-      sorting: S,
-      method: String,
-      numberInputs: F[T]
-  ): F[T] =
-    findMethod[F, T, S](sorting, method) match {
-      case Some(m: Method) => m.invoke(sorting, numberInputs).asInstanceOf[F[T]]
-      case None            => throw new RuntimeException(s"Method $method not found in $sorting")
-    }
+  private def collectSortMethods[C: TypeTag: ClassTag](c: C) =
+    typeOf[C].decls.collect {
+      case t if t.fullName.endsWith("Sort") && t.isMethod =>
+        val cmirr = runtimeMirror(c.getClass().getClassLoader())
 
-  private def findMethod[F[_], T, S <: Sorting[F, T]](sorting: S, method: String): Option[Method] =
-    sorting.getClass.getMethods.find(_.getName == method)
+        cmirr.reflect(c).reflectMethod(t.asMethod) -> t.asMethod.returnType
+    }.toMap
+
+  private def executeSortMethod[F: Show: TypeTag](
+      method: MethodMirror,
+      returnType: Type
+  )(toSort: => F): Unit = {
+    val name = method.symbol.name.decodedName
+    println(s"You've chosen $name!")
+
+    // forces the on-demand evaluation of the input collection
+    val in    = toSort
+    val fshow = implicitly[Show[F]]
+    println(
+      s"You entered:${fshow.toString(in)}. They are going to be sorted by $name.\n Sorting..."
+    )
+    if (typeOf[F] =:= returnType) {
+      val sorted = method(in).asInstanceOf[F]
+      println(s"Your number entries sorted are: ${fshow.toString(sorted)}")
+    }
+  }
+
 }

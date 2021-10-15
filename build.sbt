@@ -10,6 +10,7 @@ lazy val root = (project in file("."))
     version      := "0.12.0",
     scalaVersion := "2.13.6",
     libraryDependencies ++= Seq(
+      "org.scala-lang" % "scala-reflect" % "2.13.6",
       "org.scalatest"       %% "scalatest"    % ScalaTestVersion          % Test,
       "org.scalatestplus"   %% "mockito-3-4"  % (ScalaTestVersion + ".0") % Test,
       "org.scalactic"       %% "scalactic"    % ScalaTestVersion          % Test,
