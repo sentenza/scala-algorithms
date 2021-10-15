@@ -138,44 +138,47 @@ object MenuIO {
       toSort: => F[T]
   )(implicit show: Show[F[T]], ftt: TypeTag[F[T]]) = {
 
-    val (_, entries) = collectSortMethods(sorting)
-      .foldLeft(1 -> List.empty[MenuEntry]) { case ((count, entries), (sortMethod, retType)) =>
-        val sortName = sortMethod.symbol.name.decodedName.toString
+    val (_, entries) = collectSortMethods[S, F[T]](sorting)
+      .foldLeft(1 -> List.empty[MenuEntry]) { case ((count, entries), (sortName, sortFunction)) =>
         count + 1 -> (entries :+ MenuEntry(
           count,
           sortName,
-          () => executeSortMethod[F[T]](sortMethod, retType)(toSort)
+          () => executeSort(sortName, sortFunction, toSort)
         ))
       }
 
     entries
   }
 
-  private def collectSortMethods[C: TypeTag: ClassTag](c: C) =
-    typeOf[C].decls.collect {
-      case t if t.fullName.endsWith("Sort") && t.isMethod =>
-        val cmirr = runtimeMirror(c.getClass().getClassLoader())
+  private def executeSort[T: Show](name: String, sorter: T => T, toSort: => T) = {
+    val show = implicitly[Show[T]]
 
-        cmirr.reflect(c).reflectMethod(t.asMethod) -> t.asMethod.returnType
-    }.toMap
-
-  private def executeSortMethod[F: Show: TypeTag](
-      method: MethodMirror,
-      returnType: Type
-  )(toSort: => F): Unit = {
-    val name = method.symbol.name.decodedName
     println(s"You've chosen $name!")
-
     // forces the on-demand evaluation of the input collection
-    val in    = toSort
-    val fshow = implicitly[Show[F]]
+    val values = toSort
     println(
-      s"You entered:${fshow.toString(in)}. They are going to be sorted by $name.\n Sorting..."
+      s"You entered:${show.toString(values)}. They are going to be sorted by $name.\n Sorting..."
     )
-    if (typeOf[F] =:= returnType) {
-      val sorted = method(in).asInstanceOf[F]
-      println(s"Your number entries sorted are: ${fshow.toString(sorted)}")
-    }
+    println(s"Your number entries sorted are: ${show.toString(sorter(values))}")
   }
+
+  private def collectSortMethods[C: TypeTag: ClassTag, T: TypeTag](c: C) =
+    typeOf[C].decls.collect {
+      case t
+          if
+          // matches all sort methods that takes exactly an T (some collection type) and spits a T again
+          t.fullName.endsWith("Sort") &&
+            t.isMethod &&
+            t.asMethod.paramLists
+              .exists(ins => ins.headOption.exists(_.info =:= typeOf[T])) &&
+            t.asMethod.returnType =:= typeOf[T] =>
+        // we get a method handle and wrap it in a typed function to return back
+        val method =
+          runtimeMirror(c.getClass().getClassLoader())
+            .reflect(c)
+            .reflectMethod(t.asMethod)
+        // use the method name as key and the function as value of this map
+        t.name.decodedName.toString() -> { (in: T) => method(in).asInstanceOf[T] }
+    }.toMap
 
 }
