@@ -26,5 +26,7 @@ object StringUtil extends StringAlgos {
     *   Second string
     * @return
     */
-  override def checkAnagrams(first: String, second: String): Boolean = ???
+  override def checkAnagrams(first: String, second: String): Boolean = {
+    first.sorted == second.sorted
+  }
 }
