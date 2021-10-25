@@ -41,5 +41,9 @@ class ImmutableSortingSpec extends AnyWordSpec with Matchers {
     "sort a list using the Bubble sort algorithm" in {
       compareAfterSortingWith(bubbleSort)
     }
+
+    "sort a list using the Merge sort algorithm" in {
+      compareAfterSortingWith(mergeSort)
+    }
   }
 }
