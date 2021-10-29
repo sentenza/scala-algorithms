@@ -9,19 +9,19 @@ class StringUtilSpec extends AnyWordSpec with Matchers {
     "solve anagrams" when {
       case class Case(first: String, second: String, result: Boolean)
       val cases =
-        //list from https://en.wikipedia.org/wiki/Anagram
+        // list from https://en.wikipedia.org/wiki/Anagram
         Case("evil", "vile", result = true) ::
           Case("a gentleman", "elegant man", result = true) ::
           Case("eleven plus two", "twelve plus one", result = true) ::
           Case("restful", "fluster", result = true) ::
-          Case("funeral", "real fun", result = false) :: //additional whitespaces are not ignored
+          Case("funeral", "real fun", result = false) :: // additional whitespaces are not ignored
           Case("funeral", "realfun", result = true) ::
           Case("forty five", "over fifty", result = true) ::
           Case("Santa", "Satan", result = true) ::
           Case("listen", "silent", result = true) ::
-          Case("listen", "silen", result = false) ::  //missing char
-          Case("listen", "silenx", result = false) :: //changed char
-          Case("listen", "silenn", result = false) :: //changed char but appearing
+          Case("listen", "silen", result = false) ::  // missing char
+          Case("listen", "silenx", result = false) :: // changed char
+          Case("listen", "silenn", result = false) :: // changed char but appearing
           Nil
 
       cases.foreach { c =>
