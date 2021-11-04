@@ -118,7 +118,7 @@ object ImmutableSorting extends Sorting[List, Int] {
     */
   def mergeSort(list: List[Int]): List[Int] = {
     @tailrec
-    //(1,3,2,6,4) => ( (4), (6, 2), (3, 1) )
+    // (1,3,2,6,4) => ( (4), (6, 2), (3, 1) )
     def split(rem: List[Int], acc: List[List[Int]]): List[List[Int]] = {
       rem match {
         case h :: t =>
@@ -131,7 +131,7 @@ object ImmutableSorting extends Sorting[List, Int] {
                   split(t, (h :: ha) :: ta)
                 case _ :: _ =>
                   split(t, (h :: Nil) :: acc)
-                case Nil => //should not happen but safer to handle
+                case Nil => // should not happen but safer to handle
                   split(t, (h :: Nil) :: ta)
               }
           }

@@ -37,10 +37,10 @@ object LooplessFunctional {
   /** First example algo presented, flattens nested lists */
   def concat[A](nested: List[List[A]]): List[A] = {
 
-    //make typing shorter
+    // make typing shorter
     type LL = List[List[A]]
 
-    //the unfolding step
+    // the unfolding step
     val step: LL => Option[(A, LL)] = {
       case (a :: as) :: rest =>
         val result: (A, LL) = (a, as :: rest)
@@ -50,7 +50,7 @@ object LooplessFunctional {
       case _         => None
     }
 
-    //prolog for concat, removes empty nestings
+    // prolog for concat, removes empty nestings
     val prologue: LL => LL = _.filter(_.nonEmpty)
 
     unfoldr(step compose prologue)(nested)
