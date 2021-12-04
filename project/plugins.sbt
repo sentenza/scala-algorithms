@@ -2,7 +2,7 @@
 addSbtPlugin("io.github.davidgregory084" % "sbt-tpolecat" % "0.1.20")
 
 // Makes our code tidy
-addSbtPlugin("org.scalameta" % "sbt-scalafmt" % "2.4.4")
+addSbtPlugin("org.scalameta" % "sbt-scalafmt" % "2.4.5")
 
 // Revolver allows us to use re-start and work a lot faster!
 addSbtPlugin("io.spray" % "sbt-revolver" % "0.9.1")
