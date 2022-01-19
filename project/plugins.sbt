@@ -11,7 +11,7 @@ addSbtPlugin("io.spray" % "sbt-revolver" % "0.9.1")
 addSbtPlugin("net.vonbuchholtz" % "sbt-dependency-check" % "3.3.0")
 
 // Enables test coverage analysis
-addSbtPlugin("org.scoverage" % "sbt-scoverage" % "1.9.2")
+addSbtPlugin("org.scoverage" % "sbt-scoverage" % "1.9.3")
 
 // Checks Maven and Ivy repositories for dependency updates
 addSbtPlugin("com.timushev.sbt" % "sbt-updates" % "0.6.1")
