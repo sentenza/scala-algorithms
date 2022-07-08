@@ -14,4 +14,4 @@ addSbtPlugin("net.vonbuchholtz" % "sbt-dependency-check" % "4.1.0")
 addSbtPlugin("org.scoverage" % "sbt-scoverage" % "1.9.3")
 
 // Checks Maven and Ivy repositories for dependency updates
-addSbtPlugin("com.timushev.sbt" % "sbt-updates" % "0.6.2")
+addSbtPlugin("com.timushev.sbt" % "sbt-updates" % "0.6.3")
