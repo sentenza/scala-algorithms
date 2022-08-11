@@ -1,5 +1,5 @@
 // Easily manage scalac settings across scala versions with this
-addSbtPlugin("io.github.davidgregory084" % "sbt-tpolecat" % "0.3.1")
+addSbtPlugin("io.github.davidgregory084" % "sbt-tpolecat" % "0.3.3")
 
 // Makes our code tidy
 addSbtPlugin("org.scalameta" % "sbt-scalafmt" % "2.4.6")
