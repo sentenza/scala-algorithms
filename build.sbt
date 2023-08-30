@@ -1,5 +1,5 @@
 val ScalaTestVersion = "3.2.10"
-val FlexmarkVersion  = "0.64.0"
+val FlexmarkVersion  = "0.64.8"
 
 scalafmtOnCompile := true
 
