@@ -15,8 +15,9 @@ package io.github.sentenza.hacktoberfest.algos.search
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-/** Definitions of the functions that will implement all the common searching algorithms.
-  */
+/**
+ * Definitions of the functions that will implement all the common searching algorithms.
+ */
 trait Searching {
   // TO BE DEFINED
 }

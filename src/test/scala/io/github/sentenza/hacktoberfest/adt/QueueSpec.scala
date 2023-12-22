@@ -23,7 +23,7 @@ class QueueSpec extends AnyWordSpec with Matchers {
 
     "have a tail method that returns a new Queue without its head" in {
       fiboQueue.tail shouldBe a[Queue[_]]
-      fiboQueue.tail equals Queue(21, 34, 55, 89, 144, 233)
+      fiboQueue.tail.equals(Queue(21, 34, 55, 89, 144, 233))
       fiboQueue.tail.tail.tail.tail.tail.tail.head shouldBe 233
     }
 
@@ -34,7 +34,7 @@ class QueueSpec extends AnyWordSpec with Matchers {
       q3 shouldBe a[Queue[_]]
       val qChar = Queue(Symbol("a")).enqueue('b')
       qChar shouldBe a[Queue[_]]
-      q2 equals Queue(13, 77, 21)
+      q2.equals(Queue(13, 77, 21))
     }
 
     "test for emptiness using isEmpty" in {

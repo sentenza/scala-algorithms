@@ -1,6 +1,7 @@
 package io.github.sentenza.hacktoberfest.adt
 
-import io.github.sentenza.hacktoberfest.adt.{Branch => B, Leaf => L}
+import io.github.sentenza.hacktoberfest.adt.{ Branch => B }
+import io.github.sentenza.hacktoberfest.adt.{ Leaf => L }
 import org.scalatest.matchers.should.Matchers
 import org.scalatest.wordspec.AnyWordSpec
 

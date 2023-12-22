@@ -17,28 +17,30 @@ import scala.collection.mutable.ArrayBuffer
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-/** Implementations of this trait should provide non-destructive sort operations on arrays. That is,
-  * the array passed to a sort method should not be altered: A new array with the sorted values
-  * should be returned.
-  */
+/**
+ * Implementations of this trait should provide non-destructive sort operations on arrays. That is,
+ * the array passed to a sort method should not be altered: A new array with the sorted values
+ * should be returned.
+ */
 object MutableSorting extends Sorting[Array, Int] {
 
-  /** @inheritdoc
-    *
-    * "the bubble sort seems to have nothing to recommend it, except a catchy name and the fact that
-    * it leads to some interesting theoretical problems"
-    *   - from The Art of Computer Programming by Donald Knuth NOTE: Although bubble sort is one of
-    *     the simplest sorting algorithms to understand and implement, its {{{O(n^2)}}} complexity
-    *     means that its efficiency decreases dramatically on lists of more than a small number of
-    *     elements. TODO: Try to refactor this method in order to avoid any direct alteration (side
-    *     effect) of the provided array. We should return a completely new array that contains the
-    *     sorted elements.
-    *
-    * @param xs
-    *   Array of sortable Integers
-    * @return
-    *   The sorted array
-    */
+  /**
+   * @inheritdoc
+   *
+   * "the bubble sort seems to have nothing to recommend it, except a catchy name and the fact that
+   * it leads to some interesting theoretical problems"
+   *   - from The Art of Computer Programming by Donald Knuth NOTE: Although bubble sort is one of
+   *     the simplest sorting algorithms to understand and implement, its {{{O(n^2)}}} complexity
+   *     means that its efficiency decreases dramatically on lists of more than a small number of
+   *     elements. TODO: Try to refactor this method in order to avoid any direct alteration (side
+   *     effect) of the provided array. We should return a completely new array that contains the
+   *     sorted elements.
+   *
+   * @param xs
+   *   Array of sortable Integers
+   * @return
+   *   The sorted array
+   */
   def bubbleSort(xs: Array[Int]): Array[Int] = {
     var swapped = false
 
@@ -55,13 +57,14 @@ object MutableSorting extends Sorting[Array, Int] {
     xs
   }
 
-  /** @inheritdoc
-    *
-    * @param array
-    *   Array of sortable integers
-    * @return
-    *   The sorted array
-    */
+  /**
+   * @inheritdoc
+   *
+   * @param array
+   *   Array of sortable integers
+   * @return
+   *   The sorted array
+   */
   def cocktailShakerSort(array: Array[Int]): Array[Int] = {
     var (start, end) = (0, array.length - 2)
     while (start <= end) {
@@ -86,12 +89,13 @@ object MutableSorting extends Sorting[Array, Int] {
     array
   }
 
-  /** @inheritdoc
-    * @param array
-    *   Array of sortable integers
-    * @return
-    *   The sorted array
-    */
+  /**
+   * @inheritdoc
+   * @param array
+   *   Array of sortable integers
+   * @return
+   *   The sorted array
+   */
   def combSort(array: Array[Int]): Array[Int] = ???
   // TODO: Fix Comb sort!
   /*
@@ -129,12 +133,13 @@ import scala.annotation.tailrec
   }
    */
 
-  /** @inheritdoc
-    * @param array
-    *   Array of sortable integers
-    * @return
-    *   The sorted array
-    */
+  /**
+   * @inheritdoc
+   * @param array
+   *   Array of sortable integers
+   * @return
+   *   The sorted array
+   */
   def insertionSort(array: Array[Int]): Array[Int] = {
     for (j <- 1 until array.length) {
       var i      = j - 1
@@ -149,12 +154,13 @@ import scala.annotation.tailrec
     array
   }
 
-  /** @inheritdoc
-    * @param array
-    *   Array of sortable integers
-    * @return
-    *   The sorted array
-    */
+  /**
+   * @inheritdoc
+   * @param array
+   *   Array of sortable integers
+   * @return
+   *   The sorted array
+   */
   def selectionSort(array: Array[Int]): Array[Int] = {
     for (i <- 0 until array.size - 1)
       swap(
@@ -171,39 +177,42 @@ import scala.annotation.tailrec
     array
   }
 
-  /** Heap Sort
-    *
-    * @param xs
-    *   Array of sortable integers
-    * @return
-    *   The sorted array
-    */
+  /**
+   * Heap Sort
+   *
+   * @param xs
+   *   Array of sortable integers
+   * @return
+   *   The sorted array
+   */
   def heapSort(xs: Array[Int]): Array[Int] = ???
 
-  /** @inheritdoc
-    * @param array
-    *   Array of sortable integers
-    * @return
-    *   The sorted array
-    */
+  /**
+   * @inheritdoc
+   * @param array
+   *   Array of sortable integers
+   * @return
+   *   The sorted array
+   */
   def quickSort(array: Array[Int]): Array[Int] = {
     if (array.length <= 1) array
     else {
       val pivot = array(array.length / 2)
       Array.concat(
-        quickSort(array filter (x => pivot > x)),
-        array filter (x => pivot == x),
-        quickSort(array filter (x => pivot < x))
+        quickSort(array.filter(x => pivot > x)),
+        array.filter(x => pivot == x),
+        quickSort(array.filter(x => pivot < x))
       )
     }
   }
 
-  /** @inheritdoc
-    * @param array
-    *   Array of sortable integers
-    * @return
-    *   The sorted array
-    */
+  /**
+   * @inheritdoc
+   * @param array
+   *   Array of sortable integers
+   * @return
+   *   The sorted array
+   */
   def mergeSort(array: Array[Int]): Array[Int] = {
     def merge(part1: Array[Int], part2: Array[Int], l: Int, r: Int, mid: Int): Unit = {
       var left = l
@@ -236,21 +245,22 @@ import scala.annotation.tailrec
     array
   }
 
-  /** Bucket sort is a sorting algorithm that sorts an array of elements by splitting the elements
-    * into n buckets and then reapplies another sorting method on the different buckets. Then merges
-    * the sorted buckets. It can also be used recursively until buckets contain one element each.
-    *
-    * @param xs
-    *   Array of sortable integers
-    * @param n
-    *   number of buckets in which to sort the elements.
-    * @param sort
-    *   The sorting algorithm to apply once buckets are divided.
-    * @return
-    *   the sorted array
-    * @author
-    *   Xoeseko
-    */
+  /**
+   * Bucket sort is a sorting algorithm that sorts an array of elements by splitting the elements
+   * into n buckets and then reapplies another sorting method on the different buckets. Then merges
+   * the sorted buckets. It can also be used recursively until buckets contain one element each.
+   *
+   * @param xs
+   *   Array of sortable integers
+   * @param n
+   *   number of buckets in which to sort the elements.
+   * @param sort
+   *   The sorting algorithm to apply once buckets are divided.
+   * @return
+   *   the sorted array
+   * @author
+   *   Xoeseko
+   */
   def bucketSort(
       xs: Array[Int],
       n: Int = 10,
@@ -269,18 +279,22 @@ import scala.annotation.tailrec
 
     val finalArray = new ArrayBuffer[Int]()
 
-    for (i <- buckets.indices; j <- buckets(i).indices) {
+    for {
+      i <- buckets.indices
+      j <- buckets(i).indices
+    } {
       finalArray += buckets(i)(j)
     }
     finalArray.toArray
   }
 
-  /** @inheritdoc
-    * @param xs
-    *   Array of sortable integers
-    * @return
-    *   The sorted array
-    */
+  /**
+   * @inheritdoc
+   * @param xs
+   *   Array of sortable integers
+   * @return
+   *   The sorted array
+   */
   def countSort(xs: Array[Int]): Array[Int] = {
     if (xs.length <= 1) xs
     else {
@@ -307,17 +321,18 @@ import scala.annotation.tailrec
 
   }
 
-  /** Radix Sort is a sorting algorithm that sorts an array of numbers into according to each
-    * number's most significant symbols (bits, digits...) depending on the given base
-    * @param xs
-    *   an array to be sorted
-    * @param base
-    *   the sorting base and also the number of buckets
-    * @return
-    *   the sorted array
-    * @author
-    *   Xoeseko
-    */
+  /**
+   * Radix Sort is a sorting algorithm that sorts an array of numbers into according to each
+   * number's most significant symbols (bits, digits...) depending on the given base
+   * @param xs
+   *   an array to be sorted
+   * @param base
+   *   the sorting base and also the number of buckets
+   * @return
+   *   the sorted array
+   * @author
+   *   Xoeseko
+   */
   def radixSort(xs: Array[Int], base: Int = 10): Array[Int] = {
     var array = xs
     def listToBuckets(arr: Array[Int], b: Int, it: Int): Array[Array[Int]] = {
@@ -337,7 +352,10 @@ import scala.annotation.tailrec
     def bucketsToList(buckets: Array[Array[Int]]): Array[Int] = {
       val numbers = new Array[Int](xs.length)
       var index   = 0
-      for (b <- buckets; n <- b) {
+      for {
+        b <- buckets
+        n <- b
+      } {
         numbers(index) = n
         index += 1
       }
@@ -355,17 +373,18 @@ import scala.annotation.tailrec
     array
   }
 
-  /** Swaps two elements with indices index1 and index2 in a given array used in bubbleSort and
-    * selectionSort TODO: get rid of this method, because it only introduces a side effect. Take
-    * look at the principles of Functional programming.
-    *
-    * @param array
-    *   The target array that will be modified
-    * @param index1
-    *   The index of the first element that has to be swapped
-    * @param index2
-    *   The index of the second element that has to be swapped
-    */
+  /**
+   * Swaps two elements with indices index1 and index2 in a given array used in bubbleSort and
+   * selectionSort TODO: get rid of this method, because it only introduces a side effect. Take
+   * look at the principles of Functional programming.
+   *
+   * @param array
+   *   The target array that will be modified
+   * @param index1
+   *   The index of the first element that has to be swapped
+   * @param index2
+   *   The index of the second element that has to be swapped
+   */
   private def swap(array: Array[Int], index1: Int, index2: Int): Unit = {
     val tmp = array(index1)
     array(index1) = array(index2)

@@ -1,13 +1,15 @@
 package io.github.sentenza.hacktoberfest
 
-import System.out.println
 import scala.annotation.tailrec
-import scala.util.{Try, Success}
-import io.github.sentenza.hacktoberfest.algos.sort.MutableSorting
-import io.github.sentenza.hacktoberfest.algos.sort.ImmutableSorting
-import io.github.sentenza.hacktoberfest.algos.sort.Sorting
 import scala.reflect.runtime.universe._
 import scala.reflect.ClassTag
+import scala.util.Success
+import scala.util.Try
+
+import io.github.sentenza.hacktoberfest.algos.sort.ImmutableSorting
+import io.github.sentenza.hacktoberfest.algos.sort.MutableSorting
+import io.github.sentenza.hacktoberfest.algos.sort.Sorting
+import System.out.println
 
 /*
  * HacktoberFest - Scala Algorithms
@@ -43,9 +45,10 @@ object MenuIO {
     https://github.com/sentenza/hacktoberfest-scala-algorithms/blob/master/LICENSE.
     """
 
-  /** This function should be called at the very beginning of the Main execution to fetch the
-    * disclaimer message and the project Logo to be printed out
-    */
+  /**
+   * This function should be called at the very beginning of the Main execution to fetch the
+   * disclaimer message and the project Logo to be printed out
+   */
   def printDisclaimer(): Unit = { println(heading + gplDisclaimer) }
 
   def readNumberInputs(): Array[Int] = {
@@ -117,14 +120,16 @@ object MenuIO {
   @tailrec
   def renderInteractiveMenu(entries: List[MenuEntry] = rootEntries): Unit = {
     println("Please choose:")
-    entries.sortBy(_.selector).foreach { case MenuEntry(num, label, _) =>
-      println(s"$num: $label")
+    entries.sortBy(_.selector).foreach {
+      case MenuEntry(num, label, _) =>
+        println(s"$num: $label")
     }
 
     Try(scala.io.StdIn.readInt()) match {
       case Success(choice) if entries.exists(_.selector == choice) =>
-        entries.find(_.selector == choice).foreach { case MenuEntry(_, _, code) =>
-          code()
+        entries.find(_.selector == choice).foreach {
+          case MenuEntry(_, _, code) =>
+            code()
         }
         renderInteractiveMenu()
       case _ =>
@@ -139,12 +144,13 @@ object MenuIO {
   )(implicit show: Show[F[T]], ftt: TypeTag[F[T]]) = {
 
     val (_, entries) = collectSortMethods[S, F[T]](sorting)
-      .foldLeft(1 -> List.empty[MenuEntry]) { case ((count, entries), (sortName, sortFunction)) =>
-        count + 1 -> (entries :+ MenuEntry(
-          count,
-          sortName,
-          () => executeSort(sortName, sortFunction, toSort)
-        ))
+      .foldLeft(1 -> List.empty[MenuEntry]) {
+        case ((count, entries), (sortName, sortFunction)) =>
+          count + 1 -> (entries :+ MenuEntry(
+            count,
+            sortName,
+            () => executeSort(sortName, sortFunction, toSort)
+          ))
       }
 
     entries
