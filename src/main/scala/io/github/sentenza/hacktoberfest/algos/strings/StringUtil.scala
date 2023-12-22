@@ -18,14 +18,15 @@ package io.github.sentenza.hacktoberfest.algos.strings
 /** Implementation of common algorithms applied to strings. */
 object StringUtil extends StringAlgos {
 
-  /** Checks if the first string is the anagram of the second one
-    *
-    * @param first
-    *   First string
-    * @param second
-    *   Second string
-    * @return
-    */
+  /**
+   * Checks if the first string is the anagram of the second one
+   *
+   * @param first
+   *   First string
+   * @param second
+   *   Second string
+   * @return
+   */
   override def checkAnagrams(first: String, second: String): Boolean = {
     first.sorted == second.sorted
   }

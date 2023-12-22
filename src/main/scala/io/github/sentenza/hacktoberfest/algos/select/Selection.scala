@@ -15,12 +15,14 @@ package io.github.sentenza.hacktoberfest.algos.select
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-/** Definitions of the functions that will implement all the common selection algorithms.
-  */
+/**
+ * Definitions of the functions that will implement all the common selection algorithms.
+ */
 trait Selection[F[_], T] {
   /* *** Partition-based Selection *** */
 
-  /** Quick Select [[https://en.wikipedia.org/wiki/Quickselect Wikipedia: Quick Select]]
-    */
+  /**
+   * Quick Select [[https://en.wikipedia.org/wiki/Quickselect Wikipedia: Quick Select]]
+   */
   def quickSelect(xs: F[T], idx: Int): Option[T]
 }

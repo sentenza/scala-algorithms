@@ -17,18 +17,20 @@ import scala.annotation.tailrec
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-/** Implementations of this trait should provide non-destructive sort operations on lists, returning
-  * a sorted copy of the provided input list.
-  */
+/**
+ * Implementations of this trait should provide non-destructive sort operations on lists, returning
+ * a sorted copy of the provided input list.
+ */
 object ImmutableSorting extends Sorting[List, Int] {
 
-  /** @inheritdoc
-    *
-    * @param xs
-    *   List of sortable Integers
-    * @return
-    *   The sorted list
-    */
+  /**
+   * @inheritdoc
+   *
+   * @param xs
+   *   List of sortable Integers
+   * @return
+   *   The sorted list
+   */
   def bubbleSort(xs: List[Int]): List[Int] = {
     def bubbled(list: List[Int]): (List[Int], Boolean) = list match {
       case Nil => (Nil, false)
@@ -57,65 +59,72 @@ object ImmutableSorting extends Sorting[List, Int] {
     fullyBubbled
   }
 
-  /** @inheritdoc
-    *
-    * @param xs
-    *   List of sortable Integers
-    * @return
-    *   The sorted list
-    */
+  /**
+   * @inheritdoc
+   *
+   * @param xs
+   *   List of sortable Integers
+   * @return
+   *   The sorted list
+   */
   def cocktailShakerSort(xs: List[Int]): List[Int] = ???
 
-  /** @inheritdoc
-    *
-    * @param xs
-    *   List of sortable Integers
-    * @return
-    *   The sorted list
-    */
+  /**
+   * @inheritdoc
+   *
+   * @param xs
+   *   List of sortable Integers
+   * @return
+   *   The sorted list
+   */
   def combSort(xs: List[Int]): List[Int] = ???
 
-  /** @inheritdoc
-    * @param list
-    *   List of sortable integers
-    * @return
-    *   The sorted list
-    */
+  /**
+   * @inheritdoc
+   * @param list
+   *   List of sortable integers
+   * @return
+   *   The sorted list
+   */
   def insertionSort(list: List[Int]): List[Int] = ???
 
-  /** @inheritdoc
-    * @param list
-    *   List of sortable integers
-    * @return
-    *   The sorted list
-    */
+  /**
+   * @inheritdoc
+   * @param list
+   *   List of sortable integers
+   * @return
+   *   The sorted list
+   */
   def selectionSort(list: List[Int]): List[Int] = ???
 
-  /** @inheritdoc
-    *
-    * @param xs
-    *   List of sortable Integers
-    * @return
-    *   The sorted list
-    */
+  /**
+   * @inheritdoc
+   *
+   * @param xs
+   *   List of sortable Integers
+   * @return
+   *   The sorted list
+   */
   def heapSort(xs: List[Int]): List[Int] = ???
 
-  /** @inheritdoc
-    *
-    * @param xs
-    *   List of sortable Integers
-    * @return
-    *   The sorted list
-    */
+  /**
+   * @inheritdoc
+   *
+   * @param xs
+   *   List of sortable Integers
+   * @return
+   *   The sorted list
+   */
   def quickSort(list: List[Int]): List[Int] = ???
 
-  /** @inheritdoc
-    *
-    * @param list
-    *   List of sortable Integers
-    * @return
-    *   The sorted list
-    */
+  /**
+   * @inheritdoc
+   *
+   * @param list
+   *   List of sortable Integers
+   * @return
+   *   The sorted list
+   */
   def mergeSort(list: List[Int]): List[Int] = {
     @tailrec
     // (1,3,2,6,4) => ( (4), (6, 2), (3, 1) )
@@ -187,34 +196,37 @@ object ImmutableSorting extends Sorting[List, Int] {
     merger(splitList, isForward = false, Nil)
   }
 
-  /** @inheritdoc
-    *
-    * @param xs
-    *   List of sortable Integers
-    * @return
-    *   The sorted list
-    */
+  /**
+   * @inheritdoc
+   *
+   * @param xs
+   *   List of sortable Integers
+   * @return
+   *   The sorted list
+   */
   def bucketSort(
       xs: List[Int],
       n: Int = 10,
       sort: List[Int] => List[Int] = insertionSort
   ): List[Int] = ???
 
-  /** @inheritdoc
-    *
-    * @param xs
-    *   List of sortable Integers
-    * @return
-    *   The sorted list
-    */
+  /**
+   * @inheritdoc
+   *
+   * @param xs
+   *   List of sortable Integers
+   * @return
+   *   The sorted list
+   */
   def countSort(xs: List[Int]): List[Int] = ???
 
-  /** @inheritdoc
-    *
-    * @param xs
-    *   List of sortable Integers
-    * @return
-    *   The sorted list
-    */
+  /**
+   * @inheritdoc
+   *
+   * @param xs
+   *   List of sortable Integers
+   * @return
+   *   The sorted list
+   */
   def radixSort(xs: List[Int], base: Int): List[Int] = ???
 }

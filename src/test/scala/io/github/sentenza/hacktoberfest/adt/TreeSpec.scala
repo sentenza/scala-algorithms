@@ -1,6 +1,7 @@
 package io.github.sentenza.hacktoberfest.adt
 
-import io.github.sentenza.hacktoberfest.adt.{Branch => B, Leaf => L}
+import io.github.sentenza.hacktoberfest.adt.{ Branch => B }
+import io.github.sentenza.hacktoberfest.adt.{ Leaf => L }
 import org.scalatest.matchers.should.Matchers
 import org.scalatest.wordspec.AnyWordSpec
 
@@ -56,8 +57,8 @@ class TreeSpec extends AnyWordSpec with Matchers {
     }
 
     "return the sum of depths for a Tree of Trees" in {
-      val t = B(
-        L(1),
+      val t: Branch[String] = B(
+        L("1"),
         treeD2
       )
       Tree.depth(t) shouldBe 3

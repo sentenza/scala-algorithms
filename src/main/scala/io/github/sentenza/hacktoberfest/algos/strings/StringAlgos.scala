@@ -18,14 +18,15 @@ package io.github.sentenza.hacktoberfest.algos.strings
 /** Definitions of common algorithms applied to strings. */
 trait StringAlgos {
 
-  /** Checks if the first string is the anagram of the second one
-    *
-    * @param first
-    *   First string
-    * @param second
-    *   Second string
-    * @return
-    */
+  /**
+   * Checks if the first string is the anagram of the second one
+   *
+   * @param first
+   *   First string
+   * @param second
+   *   Second string
+   * @return
+   */
   def checkAnagrams(first: String, second: String): Boolean
 
 }
