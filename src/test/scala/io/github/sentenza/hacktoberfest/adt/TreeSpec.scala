@@ -57,8 +57,8 @@ class TreeSpec extends AnyWordSpec with Matchers {
     }
 
     "return the sum of depths for a Tree of Trees" in {
-      val t = B(
-        L(1),
+      val t: Branch[String] = B(
+        L("1"),
         treeD2
       )
       Tree.depth(t) shouldBe 3

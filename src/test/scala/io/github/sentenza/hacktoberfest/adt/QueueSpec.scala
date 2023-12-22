@@ -32,7 +32,7 @@ class QueueSpec extends AnyWordSpec with Matchers {
       val q2 = q1.enqueue(21)
       val q3 = q2.enqueue(44).enqueue(77)
       q3 shouldBe a[Queue[_]]
-      val qChar = Queue(Symbol("a")).enqueue('b')
+      val qChar = Queue(Symbol("a")).enqueue(Symbol("b"))
       qChar shouldBe a[Queue[_]]
       q2.equals(Queue(13, 77, 21))
     }

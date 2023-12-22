@@ -8,7 +8,7 @@ lazy val root = (project in file("."))
     organization := "io.github.sentenza.hacktoberfest",
     name         := "hacktoberfest-algorithms",
     version      := "0.12.0",
-    scalaVersion := "2.13.8",
+    scalaVersion := "2.13.12",
     libraryDependencies ++= Seq(
       "org.scala-lang"       % "scala-reflect" % "2.13.12",
       "org.scalatest"       %% "scalatest"     % ScalaTestVersion % Test,
