@@ -155,7 +155,7 @@ object Queue {
      */
     private def buildPrint[U >: T](separator: String)(l: List[U])(t: List[U]): String = t match {
       case Nil => l.mkString("Queue(", separator, ")")
-      case _ => {
+      case _   => {
         if (l.nonEmpty)
           l.mkString("Queue(", separator, separator) + t.mkString("", separator, ")")
         else t.mkString("Queue(", separator, ")")
