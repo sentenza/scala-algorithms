@@ -33,10 +33,10 @@ object ImmutableSorting extends Sorting[List, Int] {
    */
   def bubbleSort(xs: List[Int]): List[Int] = {
     def bubbled(list: List[Int]): (List[Int], Boolean) = list match {
-      case Nil => (Nil, false)
+      case Nil          => (Nil, false)
       case elem :: rest =>
         rest match {
-          case Nil => (elem :: Nil, false)
+          case Nil                                   => (elem :: Nil, false)
           case secondElem :: _ if elem <= secondElem => {
             val (restBubbled, swapped) = bubbled(rest)
 
