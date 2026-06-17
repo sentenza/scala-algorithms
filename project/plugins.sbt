@@ -8,4 +8,4 @@ addSbtPlugin("io.spray" % "sbt-revolver" % "0.10.0")
 addSbtPlugin("org.scoverage" % "sbt-scoverage" % "2.0.9")
 
 // Checks Maven and Ivy repositories for dependency updates
-addSbtPlugin("com.timushev.sbt" % "sbt-updates" % "0.6.4")
+addSbtPlugin("com.timushev.sbt" % "sbt-updates" % "0.7.0")
