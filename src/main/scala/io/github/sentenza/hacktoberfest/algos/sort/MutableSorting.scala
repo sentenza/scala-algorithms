@@ -334,7 +334,7 @@ import scala.annotation.tailrec
    *   Xoeseko
    */
   def radixSort(xs: Array[Int], base: Int = 10): Array[Int] = {
-    var array = xs
+    var array                                                              = xs
     def listToBuckets(arr: Array[Int], b: Int, it: Int): Array[Array[Int]] = {
       val buckets = Array.ofDim[ArrayBuffer[Int]](base)
       // Initialize buckets
